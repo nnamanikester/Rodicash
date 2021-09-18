@@ -4,8 +4,8 @@ import {
   heightPercentageToDP as hd,
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
-import {useSelector} from 'react-redux';
-import {ColorsState} from '../../../store/types';
+import {useTheme} from '@/contexts/ThemeContext';
+import {ColorsState} from '@/constants/index';
 import {Clickable, ClickableProps} from '../Clickable';
 
 interface ButtonProps extends ClickableProps {
@@ -51,7 +51,7 @@ export const Button: React.FC<ButtonProps> = ({
   showIconDivider,
   style,
 }) => {
-  const colors = useSelector((state: any) => state.colors);
+  const {colors} = useTheme();
 
   const styles = StyleSheet.create({
     button: {

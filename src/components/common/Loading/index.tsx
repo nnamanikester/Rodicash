@@ -1,3 +1,4 @@
+import {useTheme} from '@/contexts/ThemeContext';
 import React from 'react';
 import {
   View,
@@ -16,6 +17,8 @@ export interface LoadingProps extends ViewProps {
 }
 
 export const Loading: React.FC<LoadingProps> = ({show = false}) => {
+  const {colors} = useTheme();
+
   if (!show) {
     return null;
   }
@@ -38,8 +41,8 @@ export const Loading: React.FC<LoadingProps> = ({show = false}) => {
 
   return (
     <View style={[styles.background]}>
-      <StatusBar backgroundColor="#2614c1" />
-      <ActivityIndicator color="#2614c1" size={wd('15%')} />
+      <StatusBar backgroundColor={colors.primary} />
+      <ActivityIndicator color={colors.primary} size={wd('15%')} />
     </View>
   );
 };

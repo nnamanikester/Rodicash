@@ -2,8 +2,7 @@ import React from 'react';
 import {Linking, StyleSheet, TextStyle} from 'react-native';
 import {Text} from '../Text';
 import {Clickable, ClickableProps} from '../Clickable';
-import {useSelector} from 'react-redux';
-import {IRootState} from '../../../store/reducers';
+import {useTheme} from '@/contexts/ThemeContext';
 
 export interface LinkProps extends ClickableProps {
   /**
@@ -28,7 +27,7 @@ export const Link: React.FC<LinkProps> = ({
   style,
   color,
 }) => {
-  const colors = useSelector((state: IRootState) => state.colors);
+  const {colors} = useTheme();
 
   const styles = StyleSheet.create({
     link: {

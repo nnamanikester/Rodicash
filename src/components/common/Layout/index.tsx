@@ -1,3 +1,4 @@
+import {useTheme} from '@/contexts/ThemeContext';
 import React from 'react';
 import {
   ScrollView,
@@ -9,8 +10,6 @@ import {
   StatusBar,
 } from 'react-native';
 import {widthPercentageToDP as wd} from 'react-native-responsive-screen';
-import {useSelector} from 'react-redux';
-import {IRootState} from '../../../store/reducers';
 
 export interface LayoutProps extends ViewProps {
   /**
@@ -43,7 +42,7 @@ export const Layout: React.FC<LayoutProps> = ({
   onRefresh = () => {},
   refreshing = false,
 }) => {
-  const colors = useSelector((state: IRootState) => state.colors);
+  const {colors} = useTheme();
 
   const styles = StyleSheet.create({
     container: {

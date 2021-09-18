@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import {useTheme} from '@react-navigation/native';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -14,7 +14,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Zocial from 'react-native-vector-icons/Zocial';
-import {useSelector} from 'react-redux';
 
 export interface IconProps {
   /**
@@ -64,7 +63,7 @@ export const Icon: React.FC<IconProps> = ({
   type = 'Ionicons',
   style,
 }) => {
-  const colors = useSelector((state: any) => state.colors);
+  const {colors} = useTheme();
 
   const IconType = () => {
     switch (type) {

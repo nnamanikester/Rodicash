@@ -1,11 +1,15 @@
 import React from 'react';
-import {TouchableOpacityProps, TouchableOpacity} from 'react-native';
+import {
+  TouchableOpacityProps,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from 'react-native';
 
 export interface ClickableProps extends TouchableOpacityProps {
   /**
    * Invoked when a click event is performed.
    */
-  onClick?: (() => void) | undefined | Promise<void>;
+  onClick?: ((event: GestureResponderEvent) => void) | undefined;
   style?: any;
 }
 

@@ -1,11 +1,14 @@
 import * as React from 'react';
+import {Text, View} from 'react-native';
 
-interface WelcomeScreenProps {
-  
-}
- 
+interface WelcomeScreenProps {}
+
 const WelcomeScreen: React.FC<WelcomeScreenProps> = () => {
-  return ();
-}
- 
+  return (
+    <View>
+      <Text>Welcome home</Text>
+    </View>
+  );
+};
+
 export default WelcomeScreen;

@@ -4,11 +4,12 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import Thunk from 'redux-thunk';
-import {Appearance, AppearanceProvider} from 'react-native-appearance';
+import {AppearanceProvider} from 'react-native-appearance';
 import {listenOrientationChange as lor} from 'react-native-responsive-screen';
-import reducers from '@store/reducers';
-import NavigationFlow from '@navigation';
-import {ThemeProvider} from '@contexts/ThemeContext';
+import SplashScreen from 'react-native-splash-screen';
+import NavigationFlow from '@/navigation';
+import reducers from '@/store/reducers';
+import {ThemeProvider} from '@/contexts/ThemeContext';
 
 interface AppProps {}
 
@@ -29,6 +30,7 @@ class App extends React.Component<AppProps, AppState> {
   componentDidMount(): void {
     lor(this);
     this.setState({loaded: true});
+    SplashScreen.hide();
   }
 
   render() {

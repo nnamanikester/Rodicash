@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Text, View} from 'react-native';
+import {AnimatedSVGPath} from 'react-native-svg-animations';
 
 interface WelcomeScreenProps {}
 

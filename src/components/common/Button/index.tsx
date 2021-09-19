@@ -4,11 +4,31 @@ import {
   heightPercentageToDP as hd,
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
+import LinearGradient from 'react-native-linear-gradient';
 import {useTheme} from '@/contexts/ThemeContext';
 import {ColorsState} from '@/constants/index';
 import {Clickable, ClickableProps} from '../Clickable';
 
 interface ButtonProps extends ClickableProps {
+  /**
+   * Defines the type of button to render.
+   */
+  primary?: boolean;
+
+  /**
+   * Defines the type of button to render.
+   */
+  white?: boolean;
+
+  /**
+   * Defines the type of button to render.
+   */
+  transparent?: boolean;
+
+  /**
+   * Defines the type of button to render.
+   */
+  secondary?: boolean;
   /**
    * Defines the type of button to render.
    */
@@ -49,37 +69,37 @@ export const Button: React.FC<ButtonProps> = ({
   iconRight,
   iconLeft,
   showIconDivider,
+  primary,
+  secondary,
+  white,
+  transparent,
   style,
 }) => {
   const {colors} = useTheme();
+  const orangeGradient = [colors.orange1, colors.orange2];
+  const greenGradient = [colors.green1, colors.green2];
+  const transparentGradient = [colors.transparent, colors.transparent];
+  const whiteGradient = [colors.white, colors.white];
 
   const styles = StyleSheet.create({
     button: {
-      borderRadius: 15,
-      backgroundColor: colors.primary,
-      height: hd('6.5%'),
+      borderRadius: 10,
+      height: hd('6%'),
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'space-around',
-      elevation: 2,
       flexDirection: 'row',
-    },
-    title: {
-      fontSize: 16,
-      // textTransform: 'uppercase',
-      flex: 3,
-      textAlign: 'center',
     },
     iconLeft: {
       alignItems: 'center',
       borderRightWidth: 1,
-      borderRightColor: colors.grey,
+      borderRightColor: colors.gray1,
       paddingHorizontal: 15,
     },
     iconRight: {
       alignItems: 'center',
       borderLeftWidth: 1,
-      borderLeftColor: colors.grey,
+      borderLeftColor: colors.gray1,
       paddingHorizontal: 15,
     },
   });
@@ -88,7 +108,7 @@ export const Button: React.FC<ButtonProps> = ({
     case 'disabled':
       typeStyle = {
         elevation: 0,
-        backgroundColor: colors.lightPrimary,
+        backgroundColor: colors.gray3,
         borderWidth: 0,
       };
       disabled = 1;
@@ -102,7 +122,7 @@ export const Button: React.FC<ButtonProps> = ({
       break;
     case 'ghost':
       typeStyle = {
-        backgroundColor: colors.background,
+        backgroundColor: colors.transparent,
         elevation: 0,
       };
       break;
@@ -132,36 +152,49 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <Clickable
       onClick={type === 'disabled' ? undefined : onClick}
-      style={{
-        ...styles.button,
-        ...smallStyle,
-        ...typeStyle,
-        ...style,
-      }}
       activeOpacity={disabled}>
-      {iconLeft ? (
-        <View
-          style={{
-            ...styles.iconLeft,
-            borderColor: colors.inactive,
-            borderRightWidth: showIconDivider ? 1 : 0,
-          }}>
-          {iconLeft}
-        </View>
-      ) : null}
-      {/* <Text color={color} style={{ ...styles.title }}> */}
-      {children}
-      {/* </Text> */}
-      {iconRight ? (
-        <View
-          style={{
-            ...styles.iconRight,
-            borderLeftWidth: showIconDivider ? 1 : 0,
-            borderColor: colors.inactive,
-          }}>
-          {iconRight}
-        </View>
-      ) : null}
+      <LinearGradient
+        colors={
+          primary
+            ? greenGradient
+            : secondary
+            ? orangeGradient
+            : transparent
+            ? transparentGradient
+            : white
+            ? whiteGradient
+            : whiteGradient
+        }
+        start={{x: 0, y: 0}}
+        end={{x: 0, y: 1}}
+        style={{
+          ...styles.button,
+          ...smallStyle,
+          ...typeStyle,
+          ...style,
+        }}>
+        {iconLeft ? (
+          <View
+            style={{
+              ...styles.iconLeft,
+              borderColor: colors.gray4,
+              borderRightWidth: showIconDivider ? 1 : 0,
+            }}>
+            {iconLeft}
+          </View>
+        ) : null}
+        {children}
+        {iconRight ? (
+          <View
+            style={{
+              ...styles.iconRight,
+              borderLeftWidth: showIconDivider ? 1 : 0,
+              borderColor: colors.gray4,
+            }}>
+            {iconRight}
+          </View>
+        ) : null}
+      </LinearGradient>
     </Clickable>
   );
 };

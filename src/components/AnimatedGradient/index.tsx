@@ -57,6 +57,7 @@ export default class AnimatedGradient extends React.Component<
     const {tweener} = this.state;
     Animated.timing(tweener, {
       toValue: 1,
+      duration: 800,
       useNativeDriver: false,
     }).start();
   }

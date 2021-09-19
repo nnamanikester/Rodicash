@@ -1,52 +1,58 @@
 export interface ColorsState {
   background: string;
   primary: string;
-  lightPrimary: string;
   secondary: string;
+  green1: string;
+  green2: string;
+  orange1: string;
+  orange2: string;
   black: string;
   white: string;
   text: string;
-  grey: string;
-  lightGrey: string;
-  inactive: string;
-  danger: string;
+  gray1: string;
+  gray2: string;
+  gray3: string;
+  gray4: string;
   warning: string;
-  success: string;
-  blue: string;
+  transparent: string;
 }
 
 // Light theme colors
 export const LIGHT_COLORS: ColorsState = {
   background: '#FFFFFF',
-  primary: '#1B2F5D',
-  lightPrimary: '#1B2F5DBF',
-  secondary: '#93E4A9',
-  black: '#001029',
+  primary: '#3AC295',
+  secondary: '#D0981B',
+  green1: '#3AC295',
+  green2: '#067C55',
+  orange1: '#F1C35D',
+  orange2: '#D0981B',
+  black: '#0E253A',
   white: '#FFFFFF',
-  text: '#111111',
-  grey: '#9FA5C0',
-  lightGrey: '#DADADA30',
-  inactive: '#C4C4C4',
-  danger: '#FF6868',
-  warning: '#FFCB27',
-  success: '#93E4A9',
-  blue: '#0014CC',
+  text: '#0E253A',
+  gray1: '#3D5E7B',
+  gray2: '#8AA3B9',
+  gray3: '#D4E1EC',
+  gray4: '#F4F6FA',
+  warning: '#FF5244',
+  transparent: 'rgba(255, 255, 255, 0.24)',
 };
 
 // Dark theme colors
 export const DARK_COLORS: ColorsState = {
-  background: '#FFFDFD',
-  primary: '#0E69BD',
-  lightPrimary: '#1B2F5DBF',
-  secondary: '#93E4A9',
-  black: '#001029',
+  background: '#3AC295',
+  primary: '#3AC295',
+  secondary: '#3AC295',
+  green1: '#3AC295',
+  green2: '#067C55',
+  orange1: '#F1C35D',
+  orange2: '#D0981B',
+  black: '#0E253A',
   white: '#FFFFFF',
-  text: '#111111',
-  grey: '#9FA5C0',
-  lightGrey: '#DADADA30',
-  inactive: '#C4C4C4',
-  danger: '#FF6868',
-  warning: '#FFCB27',
-  success: '#93E4A9',
-  blue: '#0014CC',
+  text: '#0E253A',
+  gray1: '#3D5E7B',
+  gray2: '#8AA3B9',
+  gray3: '#D4E1EC',
+  gray4: '#F4F6FA',
+  warning: '#FF5244',
+  transparent: 'rgba(255, 255, 255, 0.24)',
 };

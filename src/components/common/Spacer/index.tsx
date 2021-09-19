@@ -14,7 +14,7 @@ export interface SpacerProps extends ViewProps {
 export const Spacer: React.FC<SpacerProps> = ({
   children,
   large,
-  size = 5,
+  size = hd('0.8%'),
   small,
   medium,
   horizontal,

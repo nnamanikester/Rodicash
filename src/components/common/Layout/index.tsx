@@ -7,7 +7,6 @@ import {
   View,
   SafeAreaView,
   ViewProps,
-  StatusBar,
 } from 'react-native';
 import {widthPercentageToDP as wd} from 'react-native-responsive-screen';
 
@@ -48,13 +47,12 @@ export const Layout: React.FC<LayoutProps> = ({
     container: {
       flex: 1,
       paddingHorizontal: wd('6%'),
-      backgroundColor: '#FFFDFD',
+      backgroundColor: colors.background,
     },
   });
 
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
       {noScroll ? (
         <SafeAreaView style={{flex: 1}}>
           <View style={[styles.container, style]}>{children}</View>
@@ -65,7 +63,7 @@ export const Layout: React.FC<LayoutProps> = ({
             <ScrollView
               refreshControl={
                 <RefreshControl
-                  colors={['#2614c1']}
+                  colors={[colors.primary]}
                   onRefresh={onRefresh}
                   refreshing={refreshing}
                   progressBackgroundColor="#fff"

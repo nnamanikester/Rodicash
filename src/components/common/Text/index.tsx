@@ -41,8 +41,8 @@ export const Text: React.FC<TextProps> = ({
   const styles = StyleSheet.create({
     text: {
       color: colors.text,
-      fontSize: hd('2%'),
-      fontFamily: 'DMSans-Regular',
+      fontSize: hd('2.3%'),
+      fontFamily: 'Gordita-Regular',
       lineHeight: hd('3%'),
     },
   });
@@ -50,19 +50,17 @@ export const Text: React.FC<TextProps> = ({
   const textStyle: TextStyle = {};
 
   if (h1) {
-    textStyle.fontSize = hd('4.2%');
-    textStyle.lineHeight = hd('5');
-    textStyle.fontFamily = 'DMSans-Bold';
+    textStyle.fontSize = hd('3.1%%');
+    textStyle.lineHeight = hd('4.8%');
+    textStyle.fontFamily = 'Gordita-Black';
   } else if (h2) {
-    textStyle.fontFamily = 'DMSans-Bold';
-    textStyle.fontSize = hd('2%');
-    textStyle.fontFamily = 'DMSans-Bold';
-    textStyle.lineHeight = hd('3%');
+    textStyle.fontSize = hd('3.1%%');
+    textStyle.lineHeight = hd('4.8%');
+    textStyle.fontFamily = 'Gordita-Black';
   } else if (h3) {
-    textStyle.fontFamily = 'DMSans-Bold';
-    textStyle.fontSize = hd('1.8%');
-    textStyle.lineHeight = hd('2%');
-    textStyle.fontFamily = 'DMSans-Bold';
+    textStyle.fontSize = hd('3.1%%');
+    textStyle.lineHeight = hd('4.8%');
+    textStyle.fontFamily = 'Gordita-Black';
   } else if (note) {
     textStyle.color = '#E0E0E0';
     textStyle.fontSize = hd('1.7%');
@@ -78,7 +76,9 @@ export const Text: React.FC<TextProps> = ({
   }
 
   if (bold) {
-    textStyle.fontFamily = 'DMSans-Bold';
+    textStyle.fontFamily = 'Gordita-Bold';
+    textStyle.fontSize = hd('1.6%');
+    textStyle.lineHeight = hd('3%');
   }
 
   return <TXT style={[styles.text, textStyle, style]}>{children}</TXT>;

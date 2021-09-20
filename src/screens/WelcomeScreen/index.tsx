@@ -11,6 +11,7 @@ import {
   widthPercentageToDP as wd,
 } from 'react-native-responsive-screen';
 import SVG from '@/components/SVG';
+import {Reveal} from '@/animations';
 
 interface WelcomeScreenProps {}
 
@@ -94,6 +95,8 @@ class WelcomeScreen extends React.Component<
             )}
             <Swiper
               loop={false}
+              loadMinimal
+              loadMinimalSize={0}
               autoplay
               autoplayTimeout={5}
               paginationStyle={styles.dotContainer}
@@ -110,105 +113,127 @@ class WelcomeScreen extends React.Component<
               ref={this.swiper}
               height={hd('100%')}>
               {/* Slide One */}
-              <UI.Block flex center>
-                <UI.Block center style={styles.illustrationContainer}>
-                  <Image
-                    style={{width: wd('80%'), top: 30, left: 10}}
-                    source={require('../../../assets/images/card-bundle-illustration.png')}
-                  />
-                </UI.Block>
+              <UI.Block style={styles.swipe}>
+                <Reveal duration={1000} from={0} to={1}>
+                  <UI.Block center style={styles.illustrationContainer}>
+                    <Image
+                      style={{width: wd('80%'), top: 10, left: 10}}
+                      source={require('../../../assets/images/card-bundle-illustration.png')}
+                    />
+                  </UI.Block>
+                </Reveal>
+                <UI.Spacer large />
+                <Reveal duration={1500} from={0} to={1}>
+                  <UI.Block style={styles.content}>
+                    <UI.Text
+                      color={colors.white}
+                      h1
+                      style={{textAlign: 'center'}}>
+                      The easiest way to withdraw cash
+                    </UI.Text>
+
+                    <UI.Spacer medium />
+
+                    <UI.Text color={colors.white} style={{textAlign: 'center'}}>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Facilisis pharetra ultrices amet.
+                    </UI.Text>
+                  </UI.Block>
+                </Reveal>
               </UI.Block>
 
               {/* Slide Two */}
-              <UI.Block flex>
-                <UI.Block center style={styles.illustrationContainer}>
-                  <Image
-                    style={{width: wd('65%'), height: wd('65%')}}
-                    source={require('../../../assets/images/pointing-phone-illustration.png')}
-                  />
-                </UI.Block>
+              <UI.Block style={styles.swipe}>
+                <Reveal duration={2000} from={0} to={1}>
+                  <UI.Block center style={styles.illustrationContainer}>
+                    <Image
+                      style={{width: wd('65%'), height: wd('65%')}}
+                      source={require('../../../assets/images/pointing-phone-illustration.png')}
+                    />
+                  </UI.Block>
+                </Reveal>
+                <Reveal duration={1500} from={0} to={1}>
+                  <UI.Block style={styles.content}>
+                    <UI.Text
+                      color={colors.white}
+                      h1
+                      style={{textAlign: 'center'}}>
+                      Collect cash from the ease of your mobile phone
+                    </UI.Text>
+
+                    <UI.Spacer medium />
+
+                    <UI.Text color={colors.white} style={{textAlign: 'center'}}>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Facilisis pharetra ultrices amet.
+                    </UI.Text>
+                  </UI.Block>
+                </Reveal>
               </UI.Block>
 
               {/* Slide Three */}
-              <UI.Block flex>
-                <UI.Block center style={styles.illustrationContainer}>
-                  <Image
-                    style={{width: wd('60%'), height: wd('70%')}}
-                    source={require('../../../assets/images/atm-machine-illustration.png')}
-                  />
-                </UI.Block>
+              <UI.Block style={styles.swipe}>
+                <Reveal duration={2000} from={0} to={1}>
+                  <UI.Block center style={styles.illustrationContainer}>
+                    <Image
+                      style={{width: wd('60%'), height: wd('70%')}}
+                      source={require('../../../assets/images/atm-machine-illustration.png')}
+                    />
+                  </UI.Block>
+                </Reveal>
+                <Reveal duration={1500} from={0} to={1}>
+                  <UI.Block style={styles.content}>
+                    <UI.Text
+                      color={colors.white}
+                      h1
+                      style={{textAlign: 'center'}}>
+                      Say goodbye to withdraw frustrations
+                    </UI.Text>
+
+                    <UI.Spacer medium />
+
+                    <UI.Text color={colors.white} style={{textAlign: 'center'}}>
+                      Make cardless withdrawals from the ease of your mobile
+                      phone, it’s quick, it’s easy.
+                    </UI.Text>
+                  </UI.Block>
+                </Reveal>
               </UI.Block>
 
               {/* Slide FOUR */}
-              <UI.Block flex>
-                <UI.Block center style={styles.illustrationContainer}>
-                  <Image
-                    style={{width: wd('65%'), height: wd('65%')}}
-                    source={require('../../../assets/images/pressing-one-illustration.png')}
-                  />
-                </UI.Block>
+              <UI.Block style={styles.swipe}>
+                <Reveal duration={2000} from={0} to={1}>
+                  <UI.Block center style={styles.illustrationContainer}>
+                    <Image
+                      style={{width: wd('65%'), height: wd('65%')}}
+                      source={require('../../../assets/images/pressing-one-illustration.png')}
+                    />
+                  </UI.Block>
+                </Reveal>
+                <Reveal duration={1500} from={0} to={1}>
+                  <UI.Block style={styles.content}>
+                    <UI.Text
+                      color={colors.white}
+                      h1
+                      style={{textAlign: 'center'}}>
+                      Gift and recieve money from your friends
+                    </UI.Text>
+
+                    <UI.Spacer medium />
+
+                    <UI.Text color={colors.white} style={{textAlign: 'center'}}>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Facilisis pharetra ultrices amet.
+                    </UI.Text>
+                  </UI.Block>
+                </Reveal>
               </UI.Block>
             </Swiper>
 
-            <UI.Spacer />
-
-            {index === 0 ? (
-              <UI.Block center style={{paddingHorizontal: 20}}>
-                <UI.Text color={colors.white} h1 style={{textAlign: 'center'}}>
-                  The easiest way to withdraw cash
-                </UI.Text>
-
-                <UI.Spacer medium />
-
-                <UI.Text color={colors.white} style={{textAlign: 'center'}}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Facilisis pharetra ultrices amet.
-                </UI.Text>
-              </UI.Block>
-            ) : index === 1 ? (
-              <UI.Block center style={{paddingHorizontal: 20}}>
-                <UI.Text color={colors.white} h1 style={{textAlign: 'center'}}>
-                  Collect cash from the ease of your mobile phone
-                </UI.Text>
-
-                <UI.Spacer medium />
-
-                <UI.Text color={colors.white} style={{textAlign: 'center'}}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Facilisis pharetra ultrices amet.
-                </UI.Text>
-              </UI.Block>
-            ) : index === 2 ? (
-              <UI.Block center style={{paddingHorizontal: 20}}>
-                <UI.Text color={colors.white} h1 style={{textAlign: 'center'}}>
-                  Say goodbye to withdraw frustrations
-                </UI.Text>
-
-                <UI.Spacer medium />
-
-                <UI.Text color={colors.white} style={{textAlign: 'center'}}>
-                  Make cardless withdrawals from the ease of your mobile phone,
-                  it’s quick, it’s easy.
-                </UI.Text>
-              </UI.Block>
-            ) : index === 3 ? (
-              <UI.Block center style={{paddingHorizontal: 20}}>
-                <UI.Text color={colors.white} h1 style={{textAlign: 'center'}}>
-                  Gift and recieve money from your friends
-                </UI.Text>
-
-                <UI.Spacer medium />
-
-                <UI.Text color={colors.white} style={{textAlign: 'center'}}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Facilisis pharetra ultrices amet.
-                </UI.Text>
-              </UI.Block>
-            ) : null}
-
             <UI.Spacer large />
 
-            <UI.Block style={{paddingHorizontal: 20}}>
+            <UI.Block
+              style={{paddingHorizontal: 20, position: 'absolute', bottom: 0}}>
               <UI.Button white>
                 <UI.Text bold>CREATE ACCOUNT</UI.Text>
               </UI.Button>
@@ -220,9 +245,9 @@ class WelcomeScreen extends React.Component<
                   LOGIN
                 </UI.Text>
               </UI.Button>
-            </UI.Block>
 
-            <UI.Spacer large />
+              <UI.Spacer large />
+            </UI.Block>
           </UI.Block>
         </AnimatedGradient>
       </>

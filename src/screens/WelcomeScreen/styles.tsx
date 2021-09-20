@@ -9,6 +9,13 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    bottom: 0,
+  },
+  swipe: {
+    height: hd('95%'),
+    position: 'relative',
+    justifyContent: 'space-between',
+    bottom: 0,
   },
   dot: {
     width: wd('7%'),
@@ -24,8 +31,8 @@ export default StyleSheet.create({
     zIndex: 1,
   },
   dotContainer: {
-    alignItems: 'flex-end',
-    height: hd('100%'),
+    paddingBottom: hd('35%'),
+    position: 'absolute',
   },
   bgLines: {
     position: 'absolute',
@@ -36,6 +43,10 @@ export default StyleSheet.create({
     marginTop: hd('5'),
   },
   illustrationContainer: {
-    top: hd('10%'),
+    top: hd('13%'),
+  },
+  content: {
+    paddingHorizontal: 20,
+    bottom: hd('19%'),
   },
 });

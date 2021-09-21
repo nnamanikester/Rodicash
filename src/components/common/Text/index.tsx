@@ -18,6 +18,7 @@ export interface TextProps extends TXTProps {
   h2?: boolean;
   h3?: boolean;
   bold?: boolean;
+  body?: boolean;
   color?: string;
   note?: boolean;
 }
@@ -30,6 +31,7 @@ export const Text: React.FC<TextProps> = ({
   h2 = false,
   h3 = false,
   bold = false,
+  body = false,
   note = false,
   size,
   children,
@@ -41,7 +43,7 @@ export const Text: React.FC<TextProps> = ({
   const styles = StyleSheet.create({
     text: {
       color: colors.text,
-      fontSize: hd('2.3%'),
+      fontSize: hd('2.2%'),
       fontFamily: 'Gordita-Regular',
       lineHeight: hd('3%'),
     },
@@ -50,23 +52,27 @@ export const Text: React.FC<TextProps> = ({
   const textStyle: TextStyle = {};
 
   if (h1) {
-    textStyle.fontSize = hd('3.1%%');
+    textStyle.fontSize = hd('3.1%');
     textStyle.lineHeight = hd('4.8%');
-    textStyle.fontFamily = 'Gordita-Black';
+    textStyle.fontFamily = 'Gordita-Bold';
   } else if (h2) {
     textStyle.fontSize = hd('3.1%%');
     textStyle.lineHeight = hd('4.8%');
-    textStyle.fontFamily = 'Gordita-Black';
+    textStyle.fontFamily = 'Gordita-Bold';
   } else if (h3) {
     textStyle.fontSize = hd('3.1%%');
     textStyle.lineHeight = hd('4.8%');
-    textStyle.fontFamily = 'Gordita-Black';
+    textStyle.fontFamily = 'Gordita-Bold';
   } else if (note) {
     textStyle.color = '#E0E0E0';
     textStyle.fontSize = hd('1.7%');
   } else if (size) {
     textStyle.fontSize = size;
     textStyle.lineHeight = size + 5;
+  } else if (body) {
+    textStyle.fontSize = hd('2%');
+    textStyle.lineHeight = hd('4%');
+    textStyle.fontFamily = 'Gordita-Medium';
   }
 
   if (color) {
@@ -77,7 +83,7 @@ export const Text: React.FC<TextProps> = ({
 
   if (bold) {
     textStyle.fontFamily = 'Gordita-Bold';
-    textStyle.fontSize = hd('1.6%');
+    textStyle.fontSize = hd('1.8%');
     textStyle.lineHeight = hd('3%');
   }
 

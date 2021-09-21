@@ -15,8 +15,7 @@ import {
 import {heightPercentageToDP as hd} from 'react-native-responsive-screen';
 import {Text} from '../Text';
 import {Block} from '../Block';
-import {useSelector} from 'react-redux';
-import {IRootState} from '../../../store/reducers';
+import {useTheme} from '@/contexts/ThemeContext';
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -38,7 +37,9 @@ export interface TextInputProps extends TIProps {
 }
 
 export const TextInput: React.FC<TextInputProps> = props => {
-  const colors = useSelector((state: IRootState) => state.colors);
+  const {colors} = useTheme();
+
+  const [active, setActive] = React.useState(false);
 
   const {
     onFocus,
@@ -58,16 +59,16 @@ export const TextInput: React.FC<TextInputProps> = props => {
   } = props;
 
   let iconLeftStyle: ViewStyle = {
-    paddingLeft: iconLeft ? 50 : 10,
+    paddingLeft: iconLeft ? 20 : 10,
   };
   let iconRightStyle: ViewStyle = {
-    paddingRight: iconRight ? 50 : 10,
+    paddingRight: iconRight ? 20 : 10,
   };
   const errorStyle: TextStyle = error
-    ? {color: colors.danger, borderColor: colors.danger}
+    ? {color: colors.warning, borderWidth: 1.5, borderColor: colors.warning}
     : {};
   let shapeStyle: ViewStyle = {
-    borderRadius: shape === 'rounded' ? 50 : shape === 'normal' ? 15 : 15,
+    borderRadius: shape === 'rounded' ? 50 : shape === 'normal' ? 10 : 10,
   };
   let typeStyle: TextStyle = {};
   let editable = true;
@@ -77,22 +78,21 @@ export const TextInput: React.FC<TextInputProps> = props => {
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'row',
-      borderRadius: 10,
+      borderRadius: 5,
     },
     input: {
-      borderWidth: 1.5,
-      borderColor: '#C4C4C4',
-      borderRadius: 5,
+      borderWidth: active ? 1.5 : 0,
       height: hd('6.5%'),
       color: colors.text,
       fontSize: hd('2%'),
-      fontFamily: 'DMSans-Regular',
-      paddingHorizontal: 10,
+      fontFamily: 'Grodita-Regular',
       flex: 1,
-      backgroundColor: 'transparent',
+      backgroundColor: colors.gray4,
+      paddingLeft: 20,
     },
     iconLeft: {
       alignItems: 'center',
+      justifyContent: 'center',
       paddingHorizontal: 10,
       position: 'absolute',
       left: 5,
@@ -102,12 +102,10 @@ export const TextInput: React.FC<TextInputProps> = props => {
       alignItems: 'center',
       paddingHorizontal: 10,
       position: 'absolute',
-      right: 5,
+      right: 0,
       zIndex: 10,
     },
   });
-
-  const [active, setActive] = React.useState(false);
 
   switch (type) {
     case 'disabled':
@@ -156,7 +154,7 @@ export const TextInput: React.FC<TextInputProps> = props => {
   }, [active]);
 
   return (
-    <View style={{marginTop: active ? 5 : 0, ...containerStyle}}>
+    <View style={{/* marginTop: active ? 5 : 0, */ ...containerStyle}}>
       {floatLabel && active ? (
         <Block style={{paddingLeft: 10, marginBottom: -10, zIndex: 1}}>
           <Text size={hd('1.7%')} color={colors.primary}>
@@ -176,23 +174,23 @@ export const TextInput: React.FC<TextInputProps> = props => {
           placeholderTextColor={
             active && props.value && props.value.length > 0
               ? 'transparent'
-              : colors.grey
+              : colors.gray2
           }
           editable={editable}
           style={{
             ...styles.input,
-            ...inputStyle,
             ...iconLeftStyle,
             ...iconRightStyle,
             ...errorStyle,
             ...typeStyle,
             ...shapeStyle,
+            ...inputStyle,
             borderColor: active
               ? colors.primary
               : error
-              ? colors.danger
+              ? colors.warning
               : type === 'underline'
-              ? colors.grey
+              ? colors.gray2
               : colors.primary,
           }}
           {...props}

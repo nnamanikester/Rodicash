@@ -7,6 +7,7 @@ export interface SVGProps extends ViewProps {
   name: string;
   size?: string | number;
   color?: string;
+  fill?: string;
   width?: string | number;
   height?: string | number;
   style?: ViewStyle;
@@ -14,16 +15,18 @@ export interface SVGProps extends ViewProps {
 }
 
 interface IconProps extends ViewProps {
-  fill: any;
+  fill: string;
   width: number | string;
   height: number | string;
   style: ViewStyle | undefined;
+  color: string;
 }
 
-const SVGIcon: React.FC<SVGProps> = ({
+const SVG: React.FC<SVGProps> = ({
   name,
   size = 28,
   color,
+  fill,
   style,
   width,
   height,
@@ -40,6 +43,27 @@ const SVGIcon: React.FC<SVGProps> = ({
     case 'illustration-background':
       Icon = require('./IllustrationBackground').default;
       break;
+    case 'back':
+      Icon = require('./Back').default;
+      break;
+    case 'contact':
+      Icon = require('./Contact').default;
+      break;
+    case 'lock':
+      Icon = require('./Lock').default;
+      break;
+    case 'phone':
+      Icon = require('./Phone').default;
+      break;
+    case 'mail':
+      Icon = require('./Mail').default;
+      break;
+    case 'nigerian-flag':
+      Icon = require('./NigerianFlag').default;
+      break;
+    case 'error':
+      Icon = require('./Error').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;
@@ -50,11 +74,12 @@ const SVGIcon: React.FC<SVGProps> = ({
       <Icon
         width={width || size}
         height={height || size}
-        fill={color || colors.transparent}
+        fill={fill || colors.transparent}
         style={style}
+        color={color || colors.gray2}
       />
     </View>
   );
 };
 
-export default SVGIcon;
+export default SVG;

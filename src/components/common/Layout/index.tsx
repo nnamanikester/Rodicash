@@ -46,7 +46,7 @@ export const Layout: React.FC<LayoutProps> = ({
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingHorizontal: wd('6%'),
+      paddingHorizontal: wd('5%'),
       backgroundColor: colors.background,
     },
   });

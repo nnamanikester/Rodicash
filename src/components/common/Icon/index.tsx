@@ -1,4 +1,3 @@
-import {useTheme} from '@react-navigation/native';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -14,6 +13,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Zocial from 'react-native-vector-icons/Zocial';
+import {useTheme} from '@/contexts/ThemeContext';
 
 export interface IconProps {
   /**
@@ -57,7 +57,7 @@ export interface IconProps {
 }
 
 export const Icon: React.FC<IconProps> = ({
-  size = 24,
+  size = 28,
   name,
   color,
   type = 'Ionicons',
@@ -71,7 +71,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <AntDesign
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -80,7 +80,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <Entypo
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -89,7 +89,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <EvilIcons
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -98,7 +98,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <Feather
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -107,7 +107,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <FontAwesome
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -116,7 +116,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <FontAwesome5
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -125,7 +125,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <Fontisto
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -134,7 +134,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <Foundation
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -143,7 +143,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <Ionicons
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -152,7 +152,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <MaterialIcons
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -161,7 +161,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <MaterialCommunityIcons
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -170,7 +170,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <Octicons
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -179,7 +179,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <Zocial
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -188,7 +188,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <SimpleLineIcons
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />
@@ -197,7 +197,7 @@ export const Icon: React.FC<IconProps> = ({
         return (
           <Ionicons
             name={name}
-            color={color || colors.text}
+            color={color || colors.gray2}
             size={size}
             style={style}
           />

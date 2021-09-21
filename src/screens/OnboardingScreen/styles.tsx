@@ -31,7 +31,7 @@ export default StyleSheet.create({
     zIndex: 1,
   },
   dotContainer: {
-    paddingBottom: hd('35%'),
+    paddingBottom: hd('37%'),
     position: 'absolute',
   },
   bgLines: {

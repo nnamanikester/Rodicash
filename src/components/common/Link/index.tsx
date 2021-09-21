@@ -39,7 +39,7 @@ export const Link: React.FC<LinkProps> = ({
     <Clickable
       style={[styles.link, style]}
       onClick={to ? () => Linking.openURL(to) : onClick}>
-      <Text style={textStyle} color={color || colors.lightPrimary}>
+      <Text bold style={textStyle} color={color || colors.secondary}>
         {children}
       </Text>
     </Clickable>

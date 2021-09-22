@@ -173,6 +173,8 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
               </UI.Clickable>
             </UI.Block>
           </UI.Block>
+
+          <UI.Spacer />
         </UI.Block>
       </UI.Layout>
 

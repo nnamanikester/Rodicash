@@ -39,9 +39,9 @@ export const LIGHT_COLORS: ColorsState = {
 
 // Dark theme colors
 export const DARK_COLORS: ColorsState = {
-  background: '#3AC295',
+  background: '#FFFFFF',
   primary: '#3AC295',
-  secondary: '#3AC295',
+  secondary: '#D0981B',
   green1: '#3AC295',
   green2: '#067C55',
   orange1: '#F1C35D',

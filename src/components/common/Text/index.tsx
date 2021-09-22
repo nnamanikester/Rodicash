@@ -53,7 +53,7 @@ export const Text: React.FC<TextProps> = ({
 
   if (h1) {
     textStyle.fontSize = hd('3.1%');
-    textStyle.lineHeight = hd('4.8%');
+    textStyle.lineHeight = hd('4.9%');
     textStyle.fontFamily = 'Gordita-Bold';
   } else if (h2) {
     textStyle.fontSize = hd('3.1%%');

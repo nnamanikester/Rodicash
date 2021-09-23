@@ -1,3 +1,4 @@
+import {useTheme} from '@/contexts/ThemeContext';
 import React from 'react';
 import {
   Text as TXT,
@@ -6,8 +7,6 @@ import {
   TextStyle,
 } from 'react-native';
 import {heightPercentageToDP as hd} from 'react-native-responsive-screen';
-import {useSelector} from 'react-redux';
-import {IRootState} from '../../../store/reducers';
 
 export interface TextProps extends TXTProps {
   /**
@@ -38,7 +37,7 @@ export const Text: React.FC<TextProps> = ({
   color,
   style,
 }) => {
-  const colors = useSelector((state: IRootState) => state.colors);
+  const {colors} = useTheme();
 
   const styles = StyleSheet.create({
     text: {
@@ -56,16 +55,16 @@ export const Text: React.FC<TextProps> = ({
     textStyle.lineHeight = hd('4.9%');
     textStyle.fontFamily = 'Gordita-Bold';
   } else if (h2) {
-    textStyle.fontSize = hd('3.1%%');
-    textStyle.lineHeight = hd('4.8%');
+    textStyle.fontSize = hd('2.8%%');
+    textStyle.lineHeight = hd('4%');
     textStyle.fontFamily = 'Gordita-Bold';
   } else if (h3) {
     textStyle.fontSize = hd('3.1%%');
     textStyle.lineHeight = hd('4.8%');
     textStyle.fontFamily = 'Gordita-Bold';
   } else if (note) {
-    textStyle.color = '#E0E0E0';
-    textStyle.fontSize = hd('1.7%');
+    textStyle.color = colors.gray2;
+    textStyle.fontSize = hd('1.9%');
   } else if (size) {
     textStyle.fontSize = size;
     textStyle.lineHeight = size + 5;

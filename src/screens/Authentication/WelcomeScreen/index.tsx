@@ -6,14 +6,17 @@ import {StatusBar, Keyboard} from 'react-native';
 import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
 
-interface RegisterScreenProps {
+interface WelcomeScreenProps {
   navigation: any;
 }
 
-const WelcomeScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
+const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
   const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false);
+  const [biometricsType] = React.useState<'fingerprint' | 'face'>(
+    'fingerprint',
+  );
 
   const [password, setPassword] = React.useState<string>('');
 
@@ -101,6 +104,32 @@ const WelcomeScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
           </UI.Block>
 
           <UI.Spacer />
+        </UI.Block>
+
+        <UI.Spacer large />
+
+        <UI.Block center style={styles.biometricsContainer}>
+          <UI.Clickable>
+            <UI.Block
+              center
+              middle
+              style={[styles.biometrics, {borderColor: colors.gray3}]}>
+              {biometricsType === 'fingerprint' && (
+                <>
+                  <SVG name="finger-print" size={50} />
+                  <UI.Spacer />
+                  <UI.Text body>Touch ID</UI.Text>
+                </>
+              )}
+              {biometricsType === 'face' && (
+                <>
+                  <SVG name="face-id" size={50} />
+                  <UI.Spacer />
+                  <UI.Text body>Face ID</UI.Text>
+                </>
+              )}
+            </UI.Block>
+          </UI.Clickable>
         </UI.Block>
       </UI.Layout>
 

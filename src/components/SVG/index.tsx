@@ -64,6 +64,18 @@ const SVG: React.FC<SVGProps> = ({
     case 'error':
       Icon = require('./Error').default;
       break;
+    case 'face-id':
+      Icon = require('./FaceID').default;
+      break;
+    case 'finger-print':
+      Icon = require('./FingerPrint').default;
+      break;
+    case 'ribons':
+      Icon = require('./Ribons').default;
+      break;
+    case 'check-circle':
+      Icon = require('./CheckCircle').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

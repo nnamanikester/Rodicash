@@ -115,9 +115,9 @@ export const Button: React.FC<ButtonProps> = ({
       break;
     case 'outline':
       typeStyle = {
-        borderWidth: 1,
-        borderColor: colors.primary,
-        backgroundColor: '#fff',
+        borderWidth: 1.5,
+        borderColor: colors.gray3,
+        backgroundColor: colors.background,
       };
       break;
     case 'ghost':

@@ -70,14 +70,24 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
     submitData();
   };
 
-  const submitData = (): void => {};
+  const submitData = (): void => {
+    navigation.replace('EmailVerification');
+  };
+
+  const clearError = (): void => {
+    setError('');
+    setEmailError(false);
+    setPhoneError(false);
+    setPasswordError(false);
+    setNameError(false);
+  };
 
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
 
       {error.length > 0 && (
-        <ErrorMessage onDismiss={() => setError('')} message={error} />
+        <ErrorMessage onDismiss={clearError} message={error} />
       )}
 
       <UI.Clickable onClick={() => navigation.pop()}>
@@ -99,6 +109,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
           <UI.Block>
             <UI.Text body>Full Name</UI.Text>
             <UI.TextInput
+              autoFocus
               value={name}
               onChangeText={setName}
               error={nameError}

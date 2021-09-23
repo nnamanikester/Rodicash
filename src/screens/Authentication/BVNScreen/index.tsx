@@ -3,23 +3,21 @@ import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
 import {StatusBar, Keyboard} from 'react-native';
-import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
+import RegistrationSuccessful from '@/components/RegistrationSuccessful';
 
-interface LoginScreenProps {
+interface BVNScreenProps {
   navigation: any;
 }
 
-const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
+const BVNScreen: React.FC<BVNScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
-  const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false);
 
-  const [email, setEmail] = React.useState<string>('');
-  const [password, setPassword] = React.useState<string>('');
+  const [bvn, setBvn] = React.useState<string>('');
+  const [completed, setCompleted] = React.useState<boolean>(false);
 
-  const [emailError, setEmailError] = React.useState<boolean>(false);
-  const [passwordError, setPasswordError] = React.useState<boolean>(false);
+  const [bvnError, setBvnError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
 
   React.useEffect(() => {
@@ -38,31 +36,42 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
 
   // Validate user entry before sending to backend
   const validateEntry = (): void => {
-    setEmailError(false);
-    setPasswordError(false);
+    setBvnError(false);
 
-    if (!email) {
-      setEmailError(true);
-      setError('Please enter a valid email address');
+    if (!bvn) {
+      setBvnError(true);
+      setError('BVN cannot be empty');
       return;
     }
-    if (!password) {
-      setPasswordError(true);
-      setError('Password incorrect');
+
+    if (bvn.length < 10) {
+      setBvnError(true);
+      setError('Please enter a valid BVN');
       return;
     }
+
     submitData();
   };
 
   const submitData = (): void => {
-    navigation.replace('Welcome');
+    // navigation.replace('Welcome');
+    setCompleted(true);
   };
 
   const clearError = (): void => {
     setError('');
-    setEmailError(false);
-    setPasswordError(false);
+    setBvnError(false);
   };
+
+  const pasteClipboard = (): void => {};
+
+  const complete = (): void => {
+    setCompleted(false);
+  };
+
+  if (completed) {
+    return <RegistrationSuccessful onContinue={complete} />;
+  }
 
   return (
     <>
@@ -84,45 +93,26 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
         </UI.Block>
       </UI.Clickable>
       <UI.Layout>
-        <UI.Text h1>Login.</UI.Text>
+        <UI.Text h1>BVN {'\n'}Verification.</UI.Text>
         <UI.Spacer large />
 
         <UI.Block>
           <UI.Block>
-            <UI.Text body>Email Address</UI.Text>
+            <UI.Text body>Enter your BVN</UI.Text>
             <UI.TextInput
               autoFocus
-              value={email}
-              onChangeText={setEmail}
-              error={emailError}
-              keyboardType="email-address"
-              placeholder="e.g: you@email.com"
-              iconRight={<SVG color={colors.secondary} name="mail" />}
+              value={bvn}
+              onChangeText={setBvn}
+              error={bvnError}
+              keyboardType="number-pad"
+              iconRight={
+                <UI.Clickable onClick={pasteClipboard}>
+                  <UI.Text bold color={colors.secondary}>
+                    Paste
+                  </UI.Text>
+                </UI.Clickable>
+              }
             />
-          </UI.Block>
-
-          <UI.Spacer />
-
-          <UI.Block>
-            <UI.Text body>Password</UI.Text>
-            <UI.TextInput
-              value={password}
-              onChangeText={setPassword}
-              error={passwordError}
-              password={!passwordVisible}
-              placeholder="•••••••••••••"
-              iconRight={<SVG color={colors.secondary} name="lock" />}
-            />
-            <UI.Spacer size={3} />
-            <UI.Block right>
-              <UI.Clickable
-                onClick={() => setPasswordVisible(!passwordVisible)}
-                style={[styles.showButton, {borderColor: colors.secondary}]}>
-                <UI.Text color={colors.secondary}>
-                  {passwordVisible ? 'Hide' : 'Show'}
-                </UI.Text>
-              </UI.Clickable>
-            </UI.Block>
           </UI.Block>
 
           <UI.Spacer />
@@ -132,7 +122,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
       <UI.Block backgroundColor={colors.background} style={styles.footer}>
         <UI.Button primary onClick={validateEntry}>
           <UI.Text color={colors.white} bold>
-            LOGIN
+            NEXT
           </UI.Text>
         </UI.Button>
 
@@ -140,10 +130,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
 
         {!isKeyboardOpen && (
           <>
-            <UI.Block row middle>
-              <UI.Text>Forgot Password?</UI.Text>
-              <UI.Spacer size={3} />
-              <UI.Link onClick={() => navigation.push('Reset')}>Reset</UI.Link>
+            <UI.Block center>
+              <UI.Link onClick={submitData}>Skip this stage</UI.Link>
             </UI.Block>
 
             <UI.Spacer medium />
@@ -154,4 +142,4 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
   );
 };
 
-export default LoginScreen;
+export default BVNScreen;

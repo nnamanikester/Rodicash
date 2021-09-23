@@ -1,5 +1,8 @@
 import {StyleSheet} from 'react-native';
-import {widthPercentageToDP as wd} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hd,
+  widthPercentageToDP as wd,
+} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   header: {
@@ -18,5 +21,13 @@ export default StyleSheet.create({
     width: wd('13%'),
     height: wd('13%'),
     borderRadius: wd('13%'),
+  },
+  biometricsContainer: {},
+  biometrics: {
+    borderWidth: 1,
+    borderRadius: 10,
+    width: 'auto',
+    paddingVertical: hd('4%'),
+    paddingHorizontal: wd('7%'),
   },
 });

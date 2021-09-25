@@ -25,22 +25,33 @@ export const formatMoneyWithoutSymbol = (amount: string) => {
   return currency.replace('NGN', '');
 };
 
-export const msToTime = (s: number) => {
+export const msToTime = (s: number, hasHours?: boolean) => {
   const ms = s % 1000;
   s = (s - ms) / 1000;
   const secs = s % 60;
   s = (s - secs) / 60;
   const mins = s % 60;
+  s = (s - mins) / 60;
+  const hrs = s % 60;
 
-  return (
-    mins.toLocaleString('en-US', {
+  if (hasHours) {
+    return `${hrs.toLocaleString('en-US', {
       minimumIntegerDigits: 2,
       useGrouping: false,
-    }) +
-    ':' +
-    secs.toLocaleString('en-US', {
+    })}:${mins.toLocaleString('en-US', {
       minimumIntegerDigits: 2,
       useGrouping: false,
-    })
-  );
+    })}:${secs.toLocaleString('en-US', {
+      minimumIntegerDigits: 2,
+      useGrouping: false,
+    })}`;
+  } else {
+    return `${mins.toLocaleString('en-US', {
+      minimumIntegerDigits: 2,
+      useGrouping: false,
+    })}:${secs.toLocaleString('en-US', {
+      minimumIntegerDigits: 2,
+      useGrouping: false,
+    })}`;
+  }
 };

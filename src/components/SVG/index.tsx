@@ -94,6 +94,12 @@ const SVG: React.FC<SVGProps> = ({
     case 'delete':
       Icon = require('./Delete').default;
       break;
+    case 'copy':
+      Icon = require('./Copy').default;
+      break;
+    case 'timer':
+      Icon = require('./Timer').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

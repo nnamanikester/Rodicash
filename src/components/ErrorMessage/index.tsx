@@ -16,7 +16,7 @@ interface ErrorMessageProps {
 
 const ErrorMessage: React.FC<ErrorMessageProps> = ({onDismiss, message}) => {
   const {colors} = useTheme();
-  const [from, setFrom] = React.useState(500);
+  const [from, setFrom] = React.useState(200);
   const [to, setTo] = React.useState(0);
 
   const beforeDismiss = (): void => {
@@ -35,7 +35,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({onDismiss, message}) => {
         height: hd('100%'),
         zIndex: 10,
       }}>
-      <SlideY from={from} to={to} duration={800}>
+      <SlideY from={from} to={to} duration={300}>
         <UI.Block
           style={{
             padding: wd('5%'),

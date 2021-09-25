@@ -12,16 +12,22 @@ interface WithdrawalKeypadProps {
   onChangeValue: (val: string) => void;
   onDelete: (val: string) => void;
   value: string;
+  min?: number;
+  maxLength?: number;
 }
 
 const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
   onChangeValue,
   onDelete,
   value,
+  maxLength = 9,
 }) => {
   const {colors} = useTheme();
 
   const handleValueChange = (val: string) => {
+    if (maxLength && value.length >= maxLength) {
+      return;
+    }
     if (parseInt(value, 10) === 0 && val === '0') {
       return onChangeValue('0');
     }

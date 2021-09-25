@@ -5,22 +5,42 @@ import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
 import {formatMoney, formatMoneyWithoutSymbol, withdrawalCharge} from '@/utils';
 import WithdrawalKeypad from '@/components/WithdrawalKeypad';
+import ErrorMessage from '@/components/ErrorMessage';
 
 interface CashoutScreenProps {
   navigation: any;
 }
 
-const CashoutScreen: React.FC<CashoutScreenProps> = ({}) => {
+const CashoutScreen: React.FC<CashoutScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
   const [amount, setAmount] = React.useState('100');
+  const [amountError, setAmountError] = React.useState('');
 
   const handleChangeAmount = (val: string): void => {
     setAmount(val);
   };
 
+  const handleWithdrawal = (): void => {
+    if (parseInt(amount, 10) < 100) {
+      return setAmountError('The minimum withdrawal amount is: \u20A6 100');
+    }
+    navigation.navigate('CashoutCode', {
+      amount: parseInt(amount, 10),
+      charge: parseInt(withdrawalCharge(amount), 10),
+    });
+  };
+
+  const clearError = (): void => {
+    setAmountError('');
+  };
+
   return (
     <>
       <StatusBar backgroundColor={colors.background} />
+
+      {amountError.length > 0 && (
+        <ErrorMessage onDismiss={clearError} message={amountError} />
+      )}
 
       <UI.Block backgroundColor={colors.background} style={styles.header}>
         <UI.Block row center justify="space-between">
@@ -56,10 +76,11 @@ const CashoutScreen: React.FC<CashoutScreenProps> = ({}) => {
           onChangeValue={handleChangeAmount}
           onDelete={setAmount}
           value={amount}
+          maxLength={8}
         />
 
         <UI.Block style={{paddingHorizontal: 20}}>
-          <UI.Button secondary>
+          <UI.Button secondary onClick={handleWithdrawal}>
             <UI.Text bold color={colors.white}>
               WITHDRAW
             </UI.Text>

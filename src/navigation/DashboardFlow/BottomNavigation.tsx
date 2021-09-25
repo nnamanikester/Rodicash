@@ -6,6 +6,8 @@ import SVG from '@/components/SVG';
 import * as UI from '@/components/common';
 import styles from './styles';
 import {heightPercentageToDP as hd} from 'react-native-responsive-screen';
+import TransactionScreen from '@/screens/Dashboard/TransactionScreen';
+import CashoutScreen from '@/screens/Dashboard/CashoutScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +22,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: colors.transparent,
+          backgroundColor: '#F6F9FC',
           elevation: 0,
           borderTopWidth: 0,
           height: hd('7%'),
@@ -54,7 +56,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
       />
       <Tab.Screen
         name="TransactionsTab"
-        component={HomeScreen}
+        component={TransactionScreen}
         options={{
           unmountOnBlur: true,
           tabBarIcon: ({focused}) => (
@@ -77,7 +79,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
       />
       <Tab.Screen
         name="CashoutTab"
-        component={HomeScreen}
+        component={CashoutScreen}
         options={{
           unmountOnBlur: true,
           tabBarIcon: ({focused}) => (

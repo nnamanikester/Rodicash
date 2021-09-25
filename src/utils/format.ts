@@ -13,6 +13,18 @@ export const formatMoney = (amount: string) => {
   return currency.replace('NGN', '\u20A6');
 };
 
+export const formatMoneyWithoutSymbol = (amount: string) => {
+  const formatType = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'NGN',
+    maximumSignificantDigits: 12,
+  });
+
+  const currency = formatType.format(parseInt(amount, 10));
+
+  return currency.replace('NGN', '');
+};
+
 export const msToTime = (s: number) => {
   const ms = s % 1000;
   s = (s - ms) / 1000;

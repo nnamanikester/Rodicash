@@ -5,6 +5,7 @@ import styles from './styles';
 import {StatusBar, Keyboard} from 'react-native';
 import ErrorMessage from '@/components/ErrorMessage';
 import RegistrationSuccessful from '@/components/RegistrationSuccessful';
+import {useAppDispatch} from '@/hooks';
 
 interface BVNScreenProps {
   navigation: any;
@@ -12,6 +13,8 @@ interface BVNScreenProps {
 
 const BVNScreen: React.FC<BVNScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
+  const dispatch = useAppDispatch();
+
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
 
   const [bvn, setBvn] = React.useState<string>('');
@@ -54,7 +57,6 @@ const BVNScreen: React.FC<BVNScreenProps> = ({navigation}) => {
   };
 
   const submitData = (): void => {
-    // navigation.replace('Welcome');
     setCompleted(true);
   };
 
@@ -66,7 +68,14 @@ const BVNScreen: React.FC<BVNScreenProps> = ({navigation}) => {
   const pasteClipboard = (): void => {};
 
   const complete = (): void => {
-    setCompleted(false);
+    dispatch({
+      type: 'SET_USER',
+      payload: {
+        token: 'hello',
+        email: 'nnamanikester@gmail.com',
+        name: 'John Kester',
+      },
+    });
   };
 
   if (completed) {

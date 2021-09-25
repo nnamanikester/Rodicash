@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
-import {ColorsState} from '../types';
-import colors from './colorsReducer';
+import {UserType} from '../types';
+import user from './userReducer';
 
 export interface IRootState {
-  colors: ColorsState;
+  user: UserType;
 }
 
 export default combineReducers<IRootState>({
-  colors,
+  user: user,
 });

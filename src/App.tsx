@@ -1,14 +1,11 @@
 import React from 'react';
 import {View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import Thunk from 'redux-thunk';
 import {AppearanceProvider} from 'react-native-appearance';
 import {listenOrientationChange as lor} from 'react-native-responsive-screen';
-import SplashScreen from 'react-native-splash-screen';
 import NavigationFlow from '@/navigation';
-import reducers from '@/store/reducers';
+import store from '@/store';
 import {ThemeProvider} from '@/contexts/ThemeContext';
 
 interface AppProps {}
@@ -18,8 +15,6 @@ interface AppState {
 }
 
 class App extends React.Component<AppProps, AppState> {
-  store = createStore(reducers, {}, applyMiddleware(Thunk));
-
   constructor(props: AppProps) {
     super(props);
     this.state = {
@@ -30,7 +25,6 @@ class App extends React.Component<AppProps, AppState> {
   componentDidMount(): void {
     lor(this);
     this.setState({loaded: true});
-    SplashScreen.hide();
   }
 
   render() {
@@ -42,7 +36,7 @@ class App extends React.Component<AppProps, AppState> {
 
     return (
       <SafeAreaProvider>
-        <Provider store={this.store}>
+        <Provider store={store}>
           <AppearanceProvider>
             <ThemeProvider>
               <NavigationFlow />

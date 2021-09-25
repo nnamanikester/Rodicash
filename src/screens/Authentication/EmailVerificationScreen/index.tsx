@@ -4,6 +4,7 @@ import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
 import {StatusBar} from 'react-native';
 import ErrorMessage from '@/components/ErrorMessage';
+import {msToTime} from '@/utils';
 
 interface EmailVerificationScreen {
   navigation: any;
@@ -17,6 +18,16 @@ const EmailVerificationScreen: React.FC<EmailVerificationScreen> = ({
   const [code, setCode] = React.useState<string>('');
   const [codeError, setCodeError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
+  const [time, setTime] = React.useState<number>(180000);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      if (time > 0) {
+        setTime(time - 1000);
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  });
 
   const submitData = (value: string): void => {
     setCodeError(false);
@@ -85,18 +96,20 @@ const EmailVerificationScreen: React.FC<EmailVerificationScreen> = ({
             <UI.Text>Resend code in</UI.Text>
             <UI.Spacer size={3} />
             <UI.Text bold color={colors.secondary}>
-              2:49s
+              {msToTime(time)}s
             </UI.Text>
           </UI.Block>
         </UI.Block>
       </UI.Layout>
 
       <UI.Block backgroundColor={colors.background} style={styles.footer}>
-        <UI.Button type="outline">
-          <UI.Text color={colors.secondary} bold>
-            RESEND
-          </UI.Text>
-        </UI.Button>
+        {time <= 0 && (
+          <UI.Button type="outline">
+            <UI.Text color={colors.secondary} bold>
+              RESEND
+            </UI.Text>
+          </UI.Button>
+        )}
 
         <UI.Spacer medium />
       </UI.Block>

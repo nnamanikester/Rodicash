@@ -1,1 +1,1 @@
-export * from './colorsTypes';
+export * from './userTypes';

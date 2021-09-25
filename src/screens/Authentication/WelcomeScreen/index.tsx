@@ -51,12 +51,17 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
 
   const submitData = (): void => {};
 
+  const clearError = () => {
+    setPasswordError(false);
+    setError('');
+  };
+
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
 
       {error.length > 0 && (
-        <ErrorMessage onDismiss={() => setError('')} message={error} />
+        <ErrorMessage onDismiss={clearError} message={error} />
       )}
 
       <UI.Layout>

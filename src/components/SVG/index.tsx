@@ -76,6 +76,21 @@ const SVG: React.FC<SVGProps> = ({
     case 'check-circle':
       Icon = require('./CheckCircle').default;
       break;
+    case 'cashout':
+      Icon = require('./Cashout').default;
+      break;
+    case 'home':
+      Icon = require('./Home').default;
+      break;
+    case 'transactions':
+      Icon = require('./Transactions').default;
+      break;
+    case 'map':
+      Icon = require('./Map').default;
+      break;
+    case 'more':
+      Icon = require('./More').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

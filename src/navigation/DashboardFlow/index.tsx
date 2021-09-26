@@ -2,6 +2,8 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import BottomNavigation from './BottomNavigation';
 import CashoutCodeScreen from '@/screens/Dashboard/CashoutScreen/CashoutCodeScreen';
+import ConfirmCashout from '@/screens/Dashboard/CashoutScreen/ConfirmCashout';
+import TransactionReceipt from '@/screens/Dashboard/CashoutScreen/TransactionReceiptScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +18,8 @@ const DashboardFlow: React.FC<DashboardFlowProps> = () => {
       }}>
       <Stack.Screen name="Home" component={BottomNavigation} />
       <Stack.Screen name="CashoutCode" component={CashoutCodeScreen} />
+      <Stack.Screen name="ConfirmCashout" component={ConfirmCashout} />
+      <Stack.Screen name="TransactionReceipt" component={TransactionReceipt} />
     </Stack.Navigator>
   );
 };

@@ -100,6 +100,9 @@ const SVG: React.FC<SVGProps> = ({
     case 'timer':
       Icon = require('./Timer').default;
       break;
+    case 'masked-bg':
+      Icon = require('./MaskedBg').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

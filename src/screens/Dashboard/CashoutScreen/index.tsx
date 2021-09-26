@@ -36,7 +36,7 @@ const CashoutScreen: React.FC<CashoutScreenProps> = ({navigation}) => {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.background} />
+      <StatusBar backgroundColor={colors.background} barStyle="dark-content" />
 
       {amountError.length > 0 && (
         <ErrorMessage onDismiss={clearError} message={amountError} />

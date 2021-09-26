@@ -7,19 +7,46 @@ import SVG from '@/components/SVG';
 import RodiCode from '@/components/RodiCode';
 import {heightPercentageToDP as hd} from 'react-native-responsive-screen';
 import {msToTime} from '@/utils';
+import {useFocusEffect} from '@react-navigation/core';
 
 interface CashoutCodeScreenProps {
   navigation: any;
+  route: any;
 }
 
-const CashoutCodeScreen: React.FC<CashoutCodeScreenProps> = ({navigation}) => {
+const CashoutCodeScreen: React.FC<CashoutCodeScreenProps> = ({
+  navigation,
+  route,
+}) => {
   const {colors} = useTheme();
   const [time, setTime] = React.useState<number>(86400000);
+  const [amount, setAmount] = React.useState<number>(0);
+  const [charge, setCharge] = React.useState<number>(0);
 
   React.useEffect(() => {
     const timer = setTimeout(() => setTime(time - 1000), 1000);
     return () => clearTimeout(timer);
   });
+
+  React.useEffect(() => {
+    const waiter = setTimeout(() => {
+      navigation.navigate('ConfirmCashout', {amount, charge});
+    }, 10000);
+
+    return () => clearTimeout(waiter);
+  }, []);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const {params} = route;
+      if (!params.amount || !params.charge) {
+        navigation.goBack();
+      }
+      setAmount(params.amount);
+      setCharge(params.charge);
+      return () => null;
+    }, [route]),
+  );
 
   return (
     <>

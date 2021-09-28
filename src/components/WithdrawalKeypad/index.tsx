@@ -1,3 +1,4 @@
+import Pop from '@/animations/Pop';
 import {useTheme} from '@/contexts/ThemeContext';
 import React from 'react';
 import {StyleSheet} from 'react-native';
@@ -44,7 +45,7 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
   return (
     <UI.Block justify="space-between" flex style={styles.keypadContainer}>
       <UI.Block row justify="space-between">
-        <UI.Clickable onClick={() => handleValueChange('1')}>
+        <Pop from={1} to={0.8} onClick={() => handleValueChange('1')}>
           <UI.Block
             center
             middle
@@ -52,8 +53,8 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             style={[styles.keypad, {borderColor: colors.gray3}]}>
             <UI.Text h1>1</UI.Text>
           </UI.Block>
-        </UI.Clickable>
-        <UI.Clickable onClick={() => handleValueChange('2')}>
+        </Pop>
+        <Pop from={1} to={0.8} onClick={() => handleValueChange('2')}>
           <UI.Block
             center
             middle
@@ -61,8 +62,8 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             style={[styles.keypad, {borderColor: colors.gray3}]}>
             <UI.Text h1>2</UI.Text>
           </UI.Block>
-        </UI.Clickable>
-        <UI.Clickable onClick={() => handleValueChange('3')}>
+        </Pop>
+        <Pop from={1} to={0.8} onClick={() => handleValueChange('3')}>
           <UI.Block
             center
             middle
@@ -70,11 +71,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             style={[styles.keypad, {borderColor: colors.gray3}]}>
             <UI.Text h1>3</UI.Text>
           </UI.Block>
-        </UI.Clickable>
+        </Pop>
       </UI.Block>
 
       <UI.Block row justify="space-between">
-        <UI.Clickable onClick={() => handleValueChange('4')}>
+        <Pop from={1} to={0.8} onClick={() => handleValueChange('4')}>
           <UI.Block
             center
             middle
@@ -82,8 +83,8 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             style={[styles.keypad, {borderColor: colors.gray3}]}>
             <UI.Text h1>4</UI.Text>
           </UI.Block>
-        </UI.Clickable>
-        <UI.Clickable onClick={() => handleValueChange('5')}>
+        </Pop>
+        <Pop from={1} to={0.8} onClick={() => handleValueChange('5')}>
           <UI.Block
             center
             middle
@@ -91,8 +92,8 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             style={[styles.keypad, {borderColor: colors.gray3}]}>
             <UI.Text h1>5</UI.Text>
           </UI.Block>
-        </UI.Clickable>
-        <UI.Clickable onClick={() => handleValueChange('6')}>
+        </Pop>
+        <Pop from={1} to={0.8} onClick={() => handleValueChange('6')}>
           <UI.Block
             center
             middle
@@ -100,11 +101,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             style={[styles.keypad, {borderColor: colors.gray3}]}>
             <UI.Text h1>6</UI.Text>
           </UI.Block>
-        </UI.Clickable>
+        </Pop>
       </UI.Block>
 
       <UI.Block row justify="space-between">
-        <UI.Clickable onClick={() => handleValueChange('7')}>
+        <Pop from={1} to={0.8} onClick={() => handleValueChange('7')}>
           <UI.Block
             center
             middle
@@ -112,8 +113,8 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             style={[styles.keypad, {borderColor: colors.gray3}]}>
             <UI.Text h1>7</UI.Text>
           </UI.Block>
-        </UI.Clickable>
-        <UI.Clickable onClick={() => handleValueChange('8')}>
+        </Pop>
+        <Pop from={1} to={0.8} onClick={() => handleValueChange('8')}>
           <UI.Block
             center
             middle
@@ -121,8 +122,8 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             style={[styles.keypad, {borderColor: colors.gray3}]}>
             <UI.Text h1>8</UI.Text>
           </UI.Block>
-        </UI.Clickable>
-        <UI.Clickable onClick={() => handleValueChange('9')}>
+        </Pop>
+        <Pop from={1} to={0.8} onClick={() => handleValueChange('9')}>
           <UI.Block
             center
             middle
@@ -130,13 +131,13 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             style={[styles.keypad, {borderColor: colors.gray3}]}>
             <UI.Text h1>9</UI.Text>
           </UI.Block>
-        </UI.Clickable>
+        </Pop>
       </UI.Block>
 
       <UI.Block row justify="space-between">
         <UI.Block style={[styles.keypad, {borderColor: colors.transparent}]} />
 
-        <UI.Clickable onClick={() => handleValueChange('0')}>
+        <Pop from={1} to={0.8} onClick={() => handleValueChange('0')}>
           <UI.Block
             center
             middle
@@ -144,8 +145,8 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             style={[styles.keypad, {borderColor: colors.gray3}]}>
             <UI.Text h1>0</UI.Text>
           </UI.Block>
-        </UI.Clickable>
-        <UI.Clickable onClick={handleDelete}>
+        </Pop>
+        <Pop from={1} to={0.8} onClick={handleDelete}>
           <UI.Block
             center
             middle
@@ -160,7 +161,7 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
               }}
             />
           </UI.Block>
-        </UI.Clickable>
+        </Pop>
       </UI.Block>
     </UI.Block>
   );

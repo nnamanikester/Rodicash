@@ -1,12 +1,16 @@
 import * as React from 'react';
 import {useColorScheme} from 'react-native-appearance';
 import {LIGHT_COLORS, DARK_COLORS} from '@/constants';
-import {StatusBar} from 'react-native';
 
-export const ThemeContext = React.createContext({
+// eslint-disable-next-line no-spaced-func
+export const ThemeContext = React.createContext<{
+  isDark: boolean;
+  colors: typeof LIGHT_COLORS;
+  setScheme: ((scheme: 'light' | 'dark') => void) | undefined;
+}>({
   isDark: false,
   colors: LIGHT_COLORS,
-  setScheme: (scheme: 'light' | 'dark') => {},
+  setScheme: () => {},
 });
 
 export const ThemeProvider: React.FC = ({children}) => {

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.rodicash">
+  package="com.destreetboard.rodicash">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

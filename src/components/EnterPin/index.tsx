@@ -19,6 +19,7 @@ interface EnterPinProps {
 
 interface EnterPinState {
   value: string;
+  showButton: boolean;
 }
 
 class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
@@ -29,21 +30,22 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
     super(props);
     this.state = {
       value: '',
+      showButton: false,
     };
     this.actionSheetRef = React.createRef<ActionSheet>();
   }
 
   handleValueChange = (val: string): void => {
-    const {maxLength, onChangeValue, onFinish} = this.props;
+    const {maxLength, onChangeValue} = this.props;
     const {value} = this.state;
     if (value.length >= maxLength) {
       return;
     }
+    if ((value + val).length === maxLength) {
+      this.setState({showButton: true});
+    }
     this.setState({value: value + val});
     onChangeValue(value + val);
-    if (onFinish && (value + val).length === maxLength) {
-      onFinish(value + val);
-    }
   };
 
   handleDelete = (): void => {
@@ -64,8 +66,8 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
 
   render() {
     const {colors} = this.context;
-    const {value} = this.state;
-    const {children} = this.props;
+    const {value, showButton} = this.state;
+    const {children, onFinish} = this.props;
 
     return (
       <ActionSheet
@@ -223,6 +225,19 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
             </UI.Block>
           </UI.Clickable>
         </UI.Block>
+
+        {showButton && (
+          <>
+            <UI.Spacer />
+            <UI.Button
+              primary
+              onClick={onFinish ? () => onFinish(value) : undefined}>
+              <UI.Text color={colors.white} bold>
+                CONFIRM
+              </UI.Text>
+            </UI.Button>
+          </>
+        )}
       </ActionSheet>
     );
   }

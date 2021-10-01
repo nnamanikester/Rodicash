@@ -24,6 +24,7 @@ class App extends React.Component<AppProps, AppState> {
 
   componentDidMount(): void {
     lor(this);
+    // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({loaded: true});
   }
 

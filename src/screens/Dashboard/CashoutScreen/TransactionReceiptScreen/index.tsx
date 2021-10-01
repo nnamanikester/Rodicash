@@ -68,17 +68,11 @@ const TransactionReceipt: React.FC<TransactionReceiptProps> = ({
               <UI.Spacer large />
 
               <UI.Block>
-                <UI.Block
-                  backgroundColor={colors.green2}
-                  style={styles.dotLeft}
-                />
+                <UI.Block backgroundColor="#2CA981" style={styles.dotLeft} />
                 <UI.Block
                   style={[styles.dottedDivider, {borderColor: colors.gray3}]}
                 />
-                <UI.Block
-                  backgroundColor={colors.green2}
-                  style={styles.dotRight}
-                />
+                <UI.Block backgroundColor="#2CA981" style={styles.dotRight} />
               </UI.Block>
 
               <UI.Spacer medium />

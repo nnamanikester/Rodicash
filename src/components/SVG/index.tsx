@@ -103,6 +103,18 @@ const SVG: React.FC<SVGProps> = ({
     case 'masked-bg':
       Icon = require('./MaskedBg').default;
       break;
+    case 'chevron-down':
+      Icon = require('./ChevronDown').default;
+      break;
+    case 'cashout2':
+      Icon = require('./Cashout2').default;
+      break;
+    case 'naira-debit':
+      Icon = require('./NairaDebit').default;
+      break;
+    case 'naira-credit':
+      Icon = require('./NairaCredit').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

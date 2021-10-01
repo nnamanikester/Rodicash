@@ -160,6 +160,33 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
               {title}
             </UI.Text>
           )}
+          SectionSeparatorComponent={() => (
+            <UI.Block style={[styles.seperator, {borderColor: colors.gray4}]} />
+          )}
+          ListFooterComponent={
+            <UI.Block style={styles.listFooterContainer} center>
+              <UI.Clickable>
+                <UI.Block
+                  backgroundColor={colors.gray4}
+                  row
+                  center
+                  style={styles.listFooter}>
+                  <SVG
+                    containerStyle={{
+                      width: 20,
+                      height: 20,
+                    }}
+                    color={colors.gray1}
+                    name="all-transactions"
+                  />
+                  <UI.Spacer size={3} />
+                  <UI.Text body color={colors.gray1}>
+                    Search all transactions
+                  </UI.Text>
+                </UI.Block>
+              </UI.Clickable>
+            </UI.Block>
+          }
         />
       </BottomSheet>
     </>

@@ -62,4 +62,17 @@ export default StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
   },
+  listFooterContainer: {
+    marginTop: 20,
+    marginBottom: 40,
+  },
+  listFooter: {
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 8,
+  },
+  seperator: {
+    borderBottomWidth: 1,
+    marginBottom: 20,
+  },
 });

@@ -184,7 +184,6 @@ export const TextInput: React.FC<TextInputProps> = props => {
             ...errorStyle,
             ...typeStyle,
             ...shapeStyle,
-            ...inputStyle,
             borderColor: active
               ? colors.primary
               : error
@@ -192,6 +191,7 @@ export const TextInput: React.FC<TextInputProps> = props => {
               : type === 'underline'
               ? colors.gray2
               : colors.primary,
+            ...inputStyle,
           }}
           {...props}
         />

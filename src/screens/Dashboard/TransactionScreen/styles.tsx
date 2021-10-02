@@ -1,7 +1,13 @@
 import {StyleSheet} from 'react-native';
-import {heightPercentageToDP as hd} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hd,
+  widthPercentageToDP as wd,
+} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
+  modalHeader: {
+    padding: wd('4%'),
+  },
   availableCash: {
     paddingHorizontal: 20,
     paddingVertical: 10,
@@ -39,8 +45,24 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderStyle: 'dashed',
     borderRadius: 100,
-    width: 60,
-    height: 60,
-    alignSelf: 'flex-start',
+    width: 40,
+    height: 40,
+  },
+  searchForm: {
+    borderRadius: 100,
+    paddingLeft: 45,
+  },
+  inviteAvatar: {
+    backgroundColor: 'red',
+    padding: 10,
+    borderRadius: 10,
+  },
+  divider: {
+    borderBottomWidth: 1,
+  },
+  contactImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 10,
   },
 });

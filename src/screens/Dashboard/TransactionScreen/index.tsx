@@ -6,6 +6,8 @@ import styles from './styles';
 import {formatMoney} from '@/utils';
 import LinearGradient from 'react-native-linear-gradient';
 import SVG from '@/components/SVG';
+import ContactsModal from './ContactsModal';
+import EnterPin from '@/components/EnterPin';
 
 interface TransactionScreenProps {
   navigation: any;
@@ -13,6 +15,7 @@ interface TransactionScreenProps {
 
 const TransactionScreen: React.FC<TransactionScreenProps> = () => {
   const {colors} = useTheme();
+  const enterPinRef = React.useRef<EnterPin>(null);
   const tabColors = React.useMemo(
     () => ({
       active: [colors.orange1, colors.orange2],
@@ -22,10 +25,24 @@ const TransactionScreen: React.FC<TransactionScreenProps> = () => {
   );
 
   const [tab, setTab] = React.useState<'send' | 'request'>('send');
+  const [amount, setAmount] = React.useState<string>('');
+  const [email, setEmail] = React.useState<string>('');
+  const [reason, setReason] = React.useState<string>('');
+  const [showContacts, setShowContacts] = React.useState<boolean>(false);
+
+  const onContinue = (): void => {
+    enterPinRef.current?.show();
+  };
 
   return (
     <>
       <StatusBar backgroundColor={colors.background} barStyle="dark-content" />
+
+      <ContactsModal
+        show={showContacts}
+        onClose={setShowContacts.bind(null, false)}
+        onSelectContact={setEmail}
+      />
 
       <UI.Layout>
         <UI.Block>
@@ -85,8 +102,11 @@ const TransactionScreen: React.FC<TransactionScreenProps> = () => {
         <UI.Spacer />
 
         <UI.Block>
-          <UI.Text body>Amount</UI.Text>
+          <UI.Text body>{tab === 'send' ? 'Amount' : 'Houw much?'}</UI.Text>
           <UI.TextInput
+            value={amount}
+            onChangeText={setAmount}
+            keyboardType="number-pad"
             iconRight={
               <UI.Text size={20} color={colors.secondary}>
                 ₦
@@ -98,18 +118,39 @@ const TransactionScreen: React.FC<TransactionScreenProps> = () => {
         <UI.Spacer />
 
         <UI.Block>
-          <UI.Text body>Reason for sending cash</UI.Text>
-          <UI.TextInput />
+          <UI.Text body>
+            {tab === 'send'
+              ? 'Reason for sending cash'
+              : 'Reason for requesting cash'}
+          </UI.Text>
+          <UI.TextInput
+            value={reason}
+            onChangeText={setReason}
+            keyboardType="number-pad"
+          />
         </UI.Block>
 
         <UI.Spacer />
 
         <UI.Block>
-          <UI.Text body>Receiver's email</UI.Text>
-          <UI.TextInput />
+          <UI.Block row center>
+            <UI.Text body>
+              {tab === 'send' ? "Receiver's email" : 'Send bill to?'}
+            </UI.Text>
+            <UI.Spacer size={2} />
+            <UI.Text note color={colors.gray3}>
+              {'(Enter email address)'}
+            </UI.Text>
+          </UI.Block>
+          <UI.TextInput
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+          />
           <UI.Spacer />
           <UI.Block right>
             <UI.Clickable
+              onClick={setShowContacts.bind(null, true)}
               style={[styles.selectButton, {borderColor: colors.secondary}]}>
               <UI.Text color={colors.secondary}>Select Contact</UI.Text>
             </UI.Clickable>
@@ -124,67 +165,126 @@ const TransactionScreen: React.FC<TransactionScreenProps> = () => {
           <UI.Spacer />
 
           <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-            <UI.Clickable>
-              <UI.Block middle width="auto" style={styles.contactSearch}>
-                <SVG
-                  name="user-search"
-                  containerStyle={{
-                    width: 20,
-                    height: 20,
-                  }}
-                />
+            <UI.Clickable onClick={setShowContacts.bind(null, true)}>
+              <UI.Block middle flex>
+                <UI.Block middle width="auto" style={styles.contactSearch}>
+                  <SVG
+                    name="user-search"
+                    containerStyle={{
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                </UI.Block>
+                <UI.Text note>Search</UI.Text>
               </UI.Block>
             </UI.Clickable>
 
             <UI.Spacer />
 
-            <UI.Block center width="auto">
-              <Image
-                source={{uri: 'https://placekitten.com/200'}}
-                style={styles.contact}
-              />
-              <UI.Text note>Evans</UI.Text>
-            </UI.Block>
+            <UI.Clickable>
+              <UI.Block center width="auto">
+                <Image
+                  source={{uri: 'https://placekitten.com/200'}}
+                  style={styles.contact}
+                />
+                <UI.Text note>Evans</UI.Text>
+              </UI.Block>
+            </UI.Clickable>
 
             <UI.Spacer />
 
-            <UI.Block center width="auto">
-              <Image
-                source={{uri: 'https://placekitten.com/210'}}
-                style={styles.contact}
-              />
-              <UI.Text note>Alfred</UI.Text>
-            </UI.Block>
+            <UI.Clickable>
+              <UI.Block center width="auto">
+                <Image
+                  source={{uri: 'https://placekitten.com/210'}}
+                  style={styles.contact}
+                />
+                <UI.Text note>Alfred</UI.Text>
+              </UI.Block>
+            </UI.Clickable>
 
             <UI.Spacer />
 
-            <UI.Block center width="auto">
-              <Image
-                source={{uri: 'https://placekitten.com/180'}}
-                style={styles.contact}
-              />
-              <UI.Text note>Emeka</UI.Text>
-            </UI.Block>
+            <UI.Clickable>
+              <UI.Block center width="auto">
+                <Image
+                  source={{uri: 'https://placekitten.com/180'}}
+                  style={styles.contact}
+                />
+                <UI.Text note>Emeka</UI.Text>
+              </UI.Block>
+            </UI.Clickable>
 
             <UI.Spacer />
 
-            <UI.Block center width="auto">
-              <Image
-                source={{uri: 'https://placekitten.com/150'}}
-                style={styles.contact}
-              />
-              <UI.Text note>Martins</UI.Text>
-            </UI.Block>
+            <UI.Clickable>
+              <UI.Block center width="auto">
+                <Image
+                  source={{uri: 'https://placekitten.com/150'}}
+                  style={styles.contact}
+                />
+                <UI.Text note>Martins</UI.Text>
+              </UI.Block>
+            </UI.Clickable>
+
+            <UI.Spacer />
+
+            <UI.Clickable>
+              <UI.Block center width="auto">
+                <Image
+                  source={{uri: 'https://placekitten.com/150'}}
+                  style={styles.contact}
+                />
+                <UI.Text note>Ben</UI.Text>
+              </UI.Block>
+            </UI.Clickable>
           </ScrollView>
         </UI.Block>
 
         <UI.Spacer large />
+
+        <EnterPin ref={enterPinRef} maxLength={4} onChangeValue={() => {}}>
+          <UI.Spacer />
+          <UI.Text color={colors.secondary}>Sending to</UI.Text>
+          <UI.Spacer />
+          <UI.Block style={[styles.divider, {borderColor: colors.gray4}]} />
+          <UI.Spacer />
+
+          <UI.Clickable>
+            <UI.Block row justify="space-between">
+              <UI.Block row width="auto">
+                <UI.Block width="auto">
+                  <Image
+                    source={{uri: 'https://placekitten.com/200'}}
+                    style={[styles.contactImage, {borderRadius: 100}]}
+                  />
+                </UI.Block>
+                <UI.Spacer />
+                <UI.Block width="auto">
+                  <UI.Text bold>Kester Nnamani</UI.Text>
+                  <UI.Text note color={colors.gray2}>
+                    frankpeterani@gmail.com
+                  </UI.Text>
+                  <UI.Text bold>{formatMoney('5000')}</UI.Text>
+                </UI.Block>
+              </UI.Block>
+              <UI.Block center width="auto">
+                <SVG name="chevron-right" />
+              </UI.Block>
+            </UI.Block>
+          </UI.Clickable>
+
+          <UI.Spacer />
+
+          <UI.Block style={[styles.divider, {borderColor: colors.gray4}]} />
+        </EnterPin>
       </UI.Layout>
 
       <UI.Block
         backgroundColor={colors.background}
         style={{paddingHorizontal: 20}}>
-        <UI.Button primary>
+        <UI.Button primary onClick={onContinue}>
           <UI.Text color={colors.white} bold>
             CONTINUE
           </UI.Text>

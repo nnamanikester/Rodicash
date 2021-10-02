@@ -121,6 +121,15 @@ const SVG: React.FC<SVGProps> = ({
     case 'user-search':
       Icon = require('./UserSearch').default;
       break;
+    case 'search':
+      Icon = require('./Search').default;
+      break;
+    case 'share-invite':
+      Icon = require('./ShareInvite').default;
+      break;
+    case 'chevron-right':
+      Icon = require('./ChevronRight').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

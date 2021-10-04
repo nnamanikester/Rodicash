@@ -11,7 +11,7 @@ import {PinInput} from '../common';
 import SVG from '../SVG';
 
 interface EnterPinProps {
-  onChangeValue: (val: string) => void;
+  onChangeValue?: (val: string) => void;
   onFinish?: (val: string) => void;
   maxLength: number;
   min?: number;
@@ -45,7 +45,7 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
       this.setState({showButton: true});
     }
     this.setState({value: value + val});
-    onChangeValue(value + val);
+    onChangeValue && onChangeValue(value + val);
   };
 
   handleDelete = (): void => {
@@ -53,7 +53,7 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
     const {value} = this.state;
 
     this.setState({value: value.substring(0, value.length - 1)});
-    return onChangeValue(value.substring(0, value.length - 1));
+    onChangeValue && onChangeValue(value.substring(0, value.length - 1));
   };
 
   show = (): void => {

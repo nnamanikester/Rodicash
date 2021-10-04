@@ -48,4 +48,21 @@ export default StyleSheet.create({
     marginHorizontal: 3,
     top: 8,
   },
+  headerComponent: {
+    width: wd('12%'),
+    height: 8,
+    marginTop: 5,
+    borderRadius: 10,
+  },
+  actionSheetContainer: {
+    paddingHorizontal: wd('5%'),
+    borderTopLeftRadius: 32,
+    borderTopRightRadius: 32,
+  },
+  customerSupport: {
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    borderRadius: 5,
+  },
 });

@@ -10,6 +10,8 @@ import {
   widthPercentageToDP as wd,
 } from 'react-native-responsive-screen';
 import {formatMoney} from '@/utils';
+import ActionSheet from 'react-native-actions-sheet';
+import RateMerchant from '../RateMerchant';
 
 interface TransactionReceiptProps {
   navigation: any;
@@ -19,6 +21,15 @@ const TransactionReceipt: React.FC<TransactionReceiptProps> = ({
   navigation,
 }) => {
   const {colors} = useTheme();
+  const actionSheetRef = React.useRef<ActionSheet>(null);
+
+  const showRating = () => {
+    actionSheetRef.current?.setModalVisible(true);
+  };
+
+  const hideRating = () => {
+    actionSheetRef.current?.setModalVisible(false);
+  };
 
   return (
     <>
@@ -112,9 +123,9 @@ const TransactionReceipt: React.FC<TransactionReceiptProps> = ({
             <UI.Spacer />
 
             <UI.Block style={{paddingHorizontal: 20}}>
-              <UI.Button secondary onClick={() => navigation.replace('Home')}>
+              <UI.Button secondary onClick={showRating}>
                 <UI.Text bold color={colors.white}>
-                  BACK TO HOME
+                  RATE MERCHANT
                 </UI.Text>
               </UI.Button>
 
@@ -124,7 +135,7 @@ const TransactionReceipt: React.FC<TransactionReceiptProps> = ({
                 <UI.Link
                   onClick={() => navigation.replace('Home')}
                   color={colors.primary}>
-                  Withdraw more cash
+                  Back to home
                 </UI.Link>
               </UI.Block>
             </UI.Block>
@@ -196,6 +207,44 @@ const TransactionReceipt: React.FC<TransactionReceiptProps> = ({
           </UI.Block>
 
           <UI.Spacer large />
+
+          <ActionSheet
+            ref={actionSheetRef}
+            gestureEnabled
+            closeOnTouchBackdrop={false}
+            CustomHeaderComponent={
+              <UI.Block
+                backgroundColor={colors.gray3}
+                center
+                style={styles.headerComponent}
+              />
+            }
+            containerStyle={styles.actionSheetContainer}>
+            <UI.Spacer />
+            <UI.Block row center justify="space-between">
+              <UI.Clickable>
+                <UI.Block
+                  style={[
+                    styles.customerSupport,
+                    {borderColor: colors.secondary},
+                  ]}>
+                  <UI.Text color={colors.secondary} note>
+                    Customer Support
+                  </UI.Text>
+                </UI.Block>
+              </UI.Clickable>
+
+              <UI.Clickable onClick={hideRating}>
+                <UI.Icon
+                  size={20}
+                  color={colors.gray2}
+                  name="closecircleo"
+                  type="AntDesign"
+                />
+              </UI.Clickable>
+            </UI.Block>
+            <RateMerchant />
+          </ActionSheet>
         </UI.Layout>
       </LinearGradient>
     </>

@@ -8,12 +8,13 @@ import LinearGradient from 'react-native-linear-gradient';
 import SVG from '@/components/SVG';
 import ContactsModal from './ContactsModal';
 import EnterPin from '@/components/EnterPin';
+import TransactionSuccess from './TransactionSuccess';
 
 interface TransactionScreenProps {
   navigation: any;
 }
 
-const TransactionScreen: React.FC<TransactionScreenProps> = () => {
+const TransactionScreen: React.FC<TransactionScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
   const enterPinRef = React.useRef<EnterPin>(null);
   const tabColors = React.useMemo(
@@ -29,14 +30,31 @@ const TransactionScreen: React.FC<TransactionScreenProps> = () => {
   const [email, setEmail] = React.useState<string>('');
   const [reason, setReason] = React.useState<string>('');
   const [showContacts, setShowContacts] = React.useState<boolean>(false);
+  const [showSucces, setShowSuccess] = React.useState<boolean>(false);
 
   const onContinue = (): void => {
     enterPinRef.current?.show();
   };
 
+  const onConfirmPin = (): void => {
+    setShowSuccess(true);
+  };
+
   return (
     <>
       <StatusBar backgroundColor={colors.background} barStyle="dark-content" />
+
+      {showSucces && (
+        <TransactionSuccess
+          onBackToHome={() => navigation.replace('Home')}
+          receipient={{
+            name: 'Frankpeter Ani',
+            image: 'https://placekitten.com/100',
+            username: '@kescript',
+            time: '9:00AM',
+          }}
+        />
+      )}
 
       <ContactsModal
         show={showContacts}
@@ -123,11 +141,7 @@ const TransactionScreen: React.FC<TransactionScreenProps> = () => {
               ? 'Reason for sending cash'
               : 'Reason for requesting cash'}
           </UI.Text>
-          <UI.TextInput
-            value={reason}
-            onChangeText={setReason}
-            keyboardType="number-pad"
-          />
+          <UI.TextInput value={reason} onChangeText={setReason} />
         </UI.Block>
 
         <UI.Spacer />
@@ -244,9 +258,11 @@ const TransactionScreen: React.FC<TransactionScreenProps> = () => {
 
         <UI.Spacer large />
 
-        <EnterPin ref={enterPinRef} maxLength={4} onChangeValue={() => {}}>
+        <EnterPin onFinish={onConfirmPin} ref={enterPinRef} maxLength={4}>
           <UI.Spacer />
-          <UI.Text color={colors.secondary}>Sending to</UI.Text>
+          <UI.Text color={colors.secondary}>
+            {tab === 'send' ? 'Sending to' : 'Requesting from'}
+          </UI.Text>
           <UI.Spacer />
           <UI.Block style={[styles.divider, {borderColor: colors.gray4}]} />
           <UI.Spacer />

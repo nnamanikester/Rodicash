@@ -1,12 +1,13 @@
 import React from 'react';
-import {View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
 import {AppearanceProvider} from 'react-native-appearance';
 import {listenOrientationChange as lor} from 'react-native-responsive-screen';
+import AnimatedSplash from '@/components/AnimatedSplash';
 import NavigationFlow from '@/navigation';
 import store from '@/store';
-import {ThemeProvider} from '@/contexts/ThemeContext';
+import {ThemeProvider, ThemeContext} from '@/contexts/ThemeContext';
+import SplashScreen from './components/SplashScreen';
 
 interface AppProps {}
 
@@ -15,36 +16,42 @@ interface AppState {
 }
 
 class App extends React.Component<AppProps, AppState> {
-  constructor(props: AppProps) {
-    super(props);
-    this.state = {
-      loaded: false,
-    };
-  }
+  static contextType = ThemeContext;
+
+  state = {
+    loaded: false,
+  };
 
   componentDidMount(): void {
     lor(this);
-    // eslint-disable-next-line react/no-did-mount-set-state
-    this.setState({loaded: true});
+
+    setTimeout(() => {
+      this.setState({loaded: true});
+    }, 3000);
   }
 
   render() {
     const {loaded} = this.state;
-
-    if (!loaded) {
-      return <View />;
-    }
+    const {colors} = this.context;
 
     return (
-      <SafeAreaProvider>
-        <Provider store={store}>
-          <AppearanceProvider>
-            <ThemeProvider>
-              <NavigationFlow />
-            </ThemeProvider>
-          </AppearanceProvider>
-        </Provider>
-      </SafeAreaProvider>
+      <AnimatedSplash
+        showStatusBar
+        isLoaded={loaded}
+        preload={false}
+        logoImage={require('../assets/images/icon-white.png')}
+        backgroundColor={colors.primary}
+        customComponent={<SplashScreen />}>
+        <SafeAreaProvider>
+          <Provider store={store}>
+            <AppearanceProvider>
+              <ThemeProvider>
+                <NavigationFlow />
+              </ThemeProvider>
+            </AppearanceProvider>
+          </Provider>
+        </SafeAreaProvider>
+      </AnimatedSplash>
     );
   }
 }

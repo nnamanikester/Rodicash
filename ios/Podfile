@@ -16,6 +16,8 @@ target 'Rodicash' do
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+  pod 'CodePush', :path => '../node_modules/react-native-code-push'
+
   target 'RodicashTests' do
     inherit! :complete
     # Pods for testing

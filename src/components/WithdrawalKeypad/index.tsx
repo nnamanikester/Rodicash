@@ -1,4 +1,4 @@
-import Pop from '@/animations/Pop';
+import {Pop} from '@/animations/Pop';
 import {useTheme} from '@/contexts/ThemeContext';
 import React from 'react';
 import {StyleSheet} from 'react-native';

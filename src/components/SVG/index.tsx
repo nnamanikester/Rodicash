@@ -130,6 +130,9 @@ const SVG: React.FC<SVGProps> = ({
     case 'chevron-right':
       Icon = require('./ChevronRight').default;
       break;
+    case 'shaded-error':
+      Icon = require('./ShadedError').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

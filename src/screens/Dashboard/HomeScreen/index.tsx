@@ -13,7 +13,7 @@ interface HomeScreenProps {
   navigation: any;
 }
 
-const HomeScreen: React.FC<HomeScreenProps> = () => {
+const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
   const [isLoading] = React.useState(false);
   const snapPoints = React.useMemo(() => ['25%', '45%', '95%'], []);
@@ -112,6 +112,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 
         <UI.Block center>
           <UI.Clickable
+            onClick={() => navigation.navigate('AddMoney')}
             style={[
               styles.addMoney,
               {backgroundColor: colors.white, borderColor: colors.gray3},

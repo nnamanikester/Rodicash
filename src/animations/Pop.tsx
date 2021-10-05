@@ -81,4 +81,4 @@ class Pop extends React.Component<PopProps, PopState> {
   }
 }
 
-export default Pop;
+export {Pop};

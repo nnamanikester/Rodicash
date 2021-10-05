@@ -34,7 +34,6 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
         name="HomeTab"
         component={HomeScreen}
         options={{
-          unmountOnBlur: true,
           tabBarIcon: ({focused}) => (
             <UI.Block
               style={[
@@ -58,7 +57,6 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
         name="TransactionsTab"
         component={TransactionScreen}
         options={{
-          unmountOnBlur: true,
           tabBarIcon: ({focused}) => (
             <UI.Block
               style={[

@@ -80,6 +80,7 @@ export const Button: React.FC<ButtonProps> = ({
   const greenGradient = [colors.green1, colors.green2];
   const transparentGradient = [colors.transparent, colors.transparent];
   const whiteGradient = [colors.white, colors.white];
+  const disabledGradient = [colors.gray3, colors.gray3];
 
   const styles = StyleSheet.create({
     button: {
@@ -105,14 +106,6 @@ export const Button: React.FC<ButtonProps> = ({
   });
 
   switch (type) {
-    case 'disabled':
-      typeStyle = {
-        elevation: 0,
-        backgroundColor: colors.gray3,
-        borderWidth: 0,
-      };
-      disabled = 1;
-      break;
     case 'outline':
       typeStyle = {
         borderWidth: 1.5,
@@ -163,6 +156,8 @@ export const Button: React.FC<ButtonProps> = ({
             ? transparentGradient
             : white
             ? whiteGradient
+            : type === 'disabled'
+            ? disabledGradient
             : whiteGradient
         }
         start={{x: 0, y: 0}}

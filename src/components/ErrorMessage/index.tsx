@@ -55,7 +55,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({onDismiss, message}) => {
           />
 
           <UI.Block row center>
-            <SVG name="error" />
+            <SVG name="error" color={colors.white} />
             <UI.Text color={colors.white} bold>
               ERROR
             </UI.Text>

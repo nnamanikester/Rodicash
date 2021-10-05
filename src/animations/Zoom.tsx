@@ -1,7 +1,22 @@
-import React from 'react';
-import {Animated} from 'react-native';
+import * as React from 'react';
+import {Animated, ViewStyle} from 'react-native';
 
-const Zoom = ({children, duration, from, to, delay, style}) => {
+interface ZoomProps {
+  from: number;
+  to: number;
+  duration?: number;
+  delay?: number;
+  style?: ViewStyle;
+}
+
+const Zoom: React.FC<ZoomProps> = ({
+  children,
+  duration,
+  from,
+  to,
+  delay,
+  style,
+}) => {
   const [animate] = React.useState(new Animated.Value(from));
 
   const animStyle = {
@@ -18,7 +33,7 @@ const Zoom = ({children, duration, from, to, delay, style}) => {
     Animated.timing(animate, {
       toValue: to,
       delay: delay || 0,
-      duration: duration,
+      duration: duration || 1000,
       useNativeDriver: true,
     }).start();
   }, []);
@@ -26,4 +41,4 @@ const Zoom = ({children, duration, from, to, delay, style}) => {
   return <Animated.View style={animStyle}>{children}</Animated.View>;
 };
 
-export default Zoom;
+export {Zoom};

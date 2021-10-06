@@ -6,15 +6,15 @@ import {StatusBar, Modal} from 'react-native';
 import ErrorMessage from '@/components/ErrorMessage';
 
 interface ReserveAccountProps {
-  navigation: any;
   show: boolean;
   onBVNVerified?: () => void;
+  onClose?: () => void;
 }
 
 const ReserveAccount: React.FC<ReserveAccountProps> = ({
-  navigation,
   show,
   onBVNVerified,
+  onClose,
 }) => {
   const {colors} = useTheme();
 
@@ -44,6 +44,7 @@ const ReserveAccount: React.FC<ReserveAccountProps> = ({
 
   const submitData = (): void => {
     onBVNVerified && onBVNVerified();
+    onClose && onClose();
   };
 
   const clearError = (): void => {
@@ -61,7 +62,7 @@ const ReserveAccount: React.FC<ReserveAccountProps> = ({
         <ErrorMessage onDismiss={clearError} message={error} />
       )}
 
-      <UI.Clickable onClick={() => navigation.pop()}>
+      <UI.Clickable onClick={onClose}>
         <UI.Block
           center
           style={styles.header}
@@ -72,7 +73,7 @@ const ReserveAccount: React.FC<ReserveAccountProps> = ({
           <UI.Text color={colors.gray2}>Back</UI.Text>
         </UI.Block>
       </UI.Clickable>
-      <UI.Layout>
+      <UI.Layout noScroll>
         <UI.Text h1>BVN {'\n'}Verification.</UI.Text>
         <UI.Spacer large />
 
@@ -105,6 +106,8 @@ const ReserveAccount: React.FC<ReserveAccountProps> = ({
             SUBMIT
           </UI.Text>
         </UI.Button>
+
+        <UI.Spacer large />
       </UI.Block>
     </Modal>
   );

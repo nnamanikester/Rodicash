@@ -136,6 +136,42 @@ const SVG: React.FC<SVGProps> = ({
     case 'divider':
       Icon = require('./Divider').default;
       break;
+    case 'camera':
+      Icon = require('./Camera').default;
+      break;
+    case 'shield':
+      Icon = require('./Shield').default;
+      break;
+    case 'biometrics':
+      Icon = require('./Biometrics').default;
+      break;
+    case 'card':
+      Icon = require('./Card').default;
+      break;
+    case 'shaded-lock':
+      Icon = require('./ShadedLock').default;
+      break;
+    case 'report':
+      Icon = require('./Report').default;
+      break;
+    case 'profile':
+      Icon = require('./Profile').default;
+      break;
+    case 'info':
+      Icon = require('./Info').default;
+      break;
+    case 'half-moon':
+      Icon = require('./HalfMoon').default;
+      break;
+    case 'doc':
+      Icon = require('./Doc').default;
+      break;
+    case 'double-heart':
+      Icon = require('./DoubleHeart').default;
+      break;
+    case 'chat-with-us':
+      Icon = require('./ChatWithUs').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

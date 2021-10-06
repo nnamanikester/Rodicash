@@ -6,7 +6,7 @@ import {LIGHT_COLORS, DARK_COLORS} from '@/constants';
 export const ThemeContext = React.createContext<{
   isDark: boolean;
   colors: typeof LIGHT_COLORS;
-  setScheme: ((scheme: 'light' | 'dark') => void) | undefined;
+  setScheme: (scheme: 'light' | 'dark') => void;
 }>({
   isDark: false,
   colors: LIGHT_COLORS,

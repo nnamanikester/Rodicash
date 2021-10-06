@@ -8,6 +8,7 @@ import styles from './styles';
 import {heightPercentageToDP as hd} from 'react-native-responsive-screen';
 import TransactionScreen from '@/screens/Dashboard/TransactionScreen';
 import CashoutScreen from '@/screens/Dashboard/CashoutScreen';
+import MoreScreen from '@/screens/Dashboard/MoreScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -124,9 +125,8 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
       />
       <Tab.Screen
         name="MoreTab"
-        component={HomeScreen}
+        component={MoreScreen}
         options={{
-          unmountOnBlur: true,
           tabBarIcon: ({focused}) => (
             <UI.Block
               style={[

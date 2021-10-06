@@ -96,17 +96,19 @@ const ContactsModal: React.FC<ContactsModalProps> = ({
   return (
     <>
       <Modal animationType="slide" visible={show}>
-        <UI.Clickable onClick={onClose}>
-          <UI.Block
-            center
-            style={styles.modalHeader}
-            backgroundColor={colors.background}
-            row>
-            <UI.Icon name="chevron-back-circle-outline" />
-            <UI.Spacer size={2} />
-            <UI.Text color={colors.gray2}>Back</UI.Text>
-          </UI.Block>
-        </UI.Clickable>
+        <UI.Block
+          center
+          style={styles.modalHeader}
+          backgroundColor={colors.background}
+          row>
+          <UI.Clickable onClick={onClose}>
+            <UI.Block row center width="auto">
+              <UI.Icon name="chevron-back-circle-outline" />
+              <UI.Spacer size={2} />
+              <UI.Text color={colors.gray2}>Back</UI.Text>
+            </UI.Block>
+          </UI.Clickable>
+        </UI.Block>
 
         <UI.Spacer medium />
 

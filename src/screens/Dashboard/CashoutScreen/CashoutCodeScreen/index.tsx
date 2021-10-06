@@ -52,17 +52,19 @@ const CashoutCodeScreen: React.FC<CashoutCodeScreenProps> = ({
     <>
       <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
 
-      <UI.Clickable onClick={() => navigation.pop()}>
-        <UI.Block
-          center
-          style={styles.header}
-          backgroundColor={colors.background}
-          row>
-          <UI.Icon name="chevron-back-circle-outline" />
-          <UI.Spacer size={2} />
-          <UI.Text color={colors.gray2}>Back</UI.Text>
-        </UI.Block>
-      </UI.Clickable>
+      <UI.Block
+        center
+        style={styles.header}
+        backgroundColor={colors.background}
+        row>
+        <UI.Clickable onClick={() => navigation.pop()}>
+          <UI.Block row center width="auto">
+            <UI.Icon name="chevron-back-circle-outline" />
+            <UI.Spacer size={2} />
+            <UI.Text color={colors.gray2}>Back</UI.Text>
+          </UI.Block>
+        </UI.Clickable>
+      </UI.Block>
       <UI.Layout>
         <UI.Text h1>Scan QR Code.</UI.Text>
         <UI.Text color={colors.gray1}>

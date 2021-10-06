@@ -133,6 +133,9 @@ const SVG: React.FC<SVGProps> = ({
     case 'shaded-error':
       Icon = require('./ShadedError').default;
       break;
+    case 'divider':
+      Icon = require('./Divider').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

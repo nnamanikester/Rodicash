@@ -48,6 +48,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
           <UI.Block row center justify="space-between">
             <UI.Text h1>Home</UI.Text>
             <UI.Clickable
+              onClick={() => navigation.navigate('Notifications')}
               style={[styles.notificationButton, {borderColor: colors.gray3}]}>
               <UI.Icon color={colors.text} name="notifications" />
             </UI.Clickable>

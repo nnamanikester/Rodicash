@@ -141,7 +141,11 @@ const TransactionScreen: React.FC<TransactionScreenProps> = ({navigation}) => {
               ? 'Reason for sending cash'
               : 'Reason for requesting cash'}
           </UI.Text>
-          <UI.TextInput value={reason} onChangeText={setReason} />
+          <UI.TextInput
+            value={reason}
+            maxLength={34}
+            onChangeText={setReason}
+          />
         </UI.Block>
 
         <UI.Spacer />

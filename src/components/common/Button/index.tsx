@@ -11,6 +11,11 @@ import {Clickable, ClickableProps} from '../Clickable';
 
 interface ButtonProps extends ClickableProps {
   /**
+   * Defines the gradient color of the button.
+   */
+  colors?: [string, string];
+
+  /**
    * Defines the type of button to render.
    */
   primary?: boolean;
@@ -72,6 +77,7 @@ export const Button: React.FC<ButtonProps> = ({
   primary,
   secondary,
   white,
+  colors: colours,
   transparent,
   style,
 }) => {
@@ -148,7 +154,9 @@ export const Button: React.FC<ButtonProps> = ({
       activeOpacity={disabled}>
       <LinearGradient
         colors={
-          primary
+          colours
+            ? colours
+            : primary
             ? greenGradient
             : secondary
             ? orangeGradient

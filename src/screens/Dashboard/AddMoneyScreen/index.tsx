@@ -40,17 +40,19 @@ const AddMoneyScreen: React.FC<AddMoneyScreenProps> = ({navigation}) => {
   return (
     <>
       <StatusBar backgroundColor={colors.background} barStyle="dark-content" />
-      <UI.Clickable onClick={() => navigation.goBack()}>
-        <UI.Block
-          center
-          style={styles.header}
-          backgroundColor={colors.background}
-          row>
-          <UI.Icon name="chevron-back-circle-outline" />
-          <UI.Spacer size={2} />
-          <UI.Text color={colors.gray2}>Back</UI.Text>
-        </UI.Block>
-      </UI.Clickable>
+      <UI.Block
+        center
+        style={styles.header}
+        backgroundColor={colors.background}
+        row>
+        <UI.Clickable onClick={() => navigation.pop()}>
+          <UI.Block row center width="auto">
+            <UI.Icon name="chevron-back-circle-outline" />
+            <UI.Spacer size={2} />
+            <UI.Text color={colors.gray2}>Back</UI.Text>
+          </UI.Block>
+        </UI.Clickable>
+      </UI.Block>
 
       <UI.Layout>
         <UI.Spacer />

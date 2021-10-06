@@ -46,6 +46,7 @@ const CashoutScreen: React.FC<CashoutScreenProps> = ({navigation}) => {
         <UI.Block row center justify="space-between">
           <UI.Text h2>Cash out</UI.Text>
           <UI.Clickable
+            onClick={() => navigation.navigate('Notifications')}
             style={[styles.notificationButton, {borderColor: colors.gray4}]}>
             <UI.Icon color={colors.text} name="notifications" />
           </UI.Clickable>

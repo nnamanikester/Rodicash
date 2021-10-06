@@ -21,7 +21,6 @@ export interface BlockProps extends ViewProps {
   height?: number | string;
   backgroundColor?: string;
   absolute?: boolean;
-  styles?: object;
 }
 
 const Block: React.FC<BlockProps> = ({

@@ -18,7 +18,6 @@ const AuthenticationFlow: React.FC<AuthenticationFlowProps> = () => {
     <Stack.Navigator
       screenOptions={{
         header: () => null,
-        gestureEnabled: true,
       }}>
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />

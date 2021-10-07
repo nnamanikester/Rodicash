@@ -115,7 +115,6 @@ class OnboardingScreen extends React.Component<
               }}
               ref={this.swiper}
               height={hd('100%')}>
-              {/* Slide One */}
               <UI.Block style={styles.swipe}>
                 <Reveal duration={1000} from={0} to={1}>
                   <UI.Block center style={styles.illustrationContainer}>
@@ -145,7 +144,6 @@ class OnboardingScreen extends React.Component<
                 </Reveal>
               </UI.Block>
 
-              {/* Slide Two */}
               <UI.Block style={styles.swipe}>
                 <Reveal duration={2000} from={0} to={1}>
                   <UI.Block center style={styles.illustrationContainer}>
@@ -174,7 +172,6 @@ class OnboardingScreen extends React.Component<
                 </Reveal>
               </UI.Block>
 
-              {/* Slide Three */}
               <UI.Block style={styles.swipe}>
                 <Reveal duration={2000} from={0} to={1}>
                   <UI.Block center style={styles.illustrationContainer}>
@@ -203,7 +200,6 @@ class OnboardingScreen extends React.Component<
                 </Reveal>
               </UI.Block>
 
-              {/* Slide FOUR */}
               <UI.Block style={styles.swipe}>
                 <Reveal duration={2000} from={0} to={1}>
                   <UI.Block center style={styles.illustrationContainer}>

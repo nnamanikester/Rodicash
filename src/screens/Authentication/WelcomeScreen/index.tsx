@@ -5,6 +5,7 @@ import styles from './styles';
 import {StatusBar, Keyboard} from 'react-native';
 import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
+import {useAppDispatch} from '@/hooks';
 
 interface WelcomeScreenProps {
   navigation: any;
@@ -12,6 +13,8 @@ interface WelcomeScreenProps {
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
+  const dispatch = useAppDispatch();
+
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
   const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false);
   const [biometricsType] = React.useState<'fingerprint' | 'face'>(
@@ -49,7 +52,16 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
     submitData();
   };
 
-  const submitData = (): void => {};
+  const submitData = (): void => {
+    dispatch({
+      type: 'SET_USER',
+      payload: {
+        token: 'hello',
+        email: 'nnamanikester@gmail.com',
+        name: 'John Kester',
+      },
+    });
+  };
 
   const clearError = () => {
     setPasswordError(false);

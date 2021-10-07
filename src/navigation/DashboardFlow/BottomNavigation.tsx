@@ -9,6 +9,7 @@ import {heightPercentageToDP as hd} from 'react-native-responsive-screen';
 import TransactionScreen from '@/screens/Dashboard/TransactionScreen';
 import CashoutScreen from '@/screens/Dashboard/CashoutScreen';
 import MoreScreen from '@/screens/Dashboard/MoreScreen';
+import MapScreen from '@/screens/Dashboard/MapScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,9 +41,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
             <UI.Block
               style={[
                 styles.tab,
-                focused
-                  ? {...styles.tabActive, borderColor: colors.green2}
-                  : {},
+                focused && {...styles.tabActive, borderColor: colors.green2},
               ]}>
               <SVG
                 containerStyle={{opacity: 1}}
@@ -64,9 +63,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
             <UI.Block
               style={[
                 styles.tab,
-                focused
-                  ? {...styles.tabActive, borderColor: colors.green2}
-                  : {},
+                focused && {...styles.tabActive, borderColor: colors.green2},
               ]}>
               <SVG
                 containerStyle={{opacity: 1}}
@@ -102,16 +99,14 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
       />
       <Tab.Screen
         name="MapTab"
-        component={HomeScreen}
+        component={MapScreen}
         options={{
           unmountOnBlur: true,
           tabBarIcon: ({focused}) => (
             <UI.Block
               style={[
                 styles.tab,
-                focused
-                  ? {...styles.tabActive, borderColor: colors.green2}
-                  : {},
+                focused && {...styles.tabActive, borderColor: colors.green2},
               ]}>
               <SVG
                 containerStyle={{opacity: 1}}
@@ -131,9 +126,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
             <UI.Block
               style={[
                 styles.tab,
-                focused
-                  ? {...styles.tabActive, borderColor: colors.green2}
-                  : {},
+                focused && {...styles.tabActive, borderColor: colors.green2},
               ]}>
               <SVG
                 containerStyle={{opacity: 1}}

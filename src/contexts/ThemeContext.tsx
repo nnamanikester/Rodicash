@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useColorScheme} from 'react-native-appearance';
+import {useColorScheme} from 'react-native';
 import {LIGHT_COLORS, DARK_COLORS} from '@/constants';
 
 // eslint-disable-next-line no-spaced-func

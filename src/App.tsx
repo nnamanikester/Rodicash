@@ -1,7 +1,7 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
-import {AppearanceProvider} from 'react-native-appearance';
 import {listenOrientationChange as lor} from 'react-native-responsive-screen';
 import AnimatedSplash from '@/components/AnimatedSplash';
 import NavigationFlow from '@/navigation';
@@ -44,11 +44,9 @@ class App extends React.Component<AppProps, AppState> {
         customComponent={<SplashScreen />}>
         <SafeAreaProvider>
           <Provider store={store}>
-            <AppearanceProvider>
-              <ThemeProvider>
-                <NavigationFlow />
-              </ThemeProvider>
-            </AppearanceProvider>
+            <ThemeProvider>
+              <NavigationFlow />
+            </ThemeProvider>
           </Provider>
         </SafeAreaProvider>
       </AnimatedSplash>

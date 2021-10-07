@@ -140,11 +140,14 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
         ref={bottomSheetRef}
         index={1}
         enableContentPanningGesture={false}
+        onChange={() => {}}
         handleComponent={() => (
-          <UI.Block center>
-            <UI.Spacer size={3} />
-            <SVG name="chevron-down" />
-          </UI.Block>
+          <UI.Clickable onClick={() => bottomSheetRef.current?.snapToIndex(0)}>
+            <UI.Block center>
+              <UI.Spacer size={3} />
+              <SVG name="chevron-down" />
+            </UI.Block>
+          </UI.Clickable>
         )}
         style={styles.transactionSheet}
         snapPoints={snapPoints}>

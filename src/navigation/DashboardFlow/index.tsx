@@ -16,7 +16,6 @@ const DashboardFlow: React.FC<DashboardFlowProps> = () => {
     <Stack.Navigator
       screenOptions={{
         header: () => null,
-        gestureEnabled: true,
       }}>
       <Stack.Screen name="Home" component={BottomNavigation} />
       <Stack.Screen name="CashoutCode" component={CashoutCodeScreen} />

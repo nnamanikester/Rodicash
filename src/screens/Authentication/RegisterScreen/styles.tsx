@@ -3,10 +3,10 @@ import {widthPercentageToDP as wd} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   header: {
-    padding: wd('5%'),
+    padding: wd('4%'),
   },
   footer: {
-    paddingHorizontal: wd('5%'),
+    paddingHorizontal: wd('4%'),
   },
   showButton: {
     borderWidth: 1,

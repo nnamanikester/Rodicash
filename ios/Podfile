@@ -18,6 +18,8 @@ target 'Rodicash' do
 
   pod 'CodePush', :path => '../node_modules/react-native-code-push'
 
+  pod 'RNCPicker', :path => '../node_modules/@react-native-picker/picker'
+
   target 'RodicashTests' do
     inherit! :complete
     # Pods for testing

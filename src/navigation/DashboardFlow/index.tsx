@@ -6,6 +6,7 @@ import ConfirmCashout from '@/screens/Dashboard/CashoutScreen/ConfirmCashout';
 import TransactionReceipt from '@/screens/Dashboard/CashoutScreen/TransactionReceiptScreen';
 import AddMoneyScreen from '@/screens/Dashboard/AddMoneyScreen';
 import NotificationsScreen from '@/screens/Dashboard/NotificationsScreen';
+import PersonalInfoScreen from '@/screens/Dashboard/PersonalInfoScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ const DashboardFlow: React.FC<DashboardFlowProps> = () => {
       <Stack.Screen name="TransactionReceipt" component={TransactionReceipt} />
       <Stack.Screen name="AddMoney" component={AddMoneyScreen} />
       <Stack.Screen name="Notifications" component={NotificationsScreen} />
+      <Stack.Screen name="PersonalInfo" component={PersonalInfoScreen} />
     </Stack.Navigator>
   );
 };

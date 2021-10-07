@@ -6,16 +6,29 @@ import styles from './styles';
 import SVG from '@/components/SVG';
 import LinearGradient from 'react-native-linear-gradient';
 import PercentageCircle from '@/components/PercentageCircle';
+import {useAppDispatch} from '@/hooks';
 
 interface MoreScreenProps {
   navigation: any;
 }
 
-const MoreScreen: React.FC<MoreScreenProps> = () => {
+const MoreScreen: React.FC<MoreScreenProps> = ({navigation}) => {
   const {colors, isDark, setScheme} = useTheme();
+  const dispatch = useAppDispatch();
   const [biometrics, setBiometrics] = React.useState<boolean>(true);
   const [isProfileComplete, setIsProfileComplete] =
     React.useState<boolean>(true);
+
+  const handleLogout = () => {
+    dispatch({
+      type: 'SET_USER',
+      payload: {
+        email: null,
+        name: null,
+        token: null,
+      },
+    });
+  };
 
   return (
     <>
@@ -81,13 +94,13 @@ const MoreScreen: React.FC<MoreScreenProps> = () => {
 
                 <UI.Button
                   white
-                  onClick={setIsProfileComplete.bind(null, true)}>
+                  onClick={setIsProfileComplete.bind(null, false)}>
                   <UI.Text bold>Complete your profile</UI.Text>
                 </UI.Button>
               </LinearGradient>
             </UI.Clickable>
           ) : (
-            <UI.Clickable>
+            <UI.Clickable onClick={() => navigation.navigate('PersonalInfo')}>
               <UI.Block row justify="space-between" center>
                 <UI.Block width="auto" row center>
                   <UI.Block
@@ -397,7 +410,9 @@ const MoreScreen: React.FC<MoreScreenProps> = () => {
         <UI.Spacer medium />
 
         <UI.Block>
-          <UI.Button colors={[colors.warning, colors.warning]}>
+          <UI.Button
+            onClick={handleLogout}
+            colors={[colors.warning, colors.warning]}>
             <UI.Text bold color={colors.white}>
               LOGOUT
             </UI.Text>

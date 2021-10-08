@@ -189,6 +189,26 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
           </UI.Block>
 
           <UI.Spacer />
+
+          <UI.Block>
+            <UI.Text body>Referral code (optional)</UI.Text>
+            <UI.TextInput
+              value={email}
+              onChangeText={setEmail}
+              error={emailError}
+              placeholder="e.g: 123ABC"
+              iconRight={
+                <SVG
+                  size={20}
+                  color={colors.orange1}
+                  fill={colors.orange2}
+                  name="heart"
+                />
+              }
+            />
+          </UI.Block>
+
+          <UI.Spacer large />
         </UI.Block>
       </UI.Layout>
 

@@ -175,6 +175,12 @@ const SVG: React.FC<SVGProps> = ({
     case 'calendar':
       Icon = require('./Calendar').default;
       break;
+    case 'double-circle':
+      Icon = require('./DoubleCircle').default;
+      break;
+    case 'heart':
+      Icon = require('./Heart').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

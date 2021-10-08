@@ -9,6 +9,7 @@ import Help from './Help';
 import Account from './Account';
 import Card from './Card';
 import Crypto from './Crypto';
+import {widthPercentageToDP as wd} from 'react-native-responsive-screen';
 
 interface AddMoneyScreenProps {
   navigation: any;
@@ -54,7 +55,9 @@ const AddMoneyScreen: React.FC<AddMoneyScreenProps> = ({navigation}) => {
         </UI.Clickable>
       </UI.Block>
 
-      <UI.Layout>
+      <UI.Block
+        backgroundColor={colors.background}
+        style={{paddingHorizontal: wd('4%')}}>
         <UI.Spacer />
 
         <UI.Block row center justify="space-between">
@@ -113,7 +116,9 @@ const AddMoneyScreen: React.FC<AddMoneyScreenProps> = ({navigation}) => {
             </LinearGradient>
           </UI.Clickable>
         </UI.Block>
+      </UI.Block>
 
+      <UI.Layout>
         {tab === 'account' && <Account />}
         {tab === 'card' && <Card />}
         {tab === 'crypto' && <Crypto />}

@@ -131,7 +131,7 @@ const MoreScreen: React.FC<MoreScreenProps> = ({navigation}) => {
         </UI.Block>
 
         <UI.Block>
-          <UI.Clickable>
+          <UI.Clickable onClick={() => navigation.navigate('TransactionPin')}>
             <UI.Block row justify="space-between" center>
               <UI.Block width="auto" row center>
                 <UI.Block
@@ -180,7 +180,7 @@ const MoreScreen: React.FC<MoreScreenProps> = ({navigation}) => {
 
           <UI.Spacer />
 
-          <UI.Clickable>
+          <UI.Clickable onClick={() => navigation.navigate('SavedCards')}>
             <UI.Block row justify="space-between" center>
               <UI.Block width="auto" row center>
                 <UI.Block
@@ -297,7 +297,7 @@ const MoreScreen: React.FC<MoreScreenProps> = ({navigation}) => {
         </UI.Block>
 
         <UI.Block>
-          <UI.Clickable>
+          <UI.Clickable onClick={() => navigation.navigate('ReferAndEarn')}>
             <UI.Block row justify="space-between" center>
               <UI.Block width="auto" row center>
                 <UI.Block

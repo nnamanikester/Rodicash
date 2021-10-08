@@ -9,6 +9,8 @@ import NotificationsScreen from '@/screens/Dashboard/NotificationsScreen';
 import PersonalInfoScreen from '@/screens/Dashboard/PersonalInfoScreen';
 import ResetPasswordScreen from '@/screens/Dashboard/ResetPasswordScreen';
 import TransactionReportScreen from '@/screens/Dashboard/TransactionReportScreen';
+import ReferAndEarnScreen from '@/screens/Dashboard/ReferAndEarnScreen';
+import TransactionPinScreen from '@/screens/Dashboard/TransactionPinScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +34,8 @@ const DashboardFlow: React.FC<DashboardFlowProps> = () => {
         name="TransactionReport"
         component={TransactionReportScreen}
       />
+      <Stack.Screen name="ReferAndEarn" component={ReferAndEarnScreen} />
+      <Stack.Screen name="TransactionPin" component={TransactionPinScreen} />
     </Stack.Navigator>
   );
 };

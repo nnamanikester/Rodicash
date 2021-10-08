@@ -10,6 +10,7 @@ interface CardProps {}
 
 const Card: React.FC<CardProps> = () => {
   const {colors} = useTheme();
+  const [amount, setAmount] = React.useState<string>('');
   const [name, setName] = React.useState<string>('');
   const [cardNumber, setCardNumber] = React.useState<string>('');
   const [expDate, setExpDate] = React.useState<string>('');
@@ -24,6 +25,22 @@ const Card: React.FC<CardProps> = () => {
         <UI.Text note color={colors.gray2}>
           Using debit card:
         </UI.Text>
+
+        <UI.Block>
+          <UI.Text body>Amount</UI.Text>
+          <UI.TextInput
+            value={amount}
+            onChangeText={setAmount}
+            keyboardType="number-pad"
+            iconRight={
+              <UI.Block>
+                <UI.Text color={colors.secondary}>&#8358;</UI.Text>
+              </UI.Block>
+            }
+          />
+        </UI.Block>
+
+        <UI.Spacer />
 
         <UI.Block>
           <UI.Text body>Name on Card</UI.Text>

@@ -8,16 +8,6 @@ export default StyleSheet.create({
   footer: {
     paddingHorizontal: wd('4%'),
   },
-  countrySelect: {
-    borderWidth: 1,
-    borderRadius: 5,
-    padding: 5,
-    left: -5,
-  },
-  picker: {
-    borderWidth: 1,
-    borderColor: 'red',
-  },
   calendarBox: {
     padding: 5,
     borderRadius: 5,

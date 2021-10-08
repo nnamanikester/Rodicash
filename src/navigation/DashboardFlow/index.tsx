@@ -7,6 +7,8 @@ import TransactionReceipt from '@/screens/Dashboard/CashoutScreen/TransactionRec
 import AddMoneyScreen from '@/screens/Dashboard/AddMoneyScreen';
 import NotificationsScreen from '@/screens/Dashboard/NotificationsScreen';
 import PersonalInfoScreen from '@/screens/Dashboard/PersonalInfoScreen';
+import ResetPasswordScreen from '@/screens/Dashboard/ResetPasswordScreen';
+import TransactionReportScreen from '@/screens/Dashboard/TransactionReportScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +27,11 @@ const DashboardFlow: React.FC<DashboardFlowProps> = () => {
       <Stack.Screen name="AddMoney" component={AddMoneyScreen} />
       <Stack.Screen name="Notifications" component={NotificationsScreen} />
       <Stack.Screen name="PersonalInfo" component={PersonalInfoScreen} />
+      <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
+      <Stack.Screen
+        name="TransactionReport"
+        component={TransactionReportScreen}
+      />
     </Stack.Navigator>
   );
 };

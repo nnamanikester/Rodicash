@@ -320,7 +320,7 @@ const MoreScreen: React.FC<MoreScreenProps> = ({navigation}) => {
 
           <UI.Spacer />
 
-          <UI.Clickable>
+          <UI.Clickable onClick={() => navigation.navigate('Help')}>
             <UI.Block row justify="space-between" center>
               <UI.Block width="auto" row center>
                 <UI.Block
@@ -343,7 +343,10 @@ const MoreScreen: React.FC<MoreScreenProps> = ({navigation}) => {
 
           <UI.Spacer />
 
-          <UI.Clickable>
+          <UI.Clickable
+            onClick={() =>
+              navigation.navigate('Article', {title: 'Terms & Conditions'})
+            }>
             <UI.Block row justify="space-between" center>
               <UI.Block width="auto" row center>
                 <UI.Block
@@ -366,7 +369,10 @@ const MoreScreen: React.FC<MoreScreenProps> = ({navigation}) => {
 
           <UI.Spacer />
 
-          <UI.Clickable>
+          <UI.Clickable
+            onClick={() =>
+              navigation.navigate('Article', {title: 'Privacy Policy'})
+            }>
             <UI.Block row justify="space-between" center>
               <UI.Block width="auto" row center>
                 <UI.Block

@@ -20,6 +20,8 @@ target 'Rodicash' do
 
   pod 'RNCPicker', :path => '../node_modules/@react-native-picker/picker'
 
+  pod 'react-native-location', :path => '../node_modules/react-native-location'
+
   target 'RodicashTests' do
     inherit! :complete
     # Pods for testing

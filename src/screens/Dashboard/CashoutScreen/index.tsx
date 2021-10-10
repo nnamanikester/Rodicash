@@ -1,11 +1,11 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
 import {formatMoney, formatMoneyWithoutSymbol, withdrawalCharge} from '@/utils';
 import WithdrawalKeypad from '@/components/WithdrawalKeypad';
 import ErrorMessage from '@/components/ErrorMessage';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface CashoutScreenProps {
   navigation: any;
@@ -36,7 +36,10 @@ const CashoutScreen: React.FC<CashoutScreenProps> = ({navigation}) => {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.background} barStyle="dark-content" />
+      <AppStatusBar
+        backgroundColor={colors.background}
+        barStyle="dark-content"
+      />
 
       {amountError.length > 0 && (
         <ErrorMessage onDismiss={clearError} message={amountError} />

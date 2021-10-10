@@ -1,5 +1,4 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
 import * as UI from '@/components/common';
 import {
   widthPercentageToDP as wd,
@@ -8,6 +7,7 @@ import {
 import SVG from '../SVG';
 import {useTheme} from '@/contexts/ThemeContext';
 import {SlideY} from '@/animations';
+import AppStatusBar from '../AppStatusBar';
 
 interface ErrorMessageProps {
   message: string;
@@ -49,7 +49,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({onDismiss, message}) => {
             elevation: 7,
           }}
           backgroundColor={colors.warning}>
-          <StatusBar
+          <AppStatusBar
             barStyle="light-content"
             backgroundColor={colors.warning}
           />

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatusBar, Image, SectionList} from 'react-native';
+import {Image, SectionList} from 'react-native';
 import BottomSheet from '@gorhom/bottom-sheet';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
@@ -8,6 +8,7 @@ import {formatMoney} from '@/utils';
 import LinearGradient from 'react-native-linear-gradient';
 import SVG from '@/components/SVG';
 import TransactionItem from '@/components/TransactionItem';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface HomeScreenProps {
   navigation: any;
@@ -41,7 +42,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.gray4} barStyle="dark-content" />
+      <AppStatusBar backgroundColor={colors.gray4} barStyle="dark-content" />
 
       <UI.Layout style={{backgroundColor: colors.gray4}}>
         <UI.Block>

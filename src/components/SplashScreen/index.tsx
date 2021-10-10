@@ -1,7 +1,8 @@
 import {useTheme} from '@/contexts/ThemeContext';
 import React from 'react';
-import {Image, StatusBar} from 'react-native';
+import {Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import AppStatusBar from '../AppStatusBar';
 import * as UI from '../common';
 
 interface SplashScreenProps {}
@@ -10,7 +11,7 @@ const SplashScreen: React.FC<SplashScreenProps> = () => {
   const {colors} = useTheme();
   return (
     <>
-      <StatusBar backgroundColor={colors.green1} />
+      <AppStatusBar backgroundColor={colors.green1} />
       <LinearGradient
         style={{flex: 1, width: '100%'}}
         colors={[colors.green1, colors.green2]}>

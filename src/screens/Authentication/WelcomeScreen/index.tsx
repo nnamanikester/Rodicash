@@ -2,10 +2,11 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {StatusBar, Keyboard} from 'react-native';
+import {Keyboard} from 'react-native';
 import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
 import {useAppDispatch} from '@/hooks';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface WelcomeScreenProps {
   navigation: any;
@@ -70,7 +71,10 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+      <AppStatusBar
+        barStyle="dark-content"
+        backgroundColor={colors.background}
+      />
 
       {error.length > 0 && (
         <ErrorMessage onDismiss={clearError} message={error} />

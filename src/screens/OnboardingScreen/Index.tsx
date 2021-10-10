@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Image, StatusBar} from 'react-native';
+import {Image} from 'react-native';
 import Swiper from 'react-native-swiper';
 import AnimatedGradient from '@/components/AnimatedGradient';
 import {ThemeContext} from '@/contexts/ThemeContext';
@@ -12,6 +12,7 @@ import {
 } from 'react-native-responsive-screen';
 import SVG from '@/components/SVG';
 import {Reveal} from '@/animations';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface OnboardingScreenProps {
   navigation: any;
@@ -72,7 +73,7 @@ class OnboardingScreen extends React.Component<
 
     return (
       <>
-        <StatusBar
+        <AppStatusBar
           backgroundColor={
             screenType === 'even' ? colors.orange1 : colors.green1
           }

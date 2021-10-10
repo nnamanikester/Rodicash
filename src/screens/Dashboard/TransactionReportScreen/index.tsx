@@ -2,9 +2,10 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {Platform, StatusBar} from 'react-native';
+import {Platform} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import SVG from '@/components/SVG';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface TransactionReportScreenProps {
   navigation: any;
@@ -40,7 +41,10 @@ const TransactionReportScreen: React.FC<TransactionReportScreenProps> = ({
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+      <AppStatusBar
+        barStyle="dark-content"
+        backgroundColor={colors.background}
+      />
 
       {showStartDatePicker && (
         <DateTimePicker

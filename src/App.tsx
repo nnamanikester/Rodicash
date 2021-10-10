@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
 import {listenOrientationChange as lor} from 'react-native-responsive-screen';
 import AnimatedSplash from '@/components/AnimatedSplash';
@@ -43,13 +43,11 @@ class App extends React.Component<AppProps, AppState> {
         backgroundColor={colors.primary}
         customComponent={<SplashScreen />}>
         <SafeAreaProvider>
-          <SafeAreaView style={{flex: 1}}>
-            <Provider store={store}>
-              <ThemeProvider>
-                <NavigationFlow />
-              </ThemeProvider>
-            </Provider>
-          </SafeAreaView>
+          <Provider store={store}>
+            <ThemeProvider>
+              <NavigationFlow />
+            </ThemeProvider>
+          </Provider>
         </SafeAreaProvider>
       </AnimatedSplash>
     );

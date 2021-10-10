@@ -1,23 +1,13 @@
 import React from 'react';
 import * as UI from '@/components/common';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import RNLocation from 'react-native-location';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
 import LinearGradient from 'react-native-linear-gradient';
-import {Alert, Image, StatusBar} from 'react-native';
+import {Image} from 'react-native';
 import SVG from '@/components/SVG';
 import getDirections from 'react-native-google-maps-directions';
-
-RNLocation.configure({
-  distanceFilter: 5.0,
-  desiredAccuracy: {
-    android: 'balancedPowerAccuracy',
-    ios: 'best',
-  },
-  androidProvider: 'auto',
-  interval: 3000,
-});
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface MapScreenProps {}
 
@@ -79,68 +69,6 @@ const MapScreen: React.FC<MapScreenProps> = () => {
     [],
   );
 
-  React.useEffect(() => {
-    RNLocation.checkPermission({
-      ios: 'whenInUse', // or 'always'
-      android: {
-        detail: 'fine', // or 'fine'
-      },
-    })
-      .then((hasPermission: boolean) => {
-        if (hasPermission) {
-          getLocation();
-        } else {
-          Alert.alert(
-            'Location Permission',
-            'We need to know your current location. We require access to your location to help you find merchants around you easily.',
-            [
-              {
-                text: 'CONTINUE',
-                onPress: requestPermission,
-              },
-              {
-                text: 'CANCEL',
-                style: 'cancel',
-              },
-            ],
-          );
-        }
-      })
-      .catch(e => {
-        console.log('Rodi DEBUG: ', 'checkPermission(e) ', e);
-      });
-  }, []);
-
-  const requestPermission = async (): Promise<void> => {
-    try {
-      await RNLocation.requestPermission({
-        ios: 'whenInUse', // or 'always'
-        android: {
-          detail: 'fine', // or 'fine'
-          rationale: {
-            title: 'We need to access your location',
-            message: 'We use your location to help you find Merchants easily',
-            buttonPositive: 'OK',
-            buttonNegative: 'Cancel',
-          },
-        },
-      });
-    } catch (e) {
-      console.log('RODI DEBUG: ', 'requestPermision(err) ', e);
-    }
-  };
-
-  const getLocation = async (): Promise<void> => {
-    try {
-      const res: any = await RNLocation.getLatestLocation({
-        timeout: 60000,
-      });
-      setCoords({latitude: res.latitude, longitude: res.longitude});
-    } catch (e) {
-      console.log('RODI DEBUG: ', 'getLocation(err) ', e);
-    }
-  };
-
   const onLocationChange = (event: any) => {
     setCoords(event.nativeEvent.coordinate);
   };
@@ -172,7 +100,10 @@ const MapScreen: React.FC<MapScreenProps> = () => {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.background} barStyle="dark-content" />
+      <AppStatusBar
+        backgroundColor={colors.background}
+        barStyle="dark-content"
+      />
 
       <UI.Block flex backgroundColor={colors.background}>
         <MapView

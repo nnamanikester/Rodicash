@@ -1,12 +1,13 @@
 import React from 'react';
 import * as UI from '@/components/common';
-import {Image, StatusBar, Switch} from 'react-native';
+import {Image, Switch} from 'react-native';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
 import SVG from '@/components/SVG';
 import LinearGradient from 'react-native-linear-gradient';
 import PercentageCircle from '@/components/PercentageCircle';
 import {useAppDispatch} from '@/hooks';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface MoreScreenProps {
   navigation: any;
@@ -32,7 +33,11 @@ const MoreScreen: React.FC<MoreScreenProps> = ({navigation}) => {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.background} barStyle="dark-content" />
+      <AppStatusBar
+        backgroundColor={colors.background}
+        barStyle="dark-content"
+      />
+
       <UI.Layout>
         <UI.Block>
           <UI.Text h1>More</UI.Text>

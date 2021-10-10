@@ -1,10 +1,11 @@
 import {useTheme} from '@/contexts/ThemeContext';
 import * as React from 'react';
-import {Modal, StatusBar} from 'react-native';
+import {Modal} from 'react-native';
 import {
   heightPercentageToDP as hd,
   widthPercentageToDP as wd,
 } from 'react-native-responsive-screen';
+import AppStatusBar from '../AppStatusBar';
 import * as UI from '../common';
 import SVG from '../SVG';
 
@@ -19,7 +20,10 @@ const RegistrationSuccessful: React.FC<RegistrationSuccessfulProps> = ({
 
   return (
     <>
-      <StatusBar backgroundColor={colors.background} barStyle="dark-content" />
+      <AppStatusBar
+        backgroundColor={colors.background}
+        barStyle="dark-content"
+      />
 
       <Modal animationType="fade">
         <SVG name="ribons" width="100%" height={hd('25%')} />

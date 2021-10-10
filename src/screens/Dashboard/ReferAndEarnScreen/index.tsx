@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {StatusBar} from 'react-native';
 import SVG from '@/components/SVG';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface ReferAndEarnScreenProps {
   navigation: any;
@@ -16,7 +16,10 @@ const ReferAndEarnScreen: React.FC<ReferAndEarnScreenProps> = ({
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+      <AppStatusBar
+        barStyle="dark-content"
+        backgroundColor={colors.background}
+      />
 
       <UI.Block
         center

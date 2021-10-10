@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {StatusBar} from 'react-native';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface ArticleScreenProps {
   navigation: any;
@@ -15,7 +15,10 @@ const ArticleScreen: React.FC<ArticleScreenProps> = ({navigation, route}) => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+      <AppStatusBar
+        barStyle="dark-content"
+        backgroundColor={colors.background}
+      />
 
       <UI.Block
         center

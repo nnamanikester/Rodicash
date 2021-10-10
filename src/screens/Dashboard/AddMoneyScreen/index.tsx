@@ -2,7 +2,6 @@ import React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {StatusBar} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import ActionSheet from 'react-native-actions-sheet';
 import Help from './Help';
@@ -10,6 +9,7 @@ import Account from './Account';
 import Card from './Card';
 import Crypto from './Crypto';
 import {widthPercentageToDP as wd} from 'react-native-responsive-screen';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface AddMoneyScreenProps {
   navigation: any;
@@ -40,7 +40,10 @@ const AddMoneyScreen: React.FC<AddMoneyScreenProps> = ({navigation}) => {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.background} barStyle="dark-content" />
+      <AppStatusBar
+        backgroundColor={colors.background}
+        barStyle="dark-content"
+      />
       <UI.Block
         center
         style={styles.header}

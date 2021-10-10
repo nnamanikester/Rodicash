@@ -2,12 +2,13 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {Platform, StatusBar} from 'react-native';
+import {Platform} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {getFilteredCountries, getStates} from 'country-state-picker';
 import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface PersonalInfoScreenProps {
   navigation: any;
@@ -88,7 +89,10 @@ const PersonalInfoScreen: React.FC<PersonalInfoScreenProps> = ({
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+      <AppStatusBar
+        barStyle="dark-content"
+        backgroundColor={colors.background}
+      />
 
       {error.length > 0 && (
         <ErrorMessage onDismiss={clearError} message={error} />

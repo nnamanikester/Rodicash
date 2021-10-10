@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, ScrollView, StatusBar} from 'react-native';
+import {Image, ScrollView} from 'react-native';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
@@ -9,6 +9,7 @@ import SVG from '@/components/SVG';
 import ContactsModal from './ContactsModal';
 import EnterPin from '@/components/EnterPin';
 import TransactionSuccess from './TransactionSuccess';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface TransactionScreenProps {
   navigation: any;
@@ -42,7 +43,10 @@ const TransactionScreen: React.FC<TransactionScreenProps> = ({navigation}) => {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.background} barStyle="dark-content" />
+      <AppStatusBar
+        backgroundColor={colors.background}
+        barStyle="dark-content"
+      />
 
       {showSucces && (
         <TransactionSuccess

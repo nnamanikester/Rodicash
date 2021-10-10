@@ -4,7 +4,7 @@ import SVG from '@/components/SVG';
 import {useTheme} from '@/contexts/ThemeContext';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
-import {Image, StatusBar} from 'react-native';
+import {Image} from 'react-native';
 import {
   heightPercentageToDP as hd,
   widthPercentageToDP as wd,
@@ -12,6 +12,7 @@ import {
 import SwipeButton from 'rn-swipe-button';
 import {formatMoney, formatMoneyWithoutSymbol} from '@/utils';
 import EnterPin from '@/components/EnterPin';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface ConfirmCashoutProps {
   navigation: any;
@@ -33,7 +34,8 @@ const ConfirmCashout: React.FC<ConfirmCashoutProps> = ({navigation}) => {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+      <AppStatusBar backgroundColor={colors.primary} barStyle="light-content" />
+
       <LinearGradient
         style={styles.background}
         colors={[colors.primary, colors.green2]}>

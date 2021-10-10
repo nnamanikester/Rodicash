@@ -4,7 +4,7 @@ import SVG from '@/components/SVG';
 import {useTheme} from '@/contexts/ThemeContext';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
-import {Image, StatusBar} from 'react-native';
+import {Image} from 'react-native';
 import {
   heightPercentageToDP as hd,
   widthPercentageToDP as wd,
@@ -12,6 +12,7 @@ import {
 import {formatMoney} from '@/utils';
 import ActionSheet from 'react-native-actions-sheet';
 import RateMerchant from '../RateMerchant';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface TransactionReceiptProps {
   navigation: any;
@@ -33,7 +34,8 @@ const TransactionReceipt: React.FC<TransactionReceiptProps> = ({
 
   return (
     <>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+      <AppStatusBar backgroundColor={colors.primary} barStyle="light-content" />
+
       <LinearGradient
         style={styles.background}
         colors={[colors.primary, colors.green2]}>

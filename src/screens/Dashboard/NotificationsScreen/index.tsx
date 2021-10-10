@@ -1,11 +1,12 @@
 import React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
-import {SectionList, StatusBar} from 'react-native';
+import {SectionList} from 'react-native';
 import styles from './styles';
 import SVG from '@/components/SVG';
 import LinearGradient from 'react-native-linear-gradient';
 import TransactionNotification from '@/components/TransactionNotification';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface NotificationsScreenProps {
   navigation: any;
@@ -104,7 +105,10 @@ const NotificationsScreen: React.FC<NotificationsScreenProps> = ({
 
   return (
     <>
-      <StatusBar backgroundColor={colors.background} barStyle="dark-content" />
+      <AppStatusBar
+        backgroundColor={colors.background}
+        barStyle="dark-content"
+      />
 
       <UI.Block
         center

@@ -1,11 +1,12 @@
 import * as React from 'react';
-import {FlatList, StatusBar} from 'react-native';
+import {FlatList} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {widthPercentageToDP as wd} from 'react-native-responsive-screen';
 import {useTheme} from '@/contexts/ThemeContext';
 import * as UI from '@/components/common';
 import styles from './styles';
 import SVG from '@/components/SVG';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface SavedCardsScreenProps {
   navigation: any;
@@ -35,7 +36,10 @@ const SavedCardsScreen: React.FC<SavedCardsScreenProps> = ({navigation}) => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+      <AppStatusBar
+        barStyle="dark-content"
+        backgroundColor={colors.background}
+      />
 
       <UI.Block
         center

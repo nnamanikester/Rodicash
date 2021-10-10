@@ -1,6 +1,6 @@
 import {useTheme} from '@/contexts/ThemeContext';
 import * as React from 'react';
-import {Image, Modal, StatusBar} from 'react-native';
+import {Image, Modal} from 'react-native';
 import {
   heightPercentageToDP as hd,
   widthPercentageToDP as wd,
@@ -8,6 +8,7 @@ import {
 import * as UI from '@/components/common';
 import SVG from '@/components/SVG';
 import styles from './styles';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface TransactionSuccessProps {
   onBackToHome: () => void;
@@ -28,7 +29,7 @@ const TransactionSuccess: React.FC<TransactionSuccessProps> = ({
   return (
     <>
       <Modal animationType="fade">
-        <StatusBar
+        <AppStatusBar
           backgroundColor={colors.background}
           barStyle="dark-content"
         />

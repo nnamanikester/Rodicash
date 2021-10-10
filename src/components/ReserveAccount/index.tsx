@@ -2,8 +2,9 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {StatusBar, Modal} from 'react-native';
+import {Modal} from 'react-native';
 import ErrorMessage from '@/components/ErrorMessage';
+import AppStatusBar from '../AppStatusBar';
 
 interface ReserveAccountProps {
   show: boolean;
@@ -56,7 +57,10 @@ const ReserveAccount: React.FC<ReserveAccountProps> = ({
 
   return (
     <Modal visible={show}>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+      <AppStatusBar
+        barStyle="dark-content"
+        backgroundColor={colors.background}
+      />
 
       {error.length > 0 && (
         <ErrorMessage onDismiss={clearError} message={error} />

@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {StatusBar} from 'react-native';
 import ErrorMessage from '@/components/ErrorMessage';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface TransactionPinScreenProps {
   navigation: any;
@@ -61,7 +61,10 @@ const TransactionPinScreen: React.FC<TransactionPinScreenProps> = ({
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+      <AppStatusBar
+        barStyle="dark-content"
+        backgroundColor={colors.background}
+      />
 
       {error.length > 0 && (
         <ErrorMessage onDismiss={clearError} message={error} />

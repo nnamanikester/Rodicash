@@ -8,35 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* RodicashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RodicashTests.m */; };
+		016561F711C84075ACAEB438 /* Gordita-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26091BE62E43436B835CE517 /* Gordita-Medium.otf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		27ECA23D32B65885F8DE4A40 /* libPods-Rodicash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E07B4A25F0971D3647CC62A8 /* libPods-Rodicash.a */; };
+		33EC75113E6E332C72F4DC50 /* libPods-Rodicash-RodicashTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7873FC4CB055F45B29D44CFE /* libPods-Rodicash-RodicashTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A81E53C58BE847A798A92FC9 /* Gordita-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 320CAF67BE5C447BAC9B6F47 /* Gordita-Black.otf */; };
-		91D6DEA4EAF7497CBDC737AE /* Gordita-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C659A6058D874CA6B993611E /* Gordita-Bold.otf */; };
-		C17C00FC2927470BB5AC91FC /* Gordita-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7EF0E390F4464258A5B08FB8 /* Gordita-Light.otf */; };
-		016561F711C84075ACAEB438 /* Gordita-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26091BE62E43436B835CE517 /* Gordita-Medium.otf */; };
 		843B9CD88846460AA9FD2A13 /* GorditaRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCDB9F63644F1B2B60F24 /* GorditaRegular.otf */; };
-		F5F42610543547BE8669624E /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1901A0E857B6423AA8E809D0 /* AntDesign.ttf */; };
-		A0904844CEE94C8EAB60A97A /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B98209AF81FB4B86AD0E7E71 /* Entypo.ttf */; };
-		976D217DDA9C4A02827E1A1F /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC398D6A5EA44C91B07A1CC8 /* EvilIcons.ttf */; };
-		E5B9A5AB393A445BA7EA81F1 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 823F7FC4320D4EA2BB97F61D /* Feather.ttf */; };
-		EBFA4ECD11864BC89D9DECC2 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1FB0FE05B9745AAA425516E /* FontAwesome.ttf */; };
-		6CC4F3C9EB8143ABBD7F1CC9 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E35FB92043443D3A3B47823 /* FontAwesome5_Brands.ttf */; };
-		F208A14AFC184FF180C6F2F2 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B332CC7BC87C4000B5C83EDA /* FontAwesome5_Regular.ttf */; };
-		A7E0D2DB62F74E0CA98691D5 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC7AA95AEC844F149623D57A /* FontAwesome5_Solid.ttf */; };
-		08564E8B223C43F7A404D0D5 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAD950D95A9F47C385490B62 /* Fontisto.ttf */; };
-		0868F0806B8A4E139CCAAF4F /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9A67BF09073456DB669DD84 /* Foundation.ttf */; };
-		16BAD2BDCB764E3489944961 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFAD5E829FB5413D95393B63 /* Ionicons.ttf */; };
-		1D404799C8A6404380023616 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16D3F1D45313426FACCED8DA /* MaterialCommunityIcons.ttf */; };
-		F0F8D565B37E4F46A2F93B11 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5600F04280394A59BF135FA5 /* MaterialIcons.ttf */; };
-		78B6E75AF1774479853E222D /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70A79C78991344BFB8E5F7A3 /* Octicons.ttf */; };
-		CD3A307160D342598BADC23F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B3202728901450E8DAF984B /* SimpleLineIcons.ttf */; };
-		0C7DE03935A44E74B77581D3 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3C353B523FD4A879662D14F /* Zocial.ttf */; };
-		42F5488D361F4E3788FE13F6 /* atm-machine-illustration.png in Resources */ = {isa = PBXBuildFile; fileRef = B368E260035848879E445FA5 /* atm-machine-illustration.png */; };
-		5FA5BF34EA4644BEBC8F42B8 /* card-bundle-illustration.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8B5A0BF8394B13A86E9ED5 /* card-bundle-illustration.png */; };
-		C3CD70519EDE47F8BEB14C3D /* pointing-phone-illustration.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F957FA77AF4455B7D011D7 /* pointing-phone-illustration.png */; };
-		5CD6D6E2F29B44D2B2DAC2AB /* pressing-one-illustration.png in Resources */ = {isa = PBXBuildFile; fileRef = 101E9FDA800647EAB2188732 /* pressing-one-illustration.png */; };
+		91D6DEA4EAF7497CBDC737AE /* Gordita-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C659A6058D874CA6B993611E /* Gordita-Bold.otf */; };
+		99D7F6B42712FA4600219D5B /* icon-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 99D7F6B32712FA4600219D5B /* icon-white.png */; };
+		A81E53C58BE847A798A92FC9 /* Gordita-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 320CAF67BE5C447BAC9B6F47 /* Gordita-Black.otf */; };
+		C17C00FC2927470BB5AC91FC /* Gordita-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7EF0E390F4464258A5B08FB8 /* Gordita-Light.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,33 +42,36 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Rodicash/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Rodicash/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Rodicash/main.m; sourceTree = "<group>"; };
+		143625A463BA3261FBBE197E /* Pods-Rodicash-RodicashTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rodicash-RodicashTests.debug.xcconfig"; path = "Target Support Files/Pods-Rodicash-RodicashTests/Pods-Rodicash-RodicashTests.debug.xcconfig"; sourceTree = "<group>"; };
+		16D3F1D45313426FACCED8DA /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		1901A0E857B6423AA8E809D0 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		1E35FB92043443D3A3B47823 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		26091BE62E43436B835CE517 /* Gordita-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gordita-Medium.otf"; path = "../assets/fonts/Gordita-Medium.otf"; sourceTree = "<group>"; };
+		320CAF67BE5C447BAC9B6F47 /* Gordita-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gordita-Black.otf"; path = "../assets/fonts/Gordita-Black.otf"; sourceTree = "<group>"; };
+		431E99B705DE2C7E1D5AA929 /* Pods-Rodicash-RodicashTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rodicash-RodicashTests.release.xcconfig"; path = "Target Support Files/Pods-Rodicash-RodicashTests/Pods-Rodicash-RodicashTests.release.xcconfig"; sourceTree = "<group>"; };
+		5600F04280394A59BF135FA5 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		5B3202728901450E8DAF984B /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		6FAF10E4FA590392D299DD5A /* Pods-Rodicash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rodicash.debug.xcconfig"; path = "Target Support Files/Pods-Rodicash/Pods-Rodicash.debug.xcconfig"; sourceTree = "<group>"; };
+		70A79C78991344BFB8E5F7A3 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		7873FC4CB055F45B29D44CFE /* libPods-Rodicash-RodicashTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Rodicash-RodicashTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EF0E390F4464258A5B08FB8 /* Gordita-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gordita-Light.otf"; path = "../assets/fonts/Gordita-Light.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Rodicash/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		823F7FC4320D4EA2BB97F61D /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		99D7F6B32712FA4600219D5B /* icon-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-white.png"; path = "../../../../Documents/icon-white.png"; sourceTree = "<group>"; };
+		AFAD5E829FB5413D95393B63 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		B332CC7BC87C4000B5C83EDA /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		B98209AF81FB4B86AD0E7E71 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		BAD950D95A9F47C385490B62 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		C659A6058D874CA6B993611E /* Gordita-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gordita-Bold.otf"; path = "../assets/fonts/Gordita-Bold.otf"; sourceTree = "<group>"; };
+		CB1FCDB9F63644F1B2B60F24 /* GorditaRegular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = GorditaRegular.otf; path = ../assets/fonts/GorditaRegular.otf; sourceTree = "<group>"; };
+		CC398D6A5EA44C91B07A1CC8 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		DC7AA95AEC844F149623D57A /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		E07B4A25F0971D3647CC62A8 /* libPods-Rodicash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Rodicash.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1FB0FE05B9745AAA425516E /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		320CAF67BE5C447BAC9B6F47 /* Gordita-Black.otf */ = {isa = PBXFileReference; name = "Gordita-Black.otf"; path = "../assets/fonts/Gordita-Black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C659A6058D874CA6B993611E /* Gordita-Bold.otf */ = {isa = PBXFileReference; name = "Gordita-Bold.otf"; path = "../assets/fonts/Gordita-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7EF0E390F4464258A5B08FB8 /* Gordita-Light.otf */ = {isa = PBXFileReference; name = "Gordita-Light.otf"; path = "../assets/fonts/Gordita-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		26091BE62E43436B835CE517 /* Gordita-Medium.otf */ = {isa = PBXFileReference; name = "Gordita-Medium.otf"; path = "../assets/fonts/Gordita-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CB1FCDB9F63644F1B2B60F24 /* GorditaRegular.otf */ = {isa = PBXFileReference; name = "GorditaRegular.otf"; path = "../assets/fonts/GorditaRegular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1901A0E857B6423AA8E809D0 /* AntDesign.ttf */ = {isa = PBXFileReference; name = "AntDesign.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B98209AF81FB4B86AD0E7E71 /* Entypo.ttf */ = {isa = PBXFileReference; name = "Entypo.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CC398D6A5EA44C91B07A1CC8 /* EvilIcons.ttf */ = {isa = PBXFileReference; name = "EvilIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		823F7FC4320D4EA2BB97F61D /* Feather.ttf */ = {isa = PBXFileReference; name = "Feather.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E1FB0FE05B9745AAA425516E /* FontAwesome.ttf */ = {isa = PBXFileReference; name = "FontAwesome.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1E35FB92043443D3A3B47823 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Brands.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B332CC7BC87C4000B5C83EDA /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Regular.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DC7AA95AEC844F149623D57A /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Solid.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		BAD950D95A9F47C385490B62 /* Fontisto.ttf */ = {isa = PBXFileReference; name = "Fontisto.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F9A67BF09073456DB669DD84 /* Foundation.ttf */ = {isa = PBXFileReference; name = "Foundation.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AFAD5E829FB5413D95393B63 /* Ionicons.ttf */ = {isa = PBXFileReference; name = "Ionicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		16D3F1D45313426FACCED8DA /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; name = "MaterialCommunityIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		5600F04280394A59BF135FA5 /* MaterialIcons.ttf */ = {isa = PBXFileReference; name = "MaterialIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		70A79C78991344BFB8E5F7A3 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		5B3202728901450E8DAF984B /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F3C353B523FD4A879662D14F /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B368E260035848879E445FA5 /* atm-machine-illustration.png */ = {isa = PBXFileReference; name = "atm-machine-illustration.png"; path = "../assets/images/atm-machine-illustration.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DE8B5A0BF8394B13A86E9ED5 /* card-bundle-illustration.png */ = {isa = PBXFileReference; name = "card-bundle-illustration.png"; path = "../assets/images/card-bundle-illustration.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F0F957FA77AF4455B7D011D7 /* pointing-phone-illustration.png */ = {isa = PBXFileReference; name = "pointing-phone-illustration.png"; path = "../assets/images/pointing-phone-illustration.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		101E9FDA800647EAB2188732 /* pressing-one-illustration.png */ = {isa = PBXFileReference; name = "pressing-one-illustration.png"; path = "../assets/images/pressing-one-illustration.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F255A7604D97625B1AEFD0C0 /* Pods-Rodicash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rodicash.release.xcconfig"; path = "Target Support Files/Pods-Rodicash/Pods-Rodicash.release.xcconfig"; sourceTree = "<group>"; };
+		F3C353B523FD4A879662D14F /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		F9A67BF09073456DB669DD84 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33EC75113E6E332C72F4DC50 /* libPods-Rodicash-RodicashTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27ECA23D32B65885F8DE4A40 /* libPods-Rodicash.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +118,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				99D7F6B32712FA4600219D5B /* icon-white.png */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -140,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				E07B4A25F0971D3647CC62A8 /* libPods-Rodicash.a */,
+				7873FC4CB055F45B29D44CFE /* libPods-Rodicash-RodicashTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,6 +151,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				C101CADDF59A4ACB91513881 /* Resources */,
+				A83391440928C40E252D5942 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -175,8 +167,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A83391440928C40E252D5942 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6FAF10E4FA590392D299DD5A /* Pods-Rodicash.debug.xcconfig */,
+				F255A7604D97625B1AEFD0C0 /* Pods-Rodicash.release.xcconfig */,
+				143625A463BA3261FBBE197E /* Pods-Rodicash-RodicashTests.debug.xcconfig */,
+				431E99B705DE2C7E1D5AA929 /* Pods-Rodicash-RodicashTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C101CADDF59A4ACB91513881 /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				320CAF67BE5C447BAC9B6F47 /* Gordita-Black.otf */,
 				C659A6058D874CA6B993611E /* Gordita-Bold.otf */,
@@ -199,14 +202,9 @@
 				70A79C78991344BFB8E5F7A3 /* Octicons.ttf */,
 				5B3202728901450E8DAF984B /* SimpleLineIcons.ttf */,
 				F3C353B523FD4A879662D14F /* Zocial.ttf */,
-				B368E260035848879E445FA5 /* atm-machine-illustration.png */,
-				DE8B5A0BF8394B13A86E9ED5 /* card-bundle-illustration.png */,
-				F0F957FA77AF4455B7D011D7 /* pointing-phone-illustration.png */,
-				101E9FDA800647EAB2188732 /* pressing-one-illustration.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -215,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "RodicashTests" */;
 			buildPhases = (
+				17486AE517D2E62BC0BE63B2 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
+				2015C98E5B57E83AC965C55E /* [CP] Embed Pods Frameworks */,
+				5F57357989C85AF4D9AA73F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,11 +234,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Rodicash" */;
 			buildPhases = (
+				9A0BA491512E0F984BDC6D6A /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				D337881D53CEF7783A77D38B /* [CP] Embed Pods Frameworks */,
+				90C727C5E070EEF77933577A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -296,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99D7F6B42712FA4600219D5B /* icon-white.png in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				A81E53C58BE847A798A92FC9 /* Gordita-Black.otf in Resources */,
@@ -303,26 +308,6 @@
 				C17C00FC2927470BB5AC91FC /* Gordita-Light.otf in Resources */,
 				016561F711C84075ACAEB438 /* Gordita-Medium.otf in Resources */,
 				843B9CD88846460AA9FD2A13 /* GorditaRegular.otf in Resources */,
-				F5F42610543547BE8669624E /* AntDesign.ttf in Resources */,
-				A0904844CEE94C8EAB60A97A /* Entypo.ttf in Resources */,
-				976D217DDA9C4A02827E1A1F /* EvilIcons.ttf in Resources */,
-				E5B9A5AB393A445BA7EA81F1 /* Feather.ttf in Resources */,
-				EBFA4ECD11864BC89D9DECC2 /* FontAwesome.ttf in Resources */,
-				6CC4F3C9EB8143ABBD7F1CC9 /* FontAwesome5_Brands.ttf in Resources */,
-				F208A14AFC184FF180C6F2F2 /* FontAwesome5_Regular.ttf in Resources */,
-				A7E0D2DB62F74E0CA98691D5 /* FontAwesome5_Solid.ttf in Resources */,
-				08564E8B223C43F7A404D0D5 /* Fontisto.ttf in Resources */,
-				0868F0806B8A4E139CCAAF4F /* Foundation.ttf in Resources */,
-				16BAD2BDCB764E3489944961 /* Ionicons.ttf in Resources */,
-				1D404799C8A6404380023616 /* MaterialCommunityIcons.ttf in Resources */,
-				F0F8D565B37E4F46A2F93B11 /* MaterialIcons.ttf in Resources */,
-				78B6E75AF1774479853E222D /* Octicons.ttf in Resources */,
-				CD3A307160D342598BADC23F /* SimpleLineIcons.ttf in Resources */,
-				0C7DE03935A44E74B77581D3 /* Zocial.ttf in Resources */,
-				42F5488D361F4E3788FE13F6 /* atm-machine-illustration.png in Resources */,
-				5FA5BF34EA4644BEBC8F42B8 /* card-bundle-illustration.png in Resources */,
-				C3CD70519EDE47F8BEB14C3D /* pointing-phone-illustration.png in Resources */,
-				5CD6D6E2F29B44D2B2DAC2AB /* pressing-one-illustration.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +327,118 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		17486AE517D2E62BC0BE63B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rodicash-RodicashTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2015C98E5B57E83AC965C55E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rodicash-RodicashTests/Pods-Rodicash-RodicashTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rodicash-RodicashTests/Pods-Rodicash-RodicashTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rodicash-RodicashTests/Pods-Rodicash-RodicashTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F57357989C85AF4D9AA73F1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rodicash-RodicashTests/Pods-Rodicash-RodicashTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rodicash-RodicashTests/Pods-Rodicash-RodicashTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rodicash-RodicashTests/Pods-Rodicash-RodicashTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90C727C5E070EEF77933577A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rodicash/Pods-Rodicash-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rodicash/Pods-Rodicash-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rodicash/Pods-Rodicash-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A0BA491512E0F984BDC6D6A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rodicash-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D337881D53CEF7783A77D38B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rodicash/Pods-Rodicash-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rodicash/Pods-Rodicash-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rodicash/Pods-Rodicash-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -395,6 +492,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 143625A463BA3261FBBE197E /* Pods-Rodicash-RodicashTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -421,6 +519,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 431E99B705DE2C7E1D5AA929 /* Pods-Rodicash-RodicashTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -444,6 +543,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FAF10E4FA590392D299DD5A /* Pods-Rodicash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -459,7 +559,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.destreetboard.Rodicash;
 				PRODUCT_NAME = Rodicash;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -469,6 +569,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F255A7604D97625B1AEFD0C0 /* Pods-Rodicash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -483,7 +584,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.destreetboard.Rodicash;
 				PRODUCT_NAME = Rodicash;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -523,6 +624,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -587,6 +689,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

@@ -5,7 +5,6 @@ import {
   StyleSheet,
   RefreshControl,
   View,
-  SafeAreaView,
   ViewProps,
 } from 'react-native';
 import {widthPercentageToDP as wd} from 'react-native-responsive-screen';
@@ -54,12 +53,12 @@ export const Layout: React.FC<LayoutProps> = ({
   return (
     <>
       {noScroll ? (
-        <SafeAreaView style={{flex: 1}}>
+        <View style={{flex: 1}}>
           <View style={[styles.container, style]}>{children}</View>
-        </SafeAreaView>
+        </View>
       ) : (
         <>
-          <SafeAreaView style={{flex: 1}}>
+          <View style={{flex: 1}}>
             <ScrollView
               refreshControl={
                 <RefreshControl
@@ -76,7 +75,7 @@ export const Layout: React.FC<LayoutProps> = ({
               style={[styles.container, style]}>
               {children}
             </ScrollView>
-          </SafeAreaView>
+          </View>
         </>
       )}
     </>

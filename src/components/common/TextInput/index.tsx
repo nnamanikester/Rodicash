@@ -85,7 +85,7 @@ export const TextInput: React.FC<TextInputProps> = props => {
       height: hd('6.5%'),
       color: colors.text,
       fontSize: hd('2%'),
-      fontFamily: 'Grodita-Regular',
+      fontFamily: 'Gordita-Regular',
       flex: 1,
       backgroundColor: colors.gray4,
       paddingLeft: 20,

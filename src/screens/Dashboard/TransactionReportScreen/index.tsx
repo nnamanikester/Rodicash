@@ -7,6 +7,8 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import SVG from '@/components/SVG';
 import AppStatusBar from '@/components/AppStatusBar';
 
+const isIOS = Platform.OS === 'ios';
+
 interface TransactionReportScreenProps {
   navigation: any;
 }
@@ -25,7 +27,7 @@ const TransactionReportScreen: React.FC<TransactionReportScreenProps> = ({
 
   const onChangeStartDate = (event: Event, selectedDate?: Date) => {
     const currentDate = selectedDate || startDate;
-    setShowStartDatePicker(Platform.OS === 'ios');
+    setShowStartDatePicker(false);
     setStartDate(currentDate);
   };
 
@@ -45,24 +47,6 @@ const TransactionReportScreen: React.FC<TransactionReportScreenProps> = ({
         barStyle="dark-content"
         backgroundColor={colors.background}
       />
-
-      {showStartDatePicker && (
-        <DateTimePicker
-          value={startDate}
-          mode="date"
-          display="default"
-          onChange={onChangeStartDate}
-        />
-      )}
-
-      {showEndDatePicker && (
-        <DateTimePicker
-          value={endDate}
-          mode="date"
-          display="default"
-          onChange={onChangeEndDate}
-        />
-      )}
 
       <UI.Block
         center
@@ -85,6 +69,15 @@ const TransactionReportScreen: React.FC<TransactionReportScreenProps> = ({
         <UI.Block>
           <UI.Block>
             <UI.Text body>Start Date</UI.Text>
+
+            {showStartDatePicker && (
+              <DateTimePicker
+                value={startDate}
+                mode="date"
+                display={isIOS ? 'inline' : 'calendar'}
+                onChange={onChangeStartDate}
+              />
+            )}
             <UI.TextInput
               value={startDate.toLocaleDateString()}
               onFocus={() => setShowStartDatePicker(true)}
@@ -105,6 +98,14 @@ const TransactionReportScreen: React.FC<TransactionReportScreenProps> = ({
 
           <UI.Block>
             <UI.Text body>End Date</UI.Text>
+            {showEndDatePicker && (
+              <DateTimePicker
+                value={endDate}
+                mode="date"
+                display={isIOS ? 'inline' : 'calendar'}
+                onChange={onChangeEndDate}
+              />
+            )}
             <UI.TextInput
               value={endDate.toLocaleDateString()}
               onFocus={() => setShowEndDatePicker(true)}

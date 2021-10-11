@@ -24,8 +24,8 @@ function Phone(props: SvgProps) {
           x2={15.344}
           y2={18.663}
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor="#F1C35D" />
-          <Stop offset={1} stopColor="#D0981B" />
+          <Stop stopColor={props.color} />
+          <Stop offset={1} stopColor={props.fill} />
         </LinearGradient>
       </Defs>
     </Svg>

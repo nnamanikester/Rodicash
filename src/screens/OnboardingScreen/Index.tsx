@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Image} from 'react-native';
+import {Image, Platform} from 'react-native';
 import Swiper from 'react-native-swiper';
 import AnimatedGradient from '@/components/AnimatedGradient';
 import {ThemeContext} from '@/contexts/ThemeContext';
@@ -13,6 +13,8 @@ import {
 import SVG from '@/components/SVG';
 import {Reveal} from '@/animations';
 import AppStatusBar from '@/components/AppStatusBar';
+
+const isIOS = Platform.OS === 'ios';
 
 interface OnboardingScreenProps {
   navigation: any;
@@ -149,7 +151,10 @@ class OnboardingScreen extends React.Component<
                 <Reveal duration={2000} from={0} to={1}>
                   <UI.Block center style={styles.illustrationContainer}>
                     <Image
-                      style={{width: hd('35%'), height: hd('35%')}}
+                      style={{
+                        width: isIOS ? hd('32%') : hd('35%'),
+                        height: isIOS ? hd('32%') : hd('35%'),
+                      }}
                       source={require('../../../assets/images/pointing-phone-illustration.png')}
                     />
                   </UI.Block>
@@ -205,7 +210,10 @@ class OnboardingScreen extends React.Component<
                 <Reveal duration={2000} from={0} to={1}>
                   <UI.Block center style={styles.illustrationContainer}>
                     <Image
-                      style={{width: hd('35%'), height: hd('35%')}}
+                      style={{
+                        width: isIOS ? hd('32%') : hd('35%'),
+                        height: isIOS ? hd('32%') : hd('35%'),
+                      }}
                       source={require('../../../assets/images/pressing-one-illustration.png')}
                     />
                   </UI.Block>
@@ -233,7 +241,11 @@ class OnboardingScreen extends React.Component<
             <UI.Spacer large />
 
             <UI.Block
-              style={{paddingHorizontal: 20, position: 'absolute', bottom: 0}}>
+              style={{
+                paddingHorizontal: wd('4%'),
+                position: 'absolute',
+                bottom: 0,
+              }}>
               <UI.Button white onClick={() => navigation.navigate('Register')}>
                 <UI.Text bold>CREATE ACCOUNT</UI.Text>
               </UI.Button>
@@ -249,6 +261,7 @@ class OnboardingScreen extends React.Component<
               </UI.Button>
 
               <UI.Spacer large />
+              {isIOS && <UI.Spacer />}
             </UI.Block>
           </UI.Block>
         </AnimatedGradient>

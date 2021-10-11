@@ -1,8 +1,10 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {
   heightPercentageToDP as hd,
   widthPercentageToDP as wd,
 } from 'react-native-responsive-screen';
+
+const isIOS = Platform.OS === 'ios';
 
 export default StyleSheet.create({
   modalHeader: {
@@ -27,7 +29,7 @@ export default StyleSheet.create({
     padding: 10,
   },
   tabText: {
-    fontSize: hd('2.2%'),
+    fontSize: isIOS ? hd('1.8%') : hd('2.2%'),
   },
   selectButton: {
     borderWidth: 1,

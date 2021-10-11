@@ -1,8 +1,10 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import {
   heightPercentageToDP as hd,
   widthPercentageToDP as wd,
 } from 'react-native-responsive-screen';
+
+const isIOS = Platform.OS === 'ios';
 
 export default StyleSheet.create({
   container: {
@@ -31,7 +33,7 @@ export default StyleSheet.create({
     zIndex: 1,
   },
   dotContainer: {
-    paddingBottom: hd('37%'),
+    paddingBottom: isIOS ? hd('34%') : hd('37%'),
     position: 'absolute',
   },
   bgLines: {
@@ -46,7 +48,7 @@ export default StyleSheet.create({
     top: hd('13%'),
   },
   content: {
-    paddingHorizontal: 20,
-    bottom: hd('19%'),
+    paddingHorizontal: wd('4%'),
+    bottom: isIOS ? hd('22%') : hd('19%'),
   },
 });

@@ -67,6 +67,7 @@ const TransactionScreen: React.FC<TransactionScreenProps> = ({navigation}) => {
       />
 
       <UI.Layout>
+        <UI.Spacer />
         <UI.Block>
           <UI.Text h1>Transfer</UI.Text>
         </UI.Block>

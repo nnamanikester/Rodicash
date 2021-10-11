@@ -181,6 +181,9 @@ const SVG: React.FC<SVGProps> = ({
     case 'heart':
       Icon = require('./Heart').default;
       break;
+    case 'share':
+      Icon = require('./Share').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

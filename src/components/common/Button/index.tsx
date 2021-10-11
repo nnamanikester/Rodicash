@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Platform} from 'react-native';
 import {
   heightPercentageToDP as hd,
   widthPercentageToDP,
@@ -8,6 +8,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useTheme} from '@/contexts/ThemeContext';
 import {ColorsState} from '@/constants/index';
 import {Clickable, ClickableProps} from '../Clickable';
+
+const isIOS = Platform.OS === 'ios';
 
 interface ButtonProps extends ClickableProps {
   /**
@@ -91,7 +93,7 @@ export const Button: React.FC<ButtonProps> = ({
   const styles = StyleSheet.create({
     button: {
       borderRadius: 10,
-      height: hd('6%'),
+      height: isIOS ? hd('5%') : hd('6%'),
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'space-around',

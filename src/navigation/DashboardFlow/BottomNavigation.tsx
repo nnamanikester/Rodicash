@@ -10,6 +10,9 @@ import TransactionScreen from '@/screens/Dashboard/TransactionScreen';
 import CashoutScreen from '@/screens/Dashboard/CashoutScreen';
 import MoreScreen from '@/screens/Dashboard/MoreScreen';
 import MapScreen from '@/screens/Dashboard/MapScreen';
+import {Platform} from 'react-native';
+
+const isIOS = Platform.OS === 'ios';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,7 +30,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
           backgroundColor: '#F6F9FC',
           elevation: 0,
           borderTopWidth: 0,
-          height: hd('7%'),
+          height: isIOS ? hd('10%') : hd('7%'),
         },
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,

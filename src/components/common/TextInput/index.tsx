@@ -17,6 +17,8 @@ import {Text} from '../Text';
 import {Block} from '../Block';
 import {useTheme} from '@/contexts/ThemeContext';
 
+const isIOS = Platform.OS === 'ios';
+
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -82,9 +84,9 @@ export const TextInput: React.FC<TextInputProps> = props => {
     },
     input: {
       borderWidth: active ? 1.5 : 0,
-      height: hd('6.5%'),
+      height: isIOS ? hd('6') : hd('6.5%'),
       color: colors.text,
-      fontSize: hd('2%'),
+      fontSize: isIOS ? hd('1.8%') : hd('2%'),
       fontFamily: 'Gordita-Regular',
       flex: 1,
       backgroundColor: colors.gray4,

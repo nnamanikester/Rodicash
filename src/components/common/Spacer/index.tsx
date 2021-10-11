@@ -1,6 +1,8 @@
 import React from 'react';
-import {View, ViewProps, ViewStyle} from 'react-native';
+import {View, ViewProps, ViewStyle, Platform} from 'react-native';
 import {heightPercentageToDP as hd} from 'react-native-responsive-screen';
+
+const isIOS = Platform.OS === 'ios';
 
 export interface SpacerProps extends ViewProps {
   large?: boolean;
@@ -14,7 +16,7 @@ export interface SpacerProps extends ViewProps {
 export const Spacer: React.FC<SpacerProps> = ({
   children,
   large,
-  size = hd('0.8%'),
+  size = isIOS ? hd('0.6%') : hd('0.8%'),
   small,
   medium,
   horizontal,
@@ -22,7 +24,9 @@ export const Spacer: React.FC<SpacerProps> = ({
 }) => {
   let value: ViewStyle = {
     margin: small
-      ? hd('0.8%')
+      ? isIOS
+        ? hd('0.6%')
+        : hd('0.8%')
       : medium
       ? hd('1.2%')
       : large

@@ -10,6 +10,8 @@ import ErrorMessage from '@/components/ErrorMessage';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AppStatusBar from '@/components/AppStatusBar';
 
+const isIOS = Platform.OS === 'ios';
+
 interface PersonalInfoScreenProps {
   navigation: any;
 }
@@ -48,7 +50,7 @@ const PersonalInfoScreen: React.FC<PersonalInfoScreenProps> = ({
   const onChangeDate = (event: Event, selectedDate?: Date) => {
     console.log(selectedDate);
     const currentDate = selectedDate || dob;
-    setShowDatePicker(Platform.OS === 'ios');
+    setShowDatePicker(false);
     setDob(currentDate);
   };
 
@@ -96,16 +98,6 @@ const PersonalInfoScreen: React.FC<PersonalInfoScreenProps> = ({
 
       {error.length > 0 && (
         <ErrorMessage onDismiss={clearError} message={error} />
-      )}
-
-      {showDatePicker && (
-        <DateTimePicker
-          value={dob}
-          maximumDate={new Date(`${new Date().getFullYear() - 16}`)}
-          mode="date"
-          display="default"
-          onChange={onChangeDate}
-        />
       )}
 
       <UI.Block
@@ -212,6 +204,15 @@ const PersonalInfoScreen: React.FC<PersonalInfoScreenProps> = ({
 
           <UI.Block>
             <UI.Text body>Date of Birth</UI.Text>
+            {showDatePicker && (
+              <DateTimePicker
+                value={dob}
+                maximumDate={new Date(`${new Date().getFullYear() - 16}`)}
+                mode="date"
+                display={isIOS ? 'inline' : 'calendar'}
+                onChange={onChangeDate}
+              />
+            )}
             <UI.TextInput
               value={dob.toLocaleDateString()}
               onFocus={() => setShowDatePicker(true)}

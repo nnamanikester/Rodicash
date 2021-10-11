@@ -15,8 +15,7 @@ export default StyleSheet.create({
     left: -5,
   },
   picker: {
-    borderWidth: 1,
-    borderColor: 'red',
+    // borderWidth: 1,
   },
   calendarBox: {
     padding: 5,

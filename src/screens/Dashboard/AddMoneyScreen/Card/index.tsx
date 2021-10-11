@@ -119,7 +119,9 @@ const Card: React.FC<CardProps> = () => {
 
         <UI.Block>
           <UI.Button primary>
-            <UI.Text color={colors.white}>CONTINUE</UI.Text>
+            <UI.Text color={colors.white} bold>
+              CONTINUE
+            </UI.Text>
           </UI.Button>
         </UI.Block>
 

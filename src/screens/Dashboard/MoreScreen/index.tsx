@@ -39,6 +39,7 @@ const MoreScreen: React.FC<MoreScreenProps> = ({navigation}) => {
       />
 
       <UI.Layout>
+        <UI.Spacer />
         <UI.Block>
           <UI.Text h1>More</UI.Text>
         </UI.Block>

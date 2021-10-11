@@ -16,6 +16,7 @@
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
+    "axios": "^0.22.0",
     "country-state-picker": "^1.1.5",
     "fbjs": "^3.0.0",
     "intl": "^1.2.5",

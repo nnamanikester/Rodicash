@@ -2,10 +2,12 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {Keyboard} from 'react-native';
+import {ActivityIndicator, Keyboard} from 'react-native';
 import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
 import AppStatusBar from '@/components/AppStatusBar';
+import {useAppDispatch, useAuth} from '@/hooks';
+import {validateEmail} from '@/utils';
 
 interface RegisterScreenProps {
   navigation: any;
@@ -20,12 +22,23 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
   const [email, setEmail] = React.useState<string>('');
   const [phone, setPhone] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
+  const [referralCode, setReferralCode] = React.useState<string>('');
 
   const [emailError, setEmailError] = React.useState<boolean>(false);
   const [phoneError, setPhoneError] = React.useState<boolean>(false);
   const [nameError, setNameError] = React.useState<boolean>(false);
   const [passwordError, setPasswordError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
+
+  const [handleAuth, isLoading, data, authError] = useAuth({
+    name,
+    email,
+    password,
+    phone,
+    referralCode,
+  });
+
+  const dispatch = useAppDispatch();
 
   React.useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -41,6 +54,32 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
     };
   }, []);
 
+  React.useEffect(() => {
+    if (authError) {
+      const {stack, message} = authError;
+      setPasswordError(stack === 'password' || stack === null);
+      setEmailError(stack === 'email' || stack === null);
+      setNameError(stack === 'name' || stack === null);
+      setPhoneError(stack === 'phone' || stack === null);
+      setError(message);
+      console.log(authError);
+    }
+    if (data) {
+      const {user} = data.user;
+      dispatch({
+        type: 'SET_USER',
+        payload: {
+          name: user.name,
+          email: user.email,
+          isActive: user.isActive,
+          isVerified: user.isVerified,
+          account: user.account,
+        },
+      });
+      console.log(data);
+    }
+  }, [authError, data]);
+
   // Validate user entry before sending to backend
   const validateEntry = (): void => {
     setNameError(false);
@@ -50,12 +89,12 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
 
     if (!name) {
       setNameError(true);
-      setError('Name cannot be blank');
+      setError('Name cannot be blank.');
       return;
     }
-    if (!email) {
+    if (!email || !validateEmail(email)) {
       setEmailError(true);
-      setError('Please enter a valid email address');
+      setError('Please enter a valid email address.');
       return;
     }
     if (!phone) {
@@ -63,17 +102,17 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
       setError('Please enter a valid phone number');
       return;
     }
-    if (!password) {
+    if (!password || password.length < 6) {
       setPasswordError(true);
-      setError('Please enter a valid password');
+      setError('Password is required and must be up to 6 characters.');
       return;
     }
-    submitData();
+    handleAuth('register');
   };
 
-  const submitData = (): void => {
-    navigation.replace('EmailVerification');
-  };
+  // const submitData = (): void => {
+  //   navigation.replace('EmailVerification');
+  // };
 
   const clearError = (): void => {
     setError('');
@@ -197,9 +236,8 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
           <UI.Block>
             <UI.Text body>Referral code (optional)</UI.Text>
             <UI.TextInput
-              value={email}
-              onChangeText={setEmail}
-              error={emailError}
+              value={referralCode}
+              onChangeText={setReferralCode}
               placeholder="e.g: 123ABC"
               iconRight={
                 <SVG
@@ -218,9 +256,13 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
 
       <UI.Block backgroundColor={colors.background} style={styles.footer}>
         <UI.Button primary onClick={validateEntry}>
-          <UI.Text color={colors.white} bold>
-            SIGN UP
-          </UI.Text>
+          <UI.Block row middle>
+            <UI.Text color={colors.white} bold>
+              SIGN UP
+            </UI.Text>
+            <UI.Spacer />
+            {isLoading && <ActivityIndicator color={colors.white} />}
+          </UI.Block>
         </UI.Button>
 
         <UI.Spacer medium />

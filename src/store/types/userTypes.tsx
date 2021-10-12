@@ -6,9 +6,16 @@ export interface setUser {
 }
 
 export interface UserType {
-  token?: string | null;
   email: string | null;
   name: string | null;
+  token?: string | null;
+  phone?: string;
+  isActive?: boolean;
+  isVerified?: boolean;
+  account?: {
+    balance: number;
+    bvnVerified: boolean;
+  };
 }
 
 export type UserActionTypes = setUser;

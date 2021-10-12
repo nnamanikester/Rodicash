@@ -2,10 +2,12 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {Keyboard} from 'react-native';
+import {Keyboard, ActivityIndicator} from 'react-native';
 import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
 import AppStatusBar from '@/components/AppStatusBar';
+import {validateEmail} from '@/utils';
+import {useAuth} from '@/hooks';
 
 interface LoginScreenProps {
   navigation: any;
@@ -23,6 +25,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
   const [passwordError, setPasswordError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
 
+  const [handleAuth, isLoading, data, authError] = useAuth({email, password});
+
   React.useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
       setIsKeyboardOpen(true);
@@ -37,27 +41,40 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
     };
   }, []);
 
+  React.useEffect(() => {
+    if (authError) {
+      const {stack, message} = authError;
+      setPasswordError(stack === 'password' || stack === null);
+      setEmailError(authError.stack === 'email' || stack === null);
+      setError(message);
+      console.log(authError);
+    }
+    if (data) {
+      console.log(data);
+    }
+  }, [authError, data]);
+
   // Validate user entry before sending to backend
   const validateEntry = (): void => {
     setEmailError(false);
     setPasswordError(false);
 
-    if (!email) {
+    if (!email || !validateEmail(email)) {
       setEmailError(true);
-      setError('Please enter a valid email address');
+      setError('Please enter a valid email address.');
       return;
     }
-    if (!password) {
+    if (!password || password.length < 6) {
       setPasswordError(true);
-      setError('Password incorrect');
+      setError('Password is required and must be up to 6 characters.');
       return;
     }
-    submitData();
+    handleAuth('login');
   };
 
-  const submitData = (): void => {
-    navigation.replace('Welcome');
-  };
+  // const submitData = (): void => {
+  //   navigation.replace('Welcome');
+  // };
 
   const clearError = (): void => {
     setError('');
@@ -138,9 +155,13 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
 
       <UI.Block backgroundColor={colors.background} style={styles.footer}>
         <UI.Button primary onClick={validateEntry}>
-          <UI.Text color={colors.white} bold>
-            LOGIN
-          </UI.Text>
+          <UI.Block row middle>
+            <UI.Text color={colors.white} bold>
+              LOGIN
+            </UI.Text>
+            <UI.Spacer />
+            {isLoading && <ActivityIndicator color={colors.white} />}
+          </UI.Block>
         </UI.Button>
 
         <UI.Spacer medium />

@@ -5,7 +5,6 @@ import styles from './styles';
 import {Keyboard} from 'react-native';
 import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
-import {useAppDispatch} from '@/hooks';
 import AppStatusBar from '@/components/AppStatusBar';
 
 interface WelcomeScreenProps {
@@ -14,7 +13,6 @@ interface WelcomeScreenProps {
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
-  const dispatch = useAppDispatch();
 
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
   const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false);
@@ -53,16 +51,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
     submitData();
   };
 
-  const submitData = (): void => {
-    dispatch({
-      type: 'SET_USER',
-      payload: {
-        token: 'hello',
-        email: 'nnamanikester@gmail.com',
-        name: 'John Kester',
-      },
-    });
-  };
+  const submitData = (): void => {};
 
   const clearError = () => {
     setPasswordError(false);
@@ -105,6 +94,8 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
           <UI.Block>
             <UI.Text body>Password</UI.Text>
             <UI.TextInput
+              autoCorrect={false}
+              autoCapitalize="none"
               value={password}
               onChangeText={setPassword}
               error={passwordError}

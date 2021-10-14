@@ -3,11 +3,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import AuthenticationFlow from './AuthenticationFlow';
 import {useTheme} from '@/contexts/ThemeContext';
 import {StatusBar} from 'react-native';
+import DashboardFlow from './DashboardFlow';
 import {useSelector} from 'react-redux';
 import {IRootState} from '@/store/reducers';
-import DashboardFlow from './DashboardFlow';
 
-export interface NavigationFlowProps {}
+export interface NavigationFlowProps {
+  setUser?: any;
+}
 
 const NavigationFlow: React.FC<NavigationFlowProps> = () => {
   const {isDark} = useTheme();
@@ -16,7 +18,11 @@ const NavigationFlow: React.FC<NavigationFlowProps> = () => {
   return (
     <NavigationContainer>
       <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
-      {!user.token ? <AuthenticationFlow /> : <DashboardFlow />}
+      {user.email && user.token && user.username ? (
+        <DashboardFlow />
+      ) : (
+        <AuthenticationFlow />
+      )}
     </NavigationContainer>
   );
 };

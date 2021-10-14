@@ -60,4 +60,4 @@ export const DARK_COLORS: ColorsState = {
 export const API_URL: string = 'https://rodicash.herokuapp.com/api/v1';
 
 // ASYNC STORAGE CONSTANTS
-export const API_TOKEN = '@rodicash/API_TOKEN';
+export const USER_STORAGE = '@rodicash/USER';

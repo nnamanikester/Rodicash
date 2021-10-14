@@ -7,5 +7,5 @@ export interface IRootState {
 }
 
 export default combineReducers<IRootState>({
-  user: user,
+  user,
 });

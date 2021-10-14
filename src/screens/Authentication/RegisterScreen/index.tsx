@@ -6,15 +6,36 @@ import {ActivityIndicator, Keyboard} from 'react-native';
 import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
 import AppStatusBar from '@/components/AppStatusBar';
-import {useAppDispatch, useAuth} from '@/hooks';
+import {useAuth} from '@/hooks';
 import {validateEmail} from '@/utils';
+import {useFocusEffect} from '@react-navigation/core';
+import {connect, useSelector} from 'react-redux';
+import {setUser as setAuthUser} from '@/store/actions';
+import {IRootState} from '@/store/reducers';
 
 interface RegisterScreenProps {
   navigation: any;
+  setUser: any;
 }
 
-const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
+const RegisterScreen: React.FC<RegisterScreenProps> = ({
+  navigation,
+  setUser,
+}) => {
   const {colors} = useTheme();
+  const userStore = useSelector((state: IRootState) => state.user);
+
+  useFocusEffect(() => {
+    if (userStore.email) {
+      if (!userStore.isVerified) {
+        navigation.replace('EmailVerification');
+      }
+      if (userStore.isVerified && !userStore.username) {
+        navigation.replace('Username');
+      }
+    }
+  });
+
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
   const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false);
 
@@ -37,8 +58,6 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
     phone,
     referralCode,
   });
-
-  const dispatch = useAppDispatch();
 
   React.useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -65,18 +84,16 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
       console.log(authError);
     }
     if (data) {
-      const {user} = data.user;
-      dispatch({
-        type: 'SET_USER',
-        payload: {
-          name: user.name,
-          email: user.email,
-          isActive: user.isActive,
-          isVerified: user.isVerified,
-          account: user.account,
-        },
+      const {user} = data;
+      setUser({
+        name: user.name,
+        email: user.email,
+        isActive: user.isActive,
+        isVerified: user.isVerified,
+        account: user.account,
       });
       console.log(data);
+      navigation.replace('EmailVerification');
     }
   }, [authError, data]);
 
@@ -138,7 +155,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
         style={styles.header}
         backgroundColor={colors.background}
         row>
-        <UI.Clickable onClick={() => navigation.pop()}>
+        <UI.Clickable onClick={() => navigation.goBack()}>
           <UI.Block row center width="auto">
             <UI.Icon name="chevron-back-circle-outline" />
             <UI.Spacer size={2} />
@@ -156,6 +173,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
             <UI.Text body>Full Name</UI.Text>
             <UI.TextInput
               autoFocus
+              autoCorrect={false}
               value={name}
               onChangeText={setName}
               error={nameError}
@@ -170,6 +188,8 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
             <UI.Text body>Email Address</UI.Text>
             <UI.TextInput
               value={email}
+              autoCorrect={false}
+              autoCapitalize="none"
               onChangeText={setEmail}
               error={emailError}
               keyboardType="email-address"
@@ -184,11 +204,19 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
             <UI.Text body>Phone Number</UI.Text>
             <UI.TextInput
               value={phone}
+              autoCorrect={false}
+              autoCapitalize="none"
               onChangeText={setPhone}
               error={phoneError}
               placeholder="e.g 08174139617"
               keyboardType="phone-pad"
-              iconRight={<SVG color={colors.secondary} name="phone" />}
+              iconRight={
+                <SVG
+                  fill={colors.orange2}
+                  color={colors.orange1}
+                  name="phone"
+                />
+              }
               iconLeft={
                 <UI.Block
                   row
@@ -213,6 +241,8 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
             <UI.Text body>Password</UI.Text>
             <UI.TextInput
               value={password}
+              autoCorrect={false}
+              autoCapitalize="none"
               onChangeText={setPassword}
               error={passwordError}
               password={!passwordVisible}
@@ -237,6 +267,8 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
             <UI.Text body>Referral code (optional)</UI.Text>
             <UI.TextInput
               value={referralCode}
+              autoCorrect={false}
+              autoCapitalize="none"
               onChangeText={setReferralCode}
               placeholder="e.g: 123ABC"
               iconRight={
@@ -285,4 +317,4 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
   );
 };
 
-export default RegisterScreen;
+export default connect(null, {setUser: setAuthUser})(RegisterScreen);

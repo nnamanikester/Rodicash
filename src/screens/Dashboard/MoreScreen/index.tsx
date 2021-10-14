@@ -6,28 +6,25 @@ import styles from './styles';
 import SVG from '@/components/SVG';
 import LinearGradient from 'react-native-linear-gradient';
 import PercentageCircle from '@/components/PercentageCircle';
-import {useAppDispatch} from '@/hooks';
 import AppStatusBar from '@/components/AppStatusBar';
-
+import {connect} from 'react-redux';
+import {setUser as setAuthUser} from '@/store/actions';
 interface MoreScreenProps {
   navigation: any;
+  setUser: any;
 }
 
-const MoreScreen: React.FC<MoreScreenProps> = ({navigation}) => {
+const MoreScreen: React.FC<MoreScreenProps> = ({navigation, setUser}) => {
   const {colors, isDark, setScheme} = useTheme();
-  const dispatch = useAppDispatch();
   const [biometrics, setBiometrics] = React.useState<boolean>(true);
   const [isProfileComplete, setIsProfileComplete] =
     React.useState<boolean>(true);
 
   const handleLogout = () => {
-    dispatch({
-      type: 'SET_USER',
-      payload: {
-        email: null,
-        name: null,
-        token: null,
-      },
+    setUser({
+      email: null,
+      name: null,
+      token: null,
     });
   };
 
@@ -438,4 +435,4 @@ const MoreScreen: React.FC<MoreScreenProps> = ({navigation}) => {
   );
 };
 
-export default MoreScreen;
+export default connect(null, {setAuthUser})(MoreScreen);

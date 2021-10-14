@@ -25,34 +25,27 @@ type authDataType = registrationType | loginType | resetPasswordType;
 // Type of data expected to be returned from the useAuth hook
 type hookReturnType = (
   D: authDataType,
-) => [
-  (type: 'register' | 'login' | 'reset_password') => void,
-  boolean,
-  any,
-  any,
-];
+) => [(type: 'register' | 'login') => void, boolean, any, any];
 
 export const useAuth: hookReturnType = (options: authDataType) => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [data, setData] = React.useState<any>(null);
   const [error, setError] = React.useState<any>(null);
 
-  const handleAuth = (type: 'register' | 'login' | 'reset_password'): void => {
+  const handleAuth = (type: 'register' | 'login'): void => {
     setError(null);
     if (type === 'register') {
       handleRegister();
     } else if (type === 'login') {
       handleLogin();
-    } else if (type === 'reset_password') {
-      handleResetPassword();
     }
   };
 
   const handleLogin = async (): Promise<void> => {
     setIsLoading(true);
     try {
-      const res = await axios.post(API_URL + '/auth/login', options);
-      setData(res.data);
+      const res: any = await axios.post(API_URL + '/auth/login', options);
+      setData(res.data.data);
       setIsLoading(false);
     } catch (e: any) {
       setError(e.response.data);
@@ -63,20 +56,8 @@ export const useAuth: hookReturnType = (options: authDataType) => {
   const handleRegister = async (): Promise<void> => {
     setIsLoading(true);
     try {
-      const res = await axios.post(API_URL + '/auth/register', options);
-      setData(res.data);
-      setIsLoading(false);
-    } catch (e: any) {
-      setError(e.response.data);
-      setIsLoading(false);
-    }
-  };
-
-  const handleResetPassword = async (): Promise<void> => {
-    setIsLoading(true);
-    try {
-      const res = await axios.post(API_URL + '/auth/reset-password', options);
-      setData(res.data);
+      const res: any = await axios.post(API_URL + '/auth/register', options);
+      setData(res.data.data);
       setIsLoading(false);
     } catch (e: any) {
       setError(e.response.data);

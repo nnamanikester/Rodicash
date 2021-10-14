@@ -8,14 +8,21 @@ import EmailVerificationScreen from '@/screens/Authentication/EmailVerificationS
 import UsernameScreen from '@/screens/Authentication/UsernameScreen';
 import CreatePinScreen from '@/screens/Authentication/CreatePinScreen';
 import BVNScreen from '@/screens/Authentication/BVNScreen';
+import {useSelector} from 'react-redux';
+import {IRootState} from '@/store/reducers';
 
 const Stack = createNativeStackNavigator();
 
 export interface AuthenticationFlowProps {}
 
 const AuthenticationFlow: React.FC<AuthenticationFlowProps> = () => {
+  const {email, isVerified} = useSelector((state: IRootState) => state.user);
+
   return (
     <Stack.Navigator
+      initialRouteName={
+        email && !isVerified ? 'EmailVerification' : 'Onboarding'
+      }
       screenOptions={{
         header: () => null,
       }}>

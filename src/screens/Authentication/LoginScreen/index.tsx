@@ -8,12 +8,23 @@ import ErrorMessage from '@/components/ErrorMessage';
 import AppStatusBar from '@/components/AppStatusBar';
 import {validateEmail} from '@/utils';
 import {useAuth} from '@/hooks';
+import {connect} from 'react-redux';
+import {
+  setToken as setAuthToken,
+  setUser as setAuthUser,
+} from '@/store/actions';
 
 interface LoginScreenProps {
   navigation: any;
+  setUser: any;
+  setToken: any;
 }
 
-const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
+const LoginScreen: React.FC<LoginScreenProps> = ({
+  navigation,
+  setUser,
+  setToken,
+}) => {
   const {colors} = useTheme();
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
   const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false);
@@ -51,6 +62,20 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
     }
     if (data) {
       console.log(data);
+      const user = data.user;
+      setUser({
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        username: user.username,
+        isActive: user.isActive,
+        isVerified: user.isVerified,
+        account: user.account,
+      });
+      setToken(data.token);
+      if (!user.username) {
+        navigation.replace('Username');
+      }
     }
   }, [authError, data]);
 
@@ -98,7 +123,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
         style={styles.header}
         backgroundColor={colors.background}
         row>
-        <UI.Clickable onClick={() => navigation.pop()}>
+        <UI.Clickable onClick={() => navigation.goBack()}>
           <UI.Block row center width="auto">
             <UI.Icon name="chevron-back-circle-outline" />
             <UI.Spacer size={2} />
@@ -116,6 +141,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
             <UI.Text body>Email Address</UI.Text>
             <UI.TextInput
               autoFocus
+              autoCorrect={false}
+              autoCapitalize="none"
               value={email}
               onChangeText={setEmail}
               error={emailError}
@@ -131,6 +158,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
             <UI.Text body>Password</UI.Text>
             <UI.TextInput
               value={password}
+              autoCorrect={false}
+              autoCapitalize="none"
               onChangeText={setPassword}
               error={passwordError}
               password={!passwordVisible}
@@ -182,4 +211,6 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
   );
 };
 
-export default LoginScreen;
+export default connect(null, {setUser: setAuthUser, setToken: setAuthToken})(
+  LoginScreen,
+);

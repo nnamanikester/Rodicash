@@ -5,16 +5,17 @@ import styles from './styles';
 import {Keyboard} from 'react-native';
 import ErrorMessage from '@/components/ErrorMessage';
 import RegistrationSuccessful from '@/components/RegistrationSuccessful';
-import {useAppDispatch} from '@/hooks';
 import AppStatusBar from '@/components/AppStatusBar';
+import {connect} from 'react-redux';
+import {setUser as setAuthUser} from '@/store/actions';
 
 interface BVNScreenProps {
   navigation: any;
+  setUser: any;
 }
 
-const BVNScreen: React.FC<BVNScreenProps> = ({navigation}) => {
+const BVNScreen: React.FC<BVNScreenProps> = ({navigation, setUser}) => {
   const {colors} = useTheme();
-  const dispatch = useAppDispatch();
 
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
 
@@ -69,13 +70,10 @@ const BVNScreen: React.FC<BVNScreenProps> = ({navigation}) => {
   const pasteClipboard = (): void => {};
 
   const complete = (): void => {
-    dispatch({
-      type: 'SET_USER',
-      payload: {
-        token: 'hello',
-        email: 'nnamanikester@gmail.com',
-        name: 'John Kester',
-      },
+    setUser({
+      token: 'hello',
+      email: 'nnamanikester@gmail.com',
+      name: 'John Kester',
     });
   };
 
@@ -158,4 +156,4 @@ const BVNScreen: React.FC<BVNScreenProps> = ({navigation}) => {
   );
 };
 
-export default BVNScreen;
+export default connect(null, {setAuthUser})(BVNScreen);

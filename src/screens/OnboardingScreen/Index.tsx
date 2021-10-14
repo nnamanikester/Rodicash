@@ -13,11 +13,15 @@ import {
 import SVG from '@/components/SVG';
 import {Reveal} from '@/animations';
 import AppStatusBar from '@/components/AppStatusBar';
+import {connect} from 'react-redux';
+import {IRootState} from '@/store/reducers';
+import {UserType} from '@/store/types';
 
 const isIOS = Platform.OS === 'ios';
 
 interface OnboardingScreenProps {
   navigation: any;
+  user: UserType;
 }
 
 interface OnboardingScreenState {
@@ -58,6 +62,20 @@ class OnboardingScreen extends React.Component<
       screenType: 'even',
     });
   };
+
+  componentDidMount() {
+    const {navigation, user} = this.props;
+    const {email, username, isVerified} = user;
+    if (email) {
+      if (!isVerified) {
+        navigation.navigate('EmailVerification');
+      } else if (!username) {
+        navigation.navigate('Login');
+      } else if (username) {
+        navigation.replace('Welcome');
+      }
+    }
+  }
 
   render() {
     const {bgColors, screenType, index} = this.state;
@@ -270,4 +288,10 @@ class OnboardingScreen extends React.Component<
   }
 }
 
-export default OnboardingScreen;
+const mapStateToProps = (state: IRootState) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(OnboardingScreen);

@@ -8,9 +8,9 @@ const apiService = axios.create({
 
 apiService.interceptors.request.use(
   (config: any) => {
-    const {user} = store.getState();
-    if (user.token) {
-      config.headers.Authorization = `Bearer ${user.token}`;
+    const {token} = store.getState();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },

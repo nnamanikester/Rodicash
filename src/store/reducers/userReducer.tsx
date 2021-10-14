@@ -1,4 +1,4 @@
-import {SET_TOKEN, SET_USER, UserActionTypes, UserType} from '../types';
+import {SET_USER, UserActionTypes, UserType} from '../types';
 
 const INITIAL_STATE: UserType = {
   email: null,
@@ -18,8 +18,6 @@ export default (
   switch (action.type) {
     case SET_USER:
       return action.payload || state;
-    case SET_TOKEN:
-      return {...state, token: action.payload};
     default:
       return state;
   }

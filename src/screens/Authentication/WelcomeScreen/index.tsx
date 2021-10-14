@@ -2,17 +2,32 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {Keyboard} from 'react-native';
+import {Image, Keyboard} from 'react-native';
 import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
 import AppStatusBar from '@/components/AppStatusBar';
+import {connect, useSelector} from 'react-redux';
+import {IRootState} from '@/store/reducers';
+import {useAuth} from '@/hooks';
+import {
+  setToken as setAuthToken,
+  setUser as setAuthUser,
+} from '@/store/actions';
+import {UserType} from '@/store/types';
 
 interface WelcomeScreenProps {
   navigation: any;
+  setUser: (user: UserType) => void;
+  setToken: (token: string) => void;
 }
 
-const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
+const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
+  setUser,
+  setToken,
+  navigation,
+}) => {
   const {colors} = useTheme();
+  const {name, email, photo} = useSelector((state: IRootState) => state.user);
 
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
   const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false);
@@ -24,6 +39,11 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
 
   const [passwordError, setPasswordError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
+
+  const [handleAuth, isLoading, data, authError] = useAuth({
+    email: email ? email : '',
+    password,
+  });
 
   React.useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -39,19 +59,44 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
     };
   }, []);
 
+  React.useEffect(() => {
+    if (authError) {
+      setError(authError.message);
+      console.log(authError);
+    }
+    if (data) {
+      console.log(data);
+      const user = data.user;
+      setUser({
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        photo: user.photo,
+        username: user.username,
+        isActive: user.isActive,
+        isVerified: user.isVerified,
+        account: user.account,
+      });
+      setToken(data.token);
+    }
+  }, [data, authError]);
+
   // Validate user entry before sending to backend
   const validateEntry = (): void => {
     setPasswordError(false);
 
     if (!password) {
       setPasswordError(true);
-      setError('Password incorrect');
+      setError('Password required.');
       return;
     }
-    submitData();
+    handleAuth('login');
   };
 
-  const submitData = (): void => {};
+  const handleSwitchAccount = () => {
+    setUser({email: null, name: null});
+    navigation.replace('Onboarding');
+  };
 
   const clearError = () => {
     setPasswordError(false);
@@ -69,20 +114,25 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
         <ErrorMessage onDismiss={clearError} message={error} />
       )}
 
-      <UI.Layout>
+      <UI.Layout refreshing={isLoading}>
         <UI.Spacer large />
 
         <UI.Block center row justify="space-between">
-          <UI.Text body>Hey, Kester</UI.Text>
-          <UI.Block
-            center
-            middle
-            backgroundColor={colors.gray3}
-            style={styles.avatar}>
-            <UI.Text h1 color={colors.secondary}>
-              IM
-            </UI.Text>
-          </UI.Block>
+          <UI.Text body>Hey, {name?.split(' ')[0]}</UI.Text>
+          {photo ? (
+            <Image source={{uri: photo}} />
+          ) : (
+            <UI.Block
+              center
+              middle
+              backgroundColor={colors.gray3}
+              style={styles.avatar}>
+              <UI.Text body color={colors.secondary}>
+                {name?.split(' ')[0][0]}
+                {name?.split(' ')[1][0]}
+              </UI.Text>
+            </UI.Block>
+          )}
         </UI.Block>
 
         <UI.Spacer medium />
@@ -159,9 +209,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
             <UI.Block row middle>
               <UI.Text>Not you?</UI.Text>
               <UI.Spacer size={3} />
-              <UI.Link onClick={() => navigation.replace('Login')}>
-                Switch Account
-              </UI.Link>
+              <UI.Link onClick={handleSwitchAccount}>Switch Account</UI.Link>
             </UI.Block>
 
             <UI.Spacer medium />
@@ -172,4 +220,6 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
   );
 };
 
-export default WelcomeScreen;
+export default connect(null, {setUser: setAuthUser, setToken: setAuthToken})(
+  WelcomeScreen,
+);

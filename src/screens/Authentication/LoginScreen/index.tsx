@@ -13,11 +13,12 @@ import {
   setToken as setAuthToken,
   setUser as setAuthUser,
 } from '@/store/actions';
+import {UserType} from '@/store/types';
 
 interface LoginScreenProps {
   navigation: any;
-  setUser: any;
-  setToken: any;
+  setUser: (user: UserType) => void;
+  setToken: (token: string) => void;
 }
 
 const LoginScreen: React.FC<LoginScreenProps> = ({
@@ -67,6 +68,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
         name: user.name,
         email: user.email,
         phone: user.phone,
+        photo: user.photo,
         username: user.username,
         isActive: user.isActive,
         isVerified: user.isVerified,

@@ -1,6 +1,6 @@
 import {USER_STORAGE} from '@/constants';
 import EncryptedStorage from 'react-native-encrypted-storage';
-import {SET_TOKEN, SET_USER, UserType} from '../types';
+import {SET_USER, UserType} from '../types';
 
 export const setUser = (user: UserType) => {
   console.log('From setUser => ', user);
@@ -10,12 +10,5 @@ export const setUser = (user: UserType) => {
       type: SET_USER,
       payload: user,
     });
-  };
-};
-
-export const setToken = (token: string) => {
-  return {
-    type: SET_TOKEN,
-    payload: token,
   };
 };

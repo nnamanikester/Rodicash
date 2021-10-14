@@ -8,6 +8,7 @@ import {
   Platform,
 } from 'react-native';
 import {heightPercentageToDP as hd} from 'react-native-responsive-screen';
+import {LinearTextGradient} from 'react-native-text-gradient';
 
 const isIOS = Platform.OS === 'ios';
 
@@ -21,6 +22,7 @@ export interface TextProps extends TXTProps {
   bold?: boolean;
   body?: boolean;
   color?: string;
+  colors?: [string, string];
   note?: boolean;
 }
 
@@ -36,6 +38,7 @@ export const Text: React.FC<TextProps> = ({
   size,
   children,
   color,
+  colors: gradColors,
   style,
 }) => {
   const {colors} = useTheme();
@@ -84,5 +87,16 @@ export const Text: React.FC<TextProps> = ({
     textStyle.lineHeight = isIOS ? hd('2.4%') : hd('3%');
   }
 
-  return <TXT style={[styles.text, textStyle, style]}>{children}</TXT>;
+  return gradColors ? (
+    <LinearTextGradient
+      style={[styles.text, textStyle, style]}
+      locations={[0, 1]}
+      colors={gradColors}
+      start={{x: 0, y: 0}}
+      end={{x: 0, y: 1}}>
+      <TXT>{children}</TXT>
+    </LinearTextGradient>
+  ) : (
+    <TXT style={[styles.text, textStyle, style]}>{children}</TXT>
+  );
 };

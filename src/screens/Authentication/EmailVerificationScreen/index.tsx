@@ -5,15 +5,15 @@ import styles from './styles';
 import ErrorMessage from '@/components/ErrorMessage';
 import {msToTime} from '@/utils';
 import AppStatusBar from '@/components/AppStatusBar';
-import {useEmailVerification} from '@/hooks/useEmailVerification';
+import {useEmailVerification} from '@/hooks';
 import {connect, useDispatch, useSelector} from 'react-redux';
 import {IRootState} from '@/store/reducers';
 import {setUser as setAuthUser} from '@/store/actions';
-import {SET_TOKEN} from '@/store/types';
+import {SET_TOKEN, UserType} from '@/store/types';
 
 interface EmailVerificationScreen {
   navigation: any;
-  setUser: any;
+  setUser: (user: UserType) => void;
 }
 
 const INITIAL_TIME = 180000;

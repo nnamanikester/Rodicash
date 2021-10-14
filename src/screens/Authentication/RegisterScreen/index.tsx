@@ -12,10 +12,11 @@ import {useFocusEffect} from '@react-navigation/core';
 import {connect, useSelector} from 'react-redux';
 import {setUser as setAuthUser} from '@/store/actions';
 import {IRootState} from '@/store/reducers';
+import {UserType} from '@/store/types';
 
 interface RegisterScreenProps {
   navigation: any;
-  setUser: any;
+  setUser: (user: UserType) => void;
 }
 
 const RegisterScreen: React.FC<RegisterScreenProps> = ({
@@ -75,11 +76,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
 
   React.useEffect(() => {
     if (authError) {
-      const {stack, message} = authError;
-      setPasswordError(stack === 'password' || stack === null);
-      setEmailError(stack === 'email' || stack === null);
-      setNameError(stack === 'name' || stack === null);
-      setPhoneError(stack === 'phone' || stack === null);
+      const {message} = authError;
       setError(message);
       console.log(authError);
     }

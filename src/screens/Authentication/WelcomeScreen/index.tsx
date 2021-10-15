@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {Image, Keyboard} from 'react-native';
+import {Image, Keyboard, Platform} from 'react-native';
 import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
 import AppStatusBar from '@/components/AppStatusBar';
@@ -14,12 +14,16 @@ import {
   setUser as setAuthUser,
 } from '@/store/actions';
 import {UserType} from '@/store/types';
+import Keychain from 'react-native-keychain';
+import {RODICASH_LOGIN} from '@/constants';
 
 interface WelcomeScreenProps {
   navigation: any;
   setUser: (user: UserType) => void;
   setToken: (token: string) => void;
 }
+
+const isIOS = Platform.OS === 'ios';
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   setUser,
@@ -31,19 +35,21 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
 
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
   const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false);
-  const [biometricsType] = React.useState<'fingerprint' | 'face'>(
-    'fingerprint',
-  );
+  const [biometricsType, setBiometricsType] =
+    React.useState<Keychain.BIOMETRY_TYPE | null>(null);
+
+  React.useEffect(() => {
+    Keychain.getSupportedBiometryType().then(biometryType => {
+      setBiometricsType(biometryType);
+    });
+  }, []);
 
   const [password, setPassword] = React.useState<string>('');
 
   const [passwordError, setPasswordError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
 
-  const [handleAuth, isLoading, data, authError] = useAuth({
-    email: email ? email : '',
-    password,
-  });
+  const [handleAuth, isLoading, data, authError] = useAuth('login');
 
   React.useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -67,6 +73,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
     if (data) {
       console.log(data);
       const user = data.user;
+      setKeychainData();
       setUser({
         name: user.name,
         email: user.email,
@@ -90,7 +97,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
       setError('Password required.');
       return;
     }
-    handleAuth('login');
+    handleAuth({email: email ? email : '', password});
   };
 
   const handleSwitchAccount = () => {
@@ -103,6 +110,48 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   const clearError = () => {
     setPasswordError(false);
     setError('');
+  };
+
+  // SAVE LOGIN DETAILS IN THE KEYCHAIN
+  const setKeychainData = async (): Promise<void> => {
+    try {
+      const res = await Keychain.setGenericPassword(
+        email ? email : '',
+        password,
+        {
+          service: RODICASH_LOGIN,
+          accessControl: Keychain.ACCESS_CONTROL.BIOMETRY_ANY,
+          accessible: Keychain.ACCESSIBLE.WHEN_PASSCODE_SET_THIS_DEVICE_ONLY,
+        },
+      );
+      console.log('setKeychainData => ', res);
+    } catch (e: any) {
+      console.log('setKeychainDRError => ', e);
+    }
+  };
+
+  const handleBiometrics = async (): Promise<void> => {
+    try {
+      const cred = await Keychain.getGenericPassword({
+        service: RODICASH_LOGIN,
+        authenticationPrompt: {
+          title: 'Biometrics verification',
+        },
+      });
+      if (!cred) {
+        setError('Please login with your password.');
+      } else {
+        handleAuth({email: cred.username, password: cred.password});
+        console.log(cred);
+      }
+    } catch (e: any) {
+      console.log('handleBiometrics => ', e);
+      if (
+        e.message === 'The user name or passphrase you entered is not correct.'
+      ) {
+        setError('Invalid biometrics credenttials');
+      }
+    }
   };
 
   return (
@@ -172,29 +221,32 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
 
         <UI.Spacer large />
 
-        <UI.Block center style={styles.biometricsContainer}>
-          <UI.Clickable>
-            <UI.Block
-              center
-              middle
-              style={[styles.biometrics, {borderColor: colors.gray3}]}>
-              {biometricsType === 'fingerprint' && (
-                <>
-                  <SVG name="finger-print" size={50} />
-                  <UI.Spacer />
-                  <UI.Text body>Touch ID</UI.Text>
-                </>
-              )}
-              {biometricsType === 'face' && (
-                <>
-                  <SVG name="face-id" size={50} />
-                  <UI.Spacer />
-                  <UI.Text body>Face ID</UI.Text>
-                </>
-              )}
-            </UI.Block>
-          </UI.Clickable>
-        </UI.Block>
+        {biometricsType && (
+          <UI.Block center style={styles.biometricsContainer}>
+            <UI.Clickable onClick={handleBiometrics}>
+              <UI.Block
+                center
+                middle
+                style={[styles.biometrics, {borderColor: colors.gray3}]}>
+                {biometricsType === 'Fingerprint' ||
+                biometricsType === 'TouchID' ? (
+                  <>
+                    <SVG name="finger-print" size={50} />
+                    <UI.Spacer />
+                    <UI.Text body>{isIOS ? 'Touch ID' : 'Fingerprint'}</UI.Text>
+                  </>
+                ) : null}
+                {biometricsType === 'FaceID' && (
+                  <>
+                    <SVG name="face-id" size={50} />
+                    <UI.Spacer />
+                    <UI.Text body>Face ID</UI.Text>
+                  </>
+                )}
+              </UI.Block>
+            </UI.Clickable>
+          </UI.Block>
+        )}
       </UI.Layout>
 
       <UI.Block backgroundColor={colors.background} style={styles.footer}>

@@ -44,7 +44,7 @@ const RegistrationSuccessful: React.FC<RegistrationSuccessfulProps> = ({
             <UI.Spacer />
 
             <UI.Text style={{textAlign: 'center'}} color={colors.gray2}>
-              You have transfer was successful and on it’s way.
+              You have been successfully registered. Start withdrawing cash now!
             </UI.Text>
           </UI.Block>
         </UI.Layout>

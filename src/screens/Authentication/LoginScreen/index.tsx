@@ -14,6 +14,8 @@ import {
   setUser as setAuthUser,
 } from '@/store/actions';
 import {UserType} from '@/store/types';
+import Keychain from 'react-native-keychain';
+import {RODICASH_LOGIN} from '@/constants';
 
 interface LoginScreenProps {
   navigation: any;
@@ -37,7 +39,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
   const [passwordError, setPasswordError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
 
-  const [handleAuth, isLoading, data, authError] = useAuth({email, password});
+  const [handleAuth, isLoading, data, authError] = useAuth('login');
 
   React.useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -64,6 +66,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
     if (data) {
       console.log(data);
       const user = data.user;
+      setKeychainData();
       setUser({
         name: user.name,
         email: user.email,
@@ -81,6 +84,19 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
     }
   }, [authError, data]);
 
+  // SAVE LOGIN DETAILS IN THE KEYCHAIN
+  const setKeychainData = async (): Promise<void> => {
+    try {
+      await Keychain.setGenericPassword(email, password, {
+        service: RODICASH_LOGIN,
+        accessControl: Keychain.ACCESS_CONTROL.BIOMETRY_ANY,
+        accessible: Keychain.ACCESSIBLE.WHEN_PASSCODE_SET_THIS_DEVICE_ONLY,
+      });
+    } catch (e: any) {
+      console.log(e);
+    }
+  };
+
   // Validate user entry before sending to backend
   const validateEntry = (): void => {
     setEmailError(false);
@@ -96,7 +112,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
       setError('Password is required and must be up to 6 characters.');
       return;
     }
-    handleAuth('login');
+    handleAuth({email, password});
   };
 
   // const submitData = (): void => {

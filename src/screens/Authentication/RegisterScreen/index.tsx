@@ -52,13 +52,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
   const [passwordError, setPasswordError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
 
-  const [handleAuth, isLoading, data, authError] = useAuth({
-    name,
-    email,
-    password,
-    phone,
-    referralCode,
-  });
+  const [handleAuth, isLoading, data, authError] = useAuth('register');
 
   React.useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -121,7 +115,13 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
       setError('Password is required and must be up to 6 characters.');
       return;
     }
-    handleAuth('register');
+    handleAuth({
+      name,
+      email,
+      password,
+      phone,
+      referralCode,
+    });
   };
 
   // const submitData = (): void => {

@@ -61,3 +61,6 @@ export const API_URL: string = 'https://rodicash.herokuapp.com/api/v1';
 
 // ASYNC STORAGE CONSTANTS
 export const USER_STORAGE = '@rodicash/USER';
+
+// KEYCHAIN SERVICE CONSTANTS
+export const RODICASH_LOGIN = '@rodicash/login';

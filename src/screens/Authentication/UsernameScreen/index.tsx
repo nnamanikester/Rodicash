@@ -6,22 +6,13 @@ import ErrorMessage from '@/components/ErrorMessage';
 import AppStatusBar from '@/components/AppStatusBar';
 import {useCreateUsername} from '@/hooks';
 import {ActivityIndicator} from 'react-native';
-import {setUser as setAuthUser} from '@/store/actions';
-import {connect, useSelector} from 'react-redux';
-import {IRootState} from '@/store/reducers';
-import {UserType} from '@/store/types';
 
 interface UsernameScreenProps {
   navigation: any;
-  setUser: (user: UserType) => void;
 }
 
-const UsernameScreen: React.FC<UsernameScreenProps> = ({
-  navigation,
-  setUser,
-}) => {
+const UsernameScreen: React.FC<UsernameScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
-  const user = useSelector((state: IRootState) => state.user);
   const [createUsername, isLoading, data, requestError] = useCreateUsername();
 
   const [username, setUsername] = React.useState<string>('');
@@ -32,8 +23,7 @@ const UsernameScreen: React.FC<UsernameScreenProps> = ({
   React.useEffect(() => {
     if (data) {
       console.log(data);
-      setUser({...user, username: 'kester'});
-      navigation.replace('CreatePin');
+      navigation.replace('CreatePin', {username});
     }
     if (requestError) {
       setError(requestError.message);
@@ -126,4 +116,4 @@ const UsernameScreen: React.FC<UsernameScreenProps> = ({
   );
 };
 
-export default connect(null, {setUser: setAuthUser})(UsernameScreen);
+export default UsernameScreen;

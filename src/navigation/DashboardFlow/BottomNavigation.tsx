@@ -23,7 +23,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="CashoutTab"
+      initialRouteName="HomeTab"
       screenOptions={{
         headerShown: false,
         tabBarStyle: {

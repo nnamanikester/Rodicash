@@ -6,16 +6,24 @@ import {Keyboard} from 'react-native';
 import ErrorMessage from '@/components/ErrorMessage';
 import RegistrationSuccessful from '@/components/RegistrationSuccessful';
 import AppStatusBar from '@/components/AppStatusBar';
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import {setUser as setAuthUser} from '@/store/actions';
+import {IRootState} from '@/store/reducers';
 
 interface BVNScreenProps {
   navigation: any;
+  route: any;
   setUser: any;
 }
 
-const BVNScreen: React.FC<BVNScreenProps> = ({navigation, setUser}) => {
+const BVNScreen: React.FC<BVNScreenProps> = ({
+  navigation,
+  setUser,
+  route: {params},
+}) => {
   const {colors} = useTheme();
+  const username = React.useMemo(() => params.username, []);
+  const user = useSelector((state: IRootState) => state.user);
 
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
 
@@ -70,11 +78,7 @@ const BVNScreen: React.FC<BVNScreenProps> = ({navigation, setUser}) => {
   const pasteClipboard = (): void => {};
 
   const complete = (): void => {
-    setUser({
-      token: 'hello',
-      email: 'nnamanikester@gmail.com',
-      name: 'John Kester',
-    });
+    setUser({...user, username});
   };
 
   if (completed) {
@@ -156,4 +160,4 @@ const BVNScreen: React.FC<BVNScreenProps> = ({navigation, setUser}) => {
   );
 };
 
-export default connect(null, {setAuthUser})(BVNScreen);
+export default connect(null, {setUser: setAuthUser})(BVNScreen);

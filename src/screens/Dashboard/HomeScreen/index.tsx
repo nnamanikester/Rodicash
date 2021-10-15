@@ -9,6 +9,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import SVG from '@/components/SVG';
 import TransactionItem from '@/components/TransactionItem';
 import AppStatusBar from '@/components/AppStatusBar';
+import {useSelector} from 'react-redux';
+import {IRootState} from '@/store/reducers';
 
 interface HomeScreenProps {
   navigation: any;
@@ -18,6 +20,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
   const [isLoading] = React.useState(false);
   const snapPoints = React.useMemo(() => ['25%', '45%', '95%'], []);
+  const {user} = useSelector((state: IRootState) => state);
 
   const bottomSheetRef = React.useRef<BottomSheet>(null);
 
@@ -60,12 +63,14 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 
         <UI.Block row center>
           <Image
-            source={{uri: 'https://placekitten.com/100'}}
+            source={{
+              uri: user.photo ? user.photo : 'https://via.placeholder.com/150',
+            }}
             style={styles.avatar}
           />
           <UI.Spacer />
           <UI.Text color={colors.gray2} body>
-            Hello, Daze
+            Hello, {user.name?.split(' ')[0]}
           </UI.Text>
         </UI.Block>
 

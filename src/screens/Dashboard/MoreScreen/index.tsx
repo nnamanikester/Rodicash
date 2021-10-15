@@ -7,11 +7,14 @@ import SVG from '@/components/SVG';
 import LinearGradient from 'react-native-linear-gradient';
 import PercentageCircle from '@/components/PercentageCircle';
 import AppStatusBar from '@/components/AppStatusBar';
-import {connect} from 'react-redux';
+import {connect, useDispatch, useSelector} from 'react-redux';
 import {
+  setAppSettings,
   setToken as setAuthToken,
   setUser as setAuthUser,
 } from '@/store/actions';
+import {IRootState} from '@/store/reducers';
+import {SET_TOAST} from '@/store/types';
 interface MoreScreenProps {
   navigation: any;
   setUser: any;
@@ -23,10 +26,23 @@ const MoreScreen: React.FC<MoreScreenProps> = ({
   setUser,
   setToken,
 }) => {
-  const {colors, isDark, setScheme} = useTheme();
-  const [biometrics, setBiometrics] = React.useState<boolean>(true);
+  const {colors, setScheme} = useTheme();
   const [isProfileComplete, setIsProfileComplete] =
     React.useState<boolean>(true);
+  const {user, appSettings} = useSelector((state: IRootState) => state);
+  const dispatch = useDispatch();
+
+  const handleChangeBiometrics = () => {
+    dispatch(
+      setAppSettings({...appSettings, isBiometrics: !appSettings.isBiometrics}),
+    );
+    dispatch({
+      type: SET_TOAST,
+      payload: appSettings.isBiometrics
+        ? 'Biometrics disabled'
+        : 'Biometrics enabled',
+    });
+  };
 
   const handleLogout = () => {
     setUser({
@@ -53,12 +69,17 @@ const MoreScreen: React.FC<MoreScreenProps> = ({
           <UI.Block middle>
             <Image
               style={styles.profileImage}
-              source={{uri: 'https://placekitten.com/200'}}
+              source={{
+                uri: user.photo
+                  ? user.photo
+                  : 'https://via.placeholder.com/150',
+              }}
             />
             <SVG name="camera" containerStyle={styles.cameraIcon} />
           </UI.Block>
-          <UI.Text body>Frankpeter Ani</UI.Text>
-          <UI.Text color={colors.gray2}>@Kester123</UI.Text>
+          <UI.Spacer />
+          <UI.Text body>{user.name}</UI.Text>
+          <UI.Text color={colors.gray2}>@{user.username}</UI.Text>
         </UI.Block>
 
         <UI.Spacer />
@@ -182,8 +203,8 @@ const MoreScreen: React.FC<MoreScreenProps> = ({
               <UI.Text body>Enable Biometrics</UI.Text>
             </UI.Block>
             <Switch
-              value={biometrics}
-              onValueChange={setBiometrics}
+              value={appSettings.isBiometrics}
+              onValueChange={handleChangeBiometrics}
               thumbColor={colors.white}
               trackColor={{false: colors.gray3, true: colors.secondary}}
             />
@@ -261,7 +282,7 @@ const MoreScreen: React.FC<MoreScreenProps> = ({
               <UI.Text body>Dark Theme</UI.Text>
             </UI.Block>
             <Switch
-              value={isDark}
+              value={appSettings.isDark}
               onValueChange={val => setScheme(val ? 'dark' : 'light')}
               thumbColor={colors.white}
               trackColor={{false: colors.gray3, true: colors.secondary}}

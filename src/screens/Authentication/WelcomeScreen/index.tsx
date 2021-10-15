@@ -31,7 +31,10 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   navigation,
 }) => {
   const {colors} = useTheme();
-  const {name, email, photo} = useSelector((state: IRootState) => state.user);
+  const {
+    user: {name, email, photo},
+    appSettings: {isBiometrics},
+  } = useSelector((state: IRootState) => state);
 
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
   const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false);
@@ -221,7 +224,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
 
         <UI.Spacer large />
 
-        {biometricsType && (
+        {isBiometrics && biometricsType && (
           <UI.Block center style={styles.biometricsContainer}>
             <UI.Clickable onClick={handleBiometrics}>
               <UI.Block

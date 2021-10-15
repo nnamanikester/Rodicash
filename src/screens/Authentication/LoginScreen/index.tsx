@@ -202,7 +202,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
             <UI.Block row middle>
               <UI.Text>Forgot Password?</UI.Text>
               <UI.Spacer size={3} />
-              <UI.Link onClick={() => navigation.push('Reset')}>Reset</UI.Link>
+              <UI.Link onClick={() => navigation.push('RequestPasswordReset')}>
+                Reset
+              </UI.Link>
             </UI.Block>
 
             <UI.Spacer medium />

@@ -95,7 +95,9 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
 
   const handleSwitchAccount = () => {
     setUser({email: null, name: null});
-    navigation.replace('Onboarding');
+    if (!email) {
+      navigation.replace('Onboarding');
+    }
   };
 
   const clearError = () => {

@@ -2,3 +2,4 @@
 export * from './useAuth';
 export * from './useCreateUsername';
 export * from './useEmailVerification';
+export * from './useResetPassword';

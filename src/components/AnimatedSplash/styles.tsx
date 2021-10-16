@@ -15,7 +15,7 @@ export const _dynamicImageBackground = (
   imageScale,
   logoOpacity,
   {
-    ...StyleSheet.absoluteFill,
+    ...StyleSheet.absoluteFillObject,
     width,
     height,
     top: 0,
@@ -42,8 +42,6 @@ export const _dynamicLogoStyle = (
 export const _dynamicCustomComponentStyle = (
   logoScale: any,
   logoOpacity: any,
-  logoWidth: any,
-  logoHeight: any,
 ) => [
   logoScale,
   logoOpacity,

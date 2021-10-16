@@ -69,6 +69,12 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   }, []);
 
   React.useEffect(() => {
+    if (isBiometrics && biometricsType) {
+      handleBiometrics();
+    }
+  }, [biometricsType]);
+
+  React.useEffect(() => {
     if (authError) {
       setError(authError.message);
       console.log(authError);

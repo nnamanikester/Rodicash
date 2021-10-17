@@ -29,18 +29,19 @@ export interface TextProps extends TXTProps {
 /**
  * A component for displaying texts which supports
  */
-export const Text: React.FC<TextProps> = ({
-  h1 = false,
-  h2 = false,
-  bold = false,
-  body = false,
-  note = false,
-  size,
-  children,
-  color,
-  colors: gradColors,
-  style,
-}) => {
+export const Text: React.FC<TextProps> = props => {
+  const {
+    h1 = false,
+    h2 = false,
+    bold = false,
+    body = false,
+    note = false,
+    size,
+    children,
+    color,
+    colors: gradColors,
+    style,
+  } = props;
   const {colors} = useTheme();
 
   const styles = StyleSheet.create({
@@ -97,6 +98,8 @@ export const Text: React.FC<TextProps> = ({
       <TXT>{children}</TXT>
     </LinearTextGradient>
   ) : (
-    <TXT style={[styles.text, textStyle, style]}>{children}</TXT>
+    <TXT {...props} style={[styles.text, textStyle, style]}>
+      {children}
+    </TXT>
   );
 };

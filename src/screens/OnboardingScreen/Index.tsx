@@ -208,6 +208,7 @@ class OnboardingScreen extends React.Component<
                 <Reveal duration={1500} from={0} to={1}>
                   <UI.Block style={styles.content}>
                     <UI.Text
+                      testID="onboarding_title"
                       color={colors.white}
                       h1
                       style={{textAlign: 'center'}}>

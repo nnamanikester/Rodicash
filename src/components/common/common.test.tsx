@@ -3,67 +3,67 @@ import {render} from '@testing-library/react-native';
 import * as UI from '.';
 
 describe('Common Unit Components', () => {
-  it('Should export "Block" component', () => {
+  it('"Block" component should match snapshot', () => {
     const Block = render(<UI.Block />);
     expect(Block).toMatchSnapshot();
   });
 
-  it('Should export "Button" component', () => {
+  it('"Button" component should match snapshot', () => {
     const Button = render(<UI.Button />);
     expect(Button).toMatchSnapshot();
   });
 
-  it('Should export "Clickable" component', () => {
+  it('"Clickable" component should match snapshot', () => {
     const Clickable = render(<UI.Clickable />);
     expect(Clickable).toMatchSnapshot();
   });
 
-  it('Should export "Column" component', () => {
+  it('"Column" component should match snapshot', () => {
     const Column = render(<UI.Column />);
     expect(Column).toMatchSnapshot();
   });
 
-  it('Should export "Icon" component', () => {
+  it('"Icon" component should match snapshot', () => {
     const Icon = render(<UI.Icon name="md-menu" />);
     expect(Icon).toMatchSnapshot();
   });
 
-  it('Should export "Layout" component', () => {
+  it('"Layout" component should match snapshot', () => {
     const Layout = render(<UI.Layout />);
     expect(Layout).toMatchSnapshot();
   });
 
-  it('Should export "Link" component', () => {
+  it('"Link" component should match snapshot', () => {
     const Link = render(<UI.Link />);
     expect(Link).toMatchSnapshot();
   });
 
-  it('Should export "Loading" component', () => {
+  it('"Loading" component should match snapshot', () => {
     const Loading = render(<UI.Loading show={false} />);
     expect(Loading).toMatchSnapshot();
   });
 
-  it('Should export "Row" component', () => {
+  it('"Row" component should match snapshot', () => {
     const Row = render(<UI.Row />);
     expect(Row).toMatchSnapshot();
   });
 
-  it('Should export "PinInput" component', () => {
+  it('"PinInput" component should match snapshot', () => {
     const PinInput = render(<UI.PinInput />);
     expect(PinInput).toMatchSnapshot();
   });
 
-  it('Should export "Spacer" component', () => {
+  it('"Spacer" component should match snapshot', () => {
     const Spacer = render(<UI.Spacer />);
     expect(Spacer).toMatchSnapshot();
   });
 
-  it('Should export "Text" component', () => {
+  it('"Text" component should match snapshot', () => {
     const Text = render(<UI.Text />);
     expect(Text).toMatchSnapshot();
   });
 
-  it('Should export "TextInput" component', () => {
+  it('"TextInput" component should match snapshot', () => {
     const TextInput = render(<UI.TextInput />);
     expect(TextInput).toMatchSnapshot();
   });

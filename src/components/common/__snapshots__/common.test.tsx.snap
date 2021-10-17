@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Common Unit Components Should export "Block" component 1`] = `
+exports[`Common Unit Components "Block" component should match snapshot 1`] = `
 <View
   style={
     Array [
@@ -20,7 +20,7 @@ exports[`Common Unit Components Should export "Block" component 1`] = `
 />
 `;
 
-exports[`Common Unit Components Should export "Button" component 1`] = `
+exports[`Common Unit Components "Button" component should match snapshot 1`] = `
 <View
   accessible={true}
   collapsable={false}
@@ -82,7 +82,7 @@ exports[`Common Unit Components Should export "Button" component 1`] = `
 </View>
 `;
 
-exports[`Common Unit Components Should export "Clickable" component 1`] = `
+exports[`Common Unit Components "Clickable" component should match snapshot 1`] = `
 <View
   accessible={true}
   collapsable={false}
@@ -111,7 +111,7 @@ exports[`Common Unit Components Should export "Clickable" component 1`] = `
 />
 `;
 
-exports[`Common Unit Components Should export "Column" component 1`] = `
+exports[`Common Unit Components "Column" component should match snapshot 1`] = `
 <View
   style={
     Object {
@@ -121,7 +121,7 @@ exports[`Common Unit Components Should export "Column" component 1`] = `
 />
 `;
 
-exports[`Common Unit Components Should export "Icon" component 1`] = `
+exports[`Common Unit Components "Icon" component should match snapshot 1`] = `
 <Text
   allowFontScaling={false}
   style={
@@ -144,7 +144,7 @@ exports[`Common Unit Components Should export "Icon" component 1`] = `
 </Text>
 `;
 
-exports[`Common Unit Components Should export "Layout" component 1`] = `
+exports[`Common Unit Components "Layout" component should match snapshot 1`] = `
 <View
   style={
     Object {
@@ -186,7 +186,7 @@ exports[`Common Unit Components Should export "Layout" component 1`] = `
 </View>
 `;
 
-exports[`Common Unit Components Should export "Link" component 1`] = `
+exports[`Common Unit Components "Link" component should match snapshot 1`] = `
 <View
   accessible={true}
   collapsable={false}
@@ -238,9 +238,9 @@ exports[`Common Unit Components Should export "Link" component 1`] = `
 </View>
 `;
 
-exports[`Common Unit Components Should export "Loading" component 1`] = `null`;
+exports[`Common Unit Components "Loading" component should match snapshot 1`] = `null`;
 
-exports[`Common Unit Components Should export "PinInput" component 1`] = `
+exports[`Common Unit Components "PinInput" component should match snapshot 1`] = `
 <View
   collapsable={false}
   forwardedRef={[Function]}
@@ -503,7 +503,7 @@ exports[`Common Unit Components Should export "PinInput" component 1`] = `
 </View>
 `;
 
-exports[`Common Unit Components Should export "Row" component 1`] = `
+exports[`Common Unit Components "Row" component should match snapshot 1`] = `
 <View
   style={
     Object {
@@ -515,7 +515,7 @@ exports[`Common Unit Components Should export "Row" component 1`] = `
 />
 `;
 
-exports[`Common Unit Components Should export "Spacer" component 1`] = `
+exports[`Common Unit Components "Spacer" component should match snapshot 1`] = `
 <View
   style={
     Object {
@@ -525,7 +525,7 @@ exports[`Common Unit Components Should export "Spacer" component 1`] = `
 />
 `;
 
-exports[`Common Unit Components Should export "Text" component 1`] = `
+exports[`Common Unit Components "Text" component should match snapshot 1`] = `
 <Text
   style={
     Array [
@@ -544,7 +544,7 @@ exports[`Common Unit Components Should export "Text" component 1`] = `
 />
 `;
 
-exports[`Common Unit Components Should export "TextInput" component 1`] = `
+exports[`Common Unit Components "TextInput" component should match snapshot 1`] = `
 <View
   style={Object {}}
 >

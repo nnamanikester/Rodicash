@@ -118,6 +118,7 @@ class OnboardingScreen extends React.Component<
               />
             )}
             <Swiper
+              testID="onboarding_swiper"
               loop={false}
               loadMinimal
               loadMinimalSize={0}
@@ -243,7 +244,7 @@ class OnboardingScreen extends React.Component<
                       color={colors.white}
                       h1
                       style={{textAlign: 'center'}}>
-                      Gift and recieve money from your friends
+                      Gift and receive money from your friends
                     </UI.Text>
 
                     <UI.Spacer medium />
@@ -265,13 +266,17 @@ class OnboardingScreen extends React.Component<
                 position: 'absolute',
                 bottom: 0,
               }}>
-              <UI.Button white onClick={() => navigation.navigate('Register')}>
+              <UI.Button
+                testID="create_account_button"
+                white
+                onClick={() => navigation.navigate('Register')}>
                 <UI.Text bold>CREATE ACCOUNT</UI.Text>
               </UI.Button>
 
               <UI.Spacer />
 
               <UI.Button
+                testID="login_button"
                 transparent
                 onClick={() => navigation.navigate('Login')}>
                 <UI.Text color={colors.white} bold>

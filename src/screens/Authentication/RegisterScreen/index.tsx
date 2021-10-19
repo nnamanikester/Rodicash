@@ -152,7 +152,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
         style={styles.header}
         backgroundColor={colors.background}
         row>
-        <UI.Clickable onClick={() => navigation.goBack()}>
+        <UI.Clickable testID="back_button" onClick={() => navigation.goBack()}>
           <UI.Block row center width="auto">
             <UI.Icon name="chevron-back-circle-outline" />
             <UI.Spacer size={2} />

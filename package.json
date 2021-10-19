@@ -69,6 +69,7 @@
     "@types/redux-thunk": "^2.1.0",
     "babel-jest": "^27.2.0",
     "babel-plugin-module-resolver": "^4.1.0",
+    "detox": "^18.22.2",
     "eslint": "^7.32.0",
     "jest": "^27.2.0",
     "metro-react-native-babel-preset": "^0.66.2",
@@ -76,5 +77,17 @@
     "react-native-codegen": "^0.0.7",
     "react-test-renderer": "17.0.2",
     "ts-node": "^10.3.0"
+  },
+  "detox": {
+    "test-runner": "jest",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Rodicash.app",
+        "build": "xcodebuild -workspace ios/Rodicash.xcworkspace -scheme Rodicash -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 12"
+      }
+    }
   }
+
 }

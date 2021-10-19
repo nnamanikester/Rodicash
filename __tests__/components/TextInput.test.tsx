@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {fireEvent, render} from '@testing-library/react-native';
-import {TextInput} from '.';
+import {TextInput} from '../../src/components/common/TextInput';
 import {Text} from 'react-native';
 
 const Component: React.FC = () => {

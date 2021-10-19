@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {render} from '@testing-library/react-native';
-import {Block} from '.';
+import {Block} from '../../src/components/common/Block';
 import {Text} from 'react-native';
 
 describe('Block', () => {

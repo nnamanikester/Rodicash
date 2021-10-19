@@ -19,14 +19,8 @@ export interface LinkProps extends ClickableProps {
   color?: string;
 }
 
-export const Link: React.FC<LinkProps> = ({
-  children,
-  to,
-  textStyle,
-  onClick,
-  style,
-  color,
-}) => {
+export const Link: React.FC<LinkProps> = props => {
+  const {children, to, textStyle, onClick, style, color} = props;
   const {colors} = useTheme();
 
   const styles = StyleSheet.create({
@@ -37,6 +31,7 @@ export const Link: React.FC<LinkProps> = ({
 
   return (
     <Clickable
+      {...props}
       style={[styles.link, style]}
       onClick={to ? () => Linking.openURL(to) : onClick}>
       <Text bold style={textStyle} color={color || colors.secondary}>

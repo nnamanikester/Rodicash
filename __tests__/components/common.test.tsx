@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {render} from '@testing-library/react-native';
-import * as UI from '.';
+import * as UI from '../../src/components/common';
 
 describe('Common Unit Components', () => {
   it('"Block" component should match snapshot', () => {

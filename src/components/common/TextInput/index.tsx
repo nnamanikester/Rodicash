@@ -157,7 +157,7 @@ export const TextInput: React.FC<TextInputProps> = props => {
 
   return (
     <View style={{/* marginTop: active ? 5 : 0, */ ...containerStyle}}>
-      {floatLabel || active ? (
+      {floatLabel ? (
         <Block style={{paddingLeft: 10, marginBottom: -10, zIndex: 1}}>
           <Text size={hd('1.7%')} color={colors.primary}>
             {placeholder}

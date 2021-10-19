@@ -158,6 +158,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
           <UI.Block>
             <UI.Text body>Email Address</UI.Text>
             <UI.TextInput
+              testID="email_field"
               autoFocus
               autoCorrect={false}
               autoCapitalize="none"
@@ -175,6 +176,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
           <UI.Block>
             <UI.Text body>Password</UI.Text>
             <UI.TextInput
+              testID="password_field"
               value={password}
               autoCorrect={false}
               autoCapitalize="none"
@@ -202,7 +204,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
 
       <UI.Block backgroundColor={colors.background} style={styles.footer}>
         <UI.Button primary onClick={validateEntry}>
-          <UI.Block row middle>
+          <UI.Block testID="login_button" row middle>
             <UI.Text color={colors.white} bold>
               LOGIN
             </UI.Text>
@@ -218,7 +220,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
             <UI.Block row middle>
               <UI.Text>Forgot Password?</UI.Text>
               <UI.Spacer size={3} />
-              <UI.Link onClick={() => navigation.push('RequestPasswordReset')}>
+              <UI.Link
+                testID="reset_link"
+                onClick={() => navigation.push('RequestPasswordReset')}>
                 Reset
               </UI.Link>
             </UI.Block>

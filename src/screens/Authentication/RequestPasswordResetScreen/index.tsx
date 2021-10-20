@@ -87,7 +87,6 @@ const RequestPasswordResetScreen: React.FC<RequestPasswordResetScreenProps> = ({
         <UI.Block>
           <UI.Text body>Email address</UI.Text>
           <UI.TextInput
-            autoFocus
             autoCorrect={false}
             autoCapitalize="none"
             value={email}

@@ -118,7 +118,6 @@ const BVNScreen: React.FC<BVNScreenProps> = ({
           <UI.Block>
             <UI.Text body>Enter your BVN</UI.Text>
             <UI.TextInput
-              autoFocus
               value={bvn}
               onChangeText={setBvn}
               error={bvnError}

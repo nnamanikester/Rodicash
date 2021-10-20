@@ -65,7 +65,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({onDismiss, message}) => {
 
           <UI.Spacer large />
 
-          <UI.Button onClick={beforeDismiss} transparent>
+          <UI.Button testID="okay_button" onClick={beforeDismiss} transparent>
             <UI.Text bold color={colors.white}>
               OKAY
             </UI.Text>

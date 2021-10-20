@@ -107,7 +107,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
     }
     if (!phone) {
       setPhoneError(true);
-      setError('Please enter a valid phone number');
+      setError('Please enter a valid phone number.');
       return;
     }
     if (!password || password.length < 6) {
@@ -161,7 +161,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
         </UI.Clickable>
       </UI.Block>
 
-      <UI.Layout>
+      <UI.Layout testID="layout">
         <UI.Text h1>Create {'\n'}Account.</UI.Text>
         <UI.Spacer large />
 
@@ -169,7 +169,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
           <UI.Block>
             <UI.Text body>Full Name</UI.Text>
             <UI.TextInput
-              autoFocus
+              testID="fullname_field"
               autoCorrect={false}
               value={name}
               onChangeText={setName}
@@ -184,6 +184,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
           <UI.Block>
             <UI.Text body>Email Address</UI.Text>
             <UI.TextInput
+              testID="email_field"
               value={email}
               autoCorrect={false}
               autoCapitalize="none"
@@ -200,6 +201,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
           <UI.Block>
             <UI.Text body>Phone Number</UI.Text>
             <UI.TextInput
+              testID="phone_field"
               value={phone}
               autoCorrect={false}
               autoCapitalize="none"
@@ -237,6 +239,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
           <UI.Block>
             <UI.Text body>Password</UI.Text>
             <UI.TextInput
+              testID="password_field"
               value={password}
               autoCorrect={false}
               autoCapitalize="none"
@@ -263,6 +266,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
           <UI.Block>
             <UI.Text body>Referral code (optional)</UI.Text>
             <UI.TextInput
+              testID="referral_field"
               value={referralCode}
               autoCorrect={false}
               autoCapitalize="none"
@@ -285,7 +289,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
 
       <UI.Block backgroundColor={colors.background} style={styles.footer}>
         <UI.Button primary onClick={validateEntry}>
-          <UI.Block row middle>
+          <UI.Block testID="sign_up_button" row middle>
             <UI.Text color={colors.white} bold>
               SIGN UP
             </UI.Text>
@@ -301,7 +305,9 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
             <UI.Block row middle>
               <UI.Text>Already have an account?</UI.Text>
               <UI.Spacer size={3} />
-              <UI.Link onClick={() => navigation.replace('Login')}>
+              <UI.Link
+                testID="login_link"
+                onClick={() => navigation.replace('Login')}>
                 Login
               </UI.Link>
             </UI.Block>

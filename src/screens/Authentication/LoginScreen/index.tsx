@@ -159,7 +159,6 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
             <UI.Text body>Email Address</UI.Text>
             <UI.TextInput
               testID="email_field"
-              autoFocus
               autoCorrect={false}
               autoCapitalize="none"
               value={email}

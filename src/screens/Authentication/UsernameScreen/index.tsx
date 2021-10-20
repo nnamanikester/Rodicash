@@ -81,7 +81,6 @@ const UsernameScreen: React.FC<UsernameScreenProps> = ({navigation}) => {
           <UI.Block>
             <UI.Text body>Choose a Username</UI.Text>
             <UI.TextInput
-              autoFocus
               autoCorrect={false}
               autoCapitalize="none"
               value={username}

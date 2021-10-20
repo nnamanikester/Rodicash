@@ -6,6 +6,7 @@ import styles from '../styles';
 import SVG from '@/components/SVG';
 import {widthPercentageToDP as wd} from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
+import AppStatusBar from '@/components/AppStatusBar';
 
 interface ContactsModalProps {
   show: boolean;
@@ -95,8 +96,14 @@ const ContactsModal: React.FC<ContactsModalProps> = ({
 
   return (
     <>
+      <AppStatusBar
+        backgroundColor={colors.background}
+        barStyle="dark-content"
+      />
+
       <Modal animationType="slide" visible={show}>
         <UI.Block
+          testID="back_button"
           center
           style={styles.modalHeader}
           backgroundColor={colors.background}

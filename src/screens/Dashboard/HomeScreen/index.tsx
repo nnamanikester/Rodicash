@@ -52,6 +52,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
           <UI.Block row center justify="space-between">
             <UI.Text h1>Home</UI.Text>
             <UI.Clickable
+              testID="nootifications_icon"
               onClick={() => navigation.navigate('Notifications')}
               style={[styles.notificationButton, {borderColor: colors.gray3}]}>
               <UI.Icon color={colors.text} name="notifications" />
@@ -119,6 +120,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 
         <UI.Block center>
           <UI.Clickable
+            testID="add_money_button"
             onClick={() => navigation.navigate('AddMoney')}
             style={[
               styles.addMoney,
@@ -148,7 +150,9 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
         enableContentPanningGesture={false}
         onChange={() => {}}
         handleComponent={() => (
-          <UI.Clickable onClick={() => bottomSheetRef.current?.snapToIndex(0)}>
+          <UI.Clickable
+            testID="header_handle"
+            onClick={() => bottomSheetRef.current?.snapToIndex(0)}>
             <UI.Block center>
               <UI.Spacer size={3} />
               <SVG name="chevron-down" />

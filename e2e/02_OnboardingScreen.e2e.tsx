@@ -4,9 +4,14 @@ import {by, device, expect, element, waitFor} from 'detox';
 describe('Onboarding Screen', () => {
   beforeAll(async (): Promise<void> => {
     await device.launchApp();
-    await waitFor(element(by.text('The easiest way to withdraw cash')))
-      .toExist()
-      .withTimeout(5000);
+    try {
+      await waitFor(element(by.text('The easiest way to withdraw cash')))
+        .toExist()
+        .withTimeout(5000);
+    } catch (e: any) {
+      await element(by.id('switch_account_link')).multiTap(2);
+      // await element(by.id('back_button')).tap();
+    }
   });
 
   it('Should show the Create Account Button', async (): Promise<void> => {

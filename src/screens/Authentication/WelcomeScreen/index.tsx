@@ -204,6 +204,8 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           <UI.Block>
             <UI.Text body>Password</UI.Text>
             <UI.TextInput
+              testID="password_field"
+              onSubmitEditing={validateEntry}
               autoCorrect={false}
               autoCapitalize="none"
               value={password}
@@ -259,7 +261,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
       </UI.Layout>
 
       <UI.Block backgroundColor={colors.background} style={styles.footer}>
-        <UI.Button primary onClick={validateEntry}>
+        <UI.Button testID="login_button" primary onClick={validateEntry}>
           <UI.Text color={colors.white} bold>
             LOGIN
           </UI.Text>
@@ -272,7 +274,11 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             <UI.Block row middle>
               <UI.Text>Not you?</UI.Text>
               <UI.Spacer size={3} />
-              <UI.Link onClick={handleSwitchAccount}>Switch Account</UI.Link>
+              <UI.Link
+                testID="switch_account_link"
+                onClick={handleSwitchAccount}>
+                Switch Account
+              </UI.Link>
             </UI.Block>
 
             <UI.Spacer medium />

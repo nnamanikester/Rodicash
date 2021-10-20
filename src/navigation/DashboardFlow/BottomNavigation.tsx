@@ -39,6 +39,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
         name="HomeTab"
         component={HomeScreen}
         options={{
+          tabBarTestID: 'home_tab_navigation',
           unmountOnBlur: true,
           tabBarIcon: ({focused}) => (
             <UI.Block
@@ -61,6 +62,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
         name="TransactionsTab"
         component={TransactionScreen}
         options={{
+          tabBarTestID: 'transactions_tab_navigation',
           unmountOnBlur: true,
           tabBarIcon: ({focused}) => (
             <UI.Block
@@ -82,6 +84,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
         name="CashoutTab"
         component={CashoutScreen}
         options={{
+          tabBarTestID: 'cashout_tab_navigation',
           unmountOnBlur: true,
           tabBarIcon: ({focused}) => (
             <UI.Block
@@ -104,6 +107,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
         name="MapTab"
         component={MapScreen}
         options={{
+          tabBarTestID: 'map_tab_navigation',
           unmountOnBlur: true,
           tabBarIcon: ({focused}) => (
             <UI.Block
@@ -125,6 +129,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = () => {
         name="MoreTab"
         component={MoreScreen}
         options={{
+          tabBarTestID: 'more_tab_navigation',
           tabBarIcon: ({focused}) => (
             <UI.Block
               style={[

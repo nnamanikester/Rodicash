@@ -150,7 +150,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({
         </UI.Clickable>
       </UI.Block>
 
-      <UI.Layout>
+      <UI.Layout testID="layout">
         <UI.Text h1>Login.</UI.Text>
         <UI.Spacer large />
 

@@ -14,8 +14,9 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Zocial from 'react-native-vector-icons/Zocial';
 import {useTheme} from '@/contexts/ThemeContext';
+import {ViewProps} from 'react-native';
 
-export interface IconProps {
+export interface IconProps extends ViewProps {
   /**
    * Determined the type of Icon you want to use from the list
    * 'Ionicons' | 'AntDesign' | 'Entypo' | 'EvilIcons' | 'Feather' |
@@ -56,13 +57,9 @@ export interface IconProps {
   style?: object;
 }
 
-export const Icon: React.FC<IconProps> = ({
-  size = 28,
-  name,
-  color,
-  type = 'Ionicons',
-  style,
-}) => {
+export const Icon: React.FC<IconProps> = props => {
+  const {size = 28, name, color, type = 'Ionicons', style} = props;
+
   const {colors} = useTheme();
 
   const IconType = () => {
@@ -70,6 +67,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'AntDesign':
         return (
           <AntDesign
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -79,6 +77,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'Entypo':
         return (
           <Entypo
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -88,6 +87,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'EvilIcons':
         return (
           <EvilIcons
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -97,6 +97,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'Feather':
         return (
           <Feather
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -106,6 +107,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'FontAwesome':
         return (
           <FontAwesome
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -115,6 +117,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'FontAwesome5':
         return (
           <FontAwesome5
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -124,6 +127,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'Fontisto':
         return (
           <Fontisto
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -133,6 +137,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'Foundation':
         return (
           <Foundation
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -142,6 +147,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'Ionicons':
         return (
           <Ionicons
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -151,6 +157,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'MaterialIcons':
         return (
           <MaterialIcons
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -160,6 +167,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'MaterialCommunityIcons':
         return (
           <MaterialCommunityIcons
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -169,6 +177,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'Octicons':
         return (
           <Octicons
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -178,6 +187,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'Zocial':
         return (
           <Zocial
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -187,6 +197,7 @@ export const Icon: React.FC<IconProps> = ({
       case 'SimpleLineIcons':
         return (
           <SimpleLineIcons
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}
@@ -196,6 +207,7 @@ export const Icon: React.FC<IconProps> = ({
       default:
         return (
           <Ionicons
+            {...props}
             name={name}
             color={color || colors.gray2}
             size={size}

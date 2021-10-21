@@ -29,7 +29,9 @@ const ConfirmCashout: React.FC<ConfirmCashoutProps> = ({navigation}) => {
   };
 
   const SwipeIcon = () => {
-    return <UI.Icon name="arrow-forward" color={colors.white} />;
+    return (
+      <UI.Icon testID="swipe_icon" name="arrow-forward" color={colors.white} />
+    );
   };
 
   return (

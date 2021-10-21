@@ -1,7 +1,7 @@
 /* global it, beforeAll, describe */
 import {by, device, expect, element, waitFor} from 'detox';
 
-describe('Home Screen', () => {
+describe('Transactions Screen', () => {
   beforeAll(async (): Promise<void> => {
     await device.launchApp();
 

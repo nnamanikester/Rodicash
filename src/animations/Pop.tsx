@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {Animated} from 'react-native';
+import {Animated, ViewProps} from 'react-native';
 import * as UI from '@/components/common';
 
-interface PopProps {
+interface PopProps extends ViewProps {
   from: number;
   to: number;
   delay?: number;
@@ -69,7 +69,7 @@ class Pop extends React.Component<PopProps, PopState> {
     };
 
     return (
-      <Animated.View style={animStyle}>
+      <Animated.View {...this.props} style={animStyle}>
         <UI.Clickable
           onPressIn={this.onPressIn}
           onPressOut={this.onPressOut}

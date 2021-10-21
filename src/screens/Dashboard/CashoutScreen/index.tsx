@@ -89,7 +89,10 @@ const CashoutScreen: React.FC<CashoutScreenProps> = ({navigation}) => {
         />
 
         <UI.Block style={{paddingHorizontal: 20}}>
-          <UI.Button primary onClick={handleWithdrawal}>
+          <UI.Button
+            testID="withdraw_button"
+            primary
+            onClick={handleWithdrawal}>
             <UI.Text bold color={colors.white}>
               WITHDRAW
             </UI.Text>

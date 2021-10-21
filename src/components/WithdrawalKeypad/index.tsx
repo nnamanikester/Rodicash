@@ -45,7 +45,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
   return (
     <UI.Block justify="space-between" flex style={styles.keypadContainer}>
       <UI.Block row justify="space-between">
-        <Pop from={1} to={0.8} onClick={() => handleValueChange('1')}>
+        <Pop
+          testID="one"
+          from={1}
+          to={0.8}
+          onClick={() => handleValueChange('1')}>
           <UI.Block
             center
             middle
@@ -54,7 +58,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             <UI.Text h1>1</UI.Text>
           </UI.Block>
         </Pop>
-        <Pop from={1} to={0.8} onClick={() => handleValueChange('2')}>
+        <Pop
+          testID="two"
+          from={1}
+          to={0.8}
+          onClick={() => handleValueChange('2')}>
           <UI.Block
             center
             middle
@@ -63,7 +71,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             <UI.Text h1>2</UI.Text>
           </UI.Block>
         </Pop>
-        <Pop from={1} to={0.8} onClick={() => handleValueChange('3')}>
+        <Pop
+          testID="three"
+          from={1}
+          to={0.8}
+          onClick={() => handleValueChange('3')}>
           <UI.Block
             center
             middle
@@ -75,7 +87,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
       </UI.Block>
 
       <UI.Block row justify="space-between">
-        <Pop from={1} to={0.8} onClick={() => handleValueChange('4')}>
+        <Pop
+          testID="four"
+          from={1}
+          to={0.8}
+          onClick={() => handleValueChange('4')}>
           <UI.Block
             center
             middle
@@ -84,7 +100,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             <UI.Text h1>4</UI.Text>
           </UI.Block>
         </Pop>
-        <Pop from={1} to={0.8} onClick={() => handleValueChange('5')}>
+        <Pop
+          testID="five"
+          from={1}
+          to={0.8}
+          onClick={() => handleValueChange('5')}>
           <UI.Block
             center
             middle
@@ -93,7 +113,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             <UI.Text h1>5</UI.Text>
           </UI.Block>
         </Pop>
-        <Pop from={1} to={0.8} onClick={() => handleValueChange('6')}>
+        <Pop
+          testID="six"
+          from={1}
+          to={0.8}
+          onClick={() => handleValueChange('6')}>
           <UI.Block
             center
             middle
@@ -105,7 +129,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
       </UI.Block>
 
       <UI.Block row justify="space-between">
-        <Pop from={1} to={0.8} onClick={() => handleValueChange('7')}>
+        <Pop
+          testID="seven"
+          from={1}
+          to={0.8}
+          onClick={() => handleValueChange('7')}>
           <UI.Block
             center
             middle
@@ -114,7 +142,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             <UI.Text h1>7</UI.Text>
           </UI.Block>
         </Pop>
-        <Pop from={1} to={0.8} onClick={() => handleValueChange('8')}>
+        <Pop
+          testID="eight"
+          from={1}
+          to={0.8}
+          onClick={() => handleValueChange('8')}>
           <UI.Block
             center
             middle
@@ -123,7 +155,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             <UI.Text h1>8</UI.Text>
           </UI.Block>
         </Pop>
-        <Pop from={1} to={0.8} onClick={() => handleValueChange('9')}>
+        <Pop
+          testID="nine"
+          from={1}
+          to={0.8}
+          onClick={() => handleValueChange('9')}>
           <UI.Block
             center
             middle
@@ -137,7 +173,11 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
       <UI.Block row justify="space-between">
         <UI.Block style={[styles.keypad, {borderColor: colors.transparent}]} />
 
-        <Pop from={1} to={0.8} onClick={() => handleValueChange('0')}>
+        <Pop
+          testID="zero"
+          from={1}
+          to={0.8}
+          onClick={() => handleValueChange('0')}>
           <UI.Block
             center
             middle
@@ -146,7 +186,7 @@ const WithdrawalKeypad: React.FC<WithdrawalKeypadProps> = ({
             <UI.Text h1>0</UI.Text>
           </UI.Block>
         </Pop>
-        <Pop from={1} to={0.8} onClick={handleDelete}>
+        <Pop testID="delete" from={1} to={0.8} onClick={handleDelete}>
           <UI.Block
             center
             middle

@@ -32,14 +32,16 @@ export interface LayoutProps extends ViewProps {
   refreshing?: boolean;
 }
 
-export const Layout: React.FC<LayoutProps> = ({
-  children,
-  itemsToFloat = [],
-  style = {},
-  noScroll = false,
-  onRefresh = () => {},
-  refreshing = false,
-}) => {
+export const Layout: React.FC<LayoutProps> = props => {
+  const {
+    children,
+    itemsToFloat = [],
+    style = {},
+    noScroll = false,
+    onRefresh = () => {},
+    refreshing = false,
+  } = props;
+
   const {colors} = useTheme();
 
   const styles = StyleSheet.create({
@@ -53,13 +55,14 @@ export const Layout: React.FC<LayoutProps> = ({
   return (
     <>
       {noScroll ? (
-        <View style={{flex: 1}}>
+        <View {...props} style={{flex: 1}}>
           <View style={[styles.container, style]}>{children}</View>
         </View>
       ) : (
         <>
           <View style={{flex: 1}}>
             <ScrollView
+              {...props}
               refreshControl={
                 <RefreshControl
                   colors={[colors.primary]}

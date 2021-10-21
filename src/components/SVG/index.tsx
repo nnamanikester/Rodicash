@@ -184,6 +184,9 @@ const SVG: React.FC<SVGProps> = ({
     case 'share':
       Icon = require('./Share').default;
       break;
+    case 'success-circle':
+      Icon = require('./SuccessCircle').default;
+      break;
     default:
       Icon = () => <UI.Text color="red">??</UI.Text>;
       break;

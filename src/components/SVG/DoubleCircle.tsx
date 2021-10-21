@@ -9,7 +9,7 @@ function DoubleCircle() {
         <Circle cx={46} cy={26} r={16} fill="#fff" />
       </G>
       <Circle cx={66} cy={26} r={16} fill="#fff" fillOpacity={0.8} />
-      <Defs></Defs>
+      <Defs />
     </Svg>
   );
 }

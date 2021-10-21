@@ -23,23 +23,25 @@ export interface BlockProps extends ViewProps {
   absolute?: boolean;
 }
 
-const Block: React.FC<BlockProps> = ({
-  children,
-  justify = 'flex-start',
-  row,
-  center,
-  middle,
-  right,
-  left,
-  bottom,
-  top,
-  flex,
-  width,
-  height,
-  backgroundColor,
-  absolute,
-  style,
-}) => {
+const Block: React.FC<BlockProps> = props => {
+  const {
+    children,
+    justify = 'flex-start',
+    row,
+    center,
+    middle,
+    right,
+    left,
+    bottom,
+    top,
+    flex,
+    width,
+    height,
+    backgroundColor,
+    absolute,
+    style,
+  } = props;
+
   let blockStyles: ViewStyle = {};
 
   if (justify) {
@@ -104,7 +106,9 @@ const Block: React.FC<BlockProps> = ({
 
   return (
     <>
-      <View style={[styless.block, blockStyles, style]}>{children}</View>
+      <View {...props} style={[styless.block, blockStyles, style]}>
+        {children}
+      </View>
     </>
   );
 };

@@ -9,6 +9,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import SVG from '@/components/SVG';
 import TransactionItem from '@/components/TransactionItem';
 import AppStatusBar from '@/components/AppStatusBar';
+import {useSelector} from 'react-redux';
+import {IRootState} from '@/store/reducers';
 
 interface HomeScreenProps {
   navigation: any;
@@ -18,6 +20,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
   const [isLoading] = React.useState(false);
   const snapPoints = React.useMemo(() => ['25%', '45%', '95%'], []);
+  const {user} = useSelector((state: IRootState) => state);
 
   const bottomSheetRef = React.useRef<BottomSheet>(null);
 
@@ -49,6 +52,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
           <UI.Block row center justify="space-between">
             <UI.Text h1>Home</UI.Text>
             <UI.Clickable
+              testID="nootifications_icon"
               onClick={() => navigation.navigate('Notifications')}
               style={[styles.notificationButton, {borderColor: colors.gray3}]}>
               <UI.Icon color={colors.text} name="notifications" />
@@ -60,12 +64,14 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 
         <UI.Block row center>
           <Image
-            source={{uri: 'https://placekitten.com/100'}}
+            source={{
+              uri: user.photo ? user.photo : 'https://via.placeholder.com/150',
+            }}
             style={styles.avatar}
           />
           <UI.Spacer />
           <UI.Text color={colors.gray2} body>
-            Hello, Daze
+            Hello, {user.name?.split(' ')[0]}
           </UI.Text>
         </UI.Block>
 
@@ -114,6 +120,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 
         <UI.Block center>
           <UI.Clickable
+            testID="add_money_button"
             onClick={() => navigation.navigate('AddMoney')}
             style={[
               styles.addMoney,
@@ -143,7 +150,9 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
         enableContentPanningGesture={false}
         onChange={() => {}}
         handleComponent={() => (
-          <UI.Clickable onClick={() => bottomSheetRef.current?.snapToIndex(0)}>
+          <UI.Clickable
+            testID="header_handle"
+            onClick={() => bottomSheetRef.current?.snapToIndex(0)}>
             <UI.Block center>
               <UI.Spacer size={3} />
               <SVG name="chevron-down" />

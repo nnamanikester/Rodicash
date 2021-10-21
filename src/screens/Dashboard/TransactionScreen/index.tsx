@@ -92,7 +92,10 @@ const TransactionScreen: React.FC<TransactionScreenProps> = ({navigation}) => {
           row
           backgroundColor={colors.gray4}
           style={[styles.tabContainer, {borderColor: colors.gray3}]}>
-          <UI.Clickable onClick={setTab.bind(null, 'send')} style={{flex: 1}}>
+          <UI.Clickable
+            testID="send_tab"
+            onClick={setTab.bind(null, 'send')}
+            style={{flex: 1}}>
             <LinearGradient
               style={styles.tab}
               colors={tab === 'send' ? tabColors.active : tabColors.inactive}>
@@ -105,6 +108,7 @@ const TransactionScreen: React.FC<TransactionScreenProps> = ({navigation}) => {
             </LinearGradient>
           </UI.Clickable>
           <UI.Clickable
+            testID="request_tab"
             onClick={setTab.bind(null, 'request')}
             style={{flex: 1}}>
             <LinearGradient
@@ -125,7 +129,7 @@ const TransactionScreen: React.FC<TransactionScreenProps> = ({navigation}) => {
         <UI.Spacer />
 
         <UI.Block>
-          <UI.Text body>{tab === 'send' ? 'Amount' : 'Houw much?'}</UI.Text>
+          <UI.Text body>{tab === 'send' ? 'Amount' : 'How much?'}</UI.Text>
           <UI.TextInput
             value={amount}
             onChangeText={setAmount}
@@ -166,6 +170,7 @@ const TransactionScreen: React.FC<TransactionScreenProps> = ({navigation}) => {
             </UI.Text>
           </UI.Block>
           <UI.TextInput
+            testID="email_field"
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -173,6 +178,7 @@ const TransactionScreen: React.FC<TransactionScreenProps> = ({navigation}) => {
           <UI.Spacer />
           <UI.Block right>
             <UI.Clickable
+              testID="select_contact_button"
               onClick={setShowContacts.bind(null, true)}
               style={[styles.selectButton, {borderColor: colors.secondary}]}>
               <UI.Text color={colors.secondary}>Select Contact</UI.Text>
@@ -309,7 +315,7 @@ const TransactionScreen: React.FC<TransactionScreenProps> = ({navigation}) => {
       <UI.Block
         backgroundColor={colors.background}
         style={{paddingHorizontal: 20}}>
-        <UI.Button primary onClick={onContinue}>
+        <UI.Button testID="continue_button" primary onClick={onContinue}>
           <UI.Text color={colors.white} bold>
             CONTINUE
           </UI.Text>

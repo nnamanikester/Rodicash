@@ -5,9 +5,12 @@ import {Provider} from 'react-redux';
 import {listenOrientationChange as lor} from 'react-native-responsive-screen';
 import AnimatedSplash from '@/components/AnimatedSplash';
 import NavigationFlow from '@/navigation';
-import store from '@/store';
 import {ThemeProvider, ThemeContext} from '@/contexts/ThemeContext';
 import SplashScreen from './components/SplashScreen';
+import {store} from './store';
+import EncryptedStorage from 'react-native-encrypted-storage';
+import {APP_SETTINGS_STORAGE, USER_STORAGE} from '@/constants';
+import {setAppSettings, setUser} from './store/actions';
 
 interface AppProps {}
 
@@ -20,10 +23,20 @@ class App extends React.Component<AppProps, AppState> {
 
   state = {
     loaded: false,
+    user: null,
   };
 
-  componentDidMount(): void {
+  async componentDidMount(): Promise<void> {
     lor(this);
+
+    const rawUser = await EncryptedStorage.getItem(USER_STORAGE);
+    const rawAppSettings = await EncryptedStorage.getItem(APP_SETTINGS_STORAGE);
+    if (rawUser) {
+      store.dispatch(setUser(JSON.parse(rawUser)) as any);
+    }
+    if (rawAppSettings) {
+      store.dispatch(setAppSettings(JSON.parse(rawAppSettings)) as any);
+    }
 
     setTimeout(() => {
       this.setState({loaded: true});

@@ -49,7 +49,7 @@ const AddMoneyScreen: React.FC<AddMoneyScreenProps> = ({navigation}) => {
         style={styles.header}
         backgroundColor={colors.background}
         row>
-        <UI.Clickable onClick={() => navigation.pop()}>
+        <UI.Clickable testID="back_button" onClick={() => navigation.pop()}>
           <UI.Block row center width="auto">
             <UI.Icon name="chevron-back-circle-outline" />
             <UI.Spacer size={2} />
@@ -79,6 +79,7 @@ const AddMoneyScreen: React.FC<AddMoneyScreenProps> = ({navigation}) => {
           backgroundColor={colors.gray4}
           style={[styles.tabContainer, {borderColor: colors.gray3}]}>
           <UI.Clickable
+            testID="account_tab"
             onClick={setTab.bind(null, 'account')}
             style={{flex: 1}}>
             <LinearGradient
@@ -94,7 +95,10 @@ const AddMoneyScreen: React.FC<AddMoneyScreenProps> = ({navigation}) => {
               </UI.Text>
             </LinearGradient>
           </UI.Clickable>
-          <UI.Clickable onClick={setTab.bind(null, 'card')} style={{flex: 1}}>
+          <UI.Clickable
+            testID="card_tab"
+            onClick={setTab.bind(null, 'card')}
+            style={{flex: 1}}>
             <LinearGradient
               style={styles.tab}
               colors={tab === 'card' ? tabColors.active : tabColors.inactive}>
@@ -106,7 +110,10 @@ const AddMoneyScreen: React.FC<AddMoneyScreenProps> = ({navigation}) => {
               </UI.Text>
             </LinearGradient>
           </UI.Clickable>
-          <UI.Clickable onClick={setTab.bind(null, 'crypto')} style={{flex: 1}}>
+          <UI.Clickable
+            testID="crypto_tab"
+            onClick={setTab.bind(null, 'crypto')}
+            style={{flex: 1}}>
             <LinearGradient
               style={styles.tab}
               colors={tab === 'crypto' ? tabColors.active : tabColors.inactive}>

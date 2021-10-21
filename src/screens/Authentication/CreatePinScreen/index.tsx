@@ -5,19 +5,69 @@ import styles from './styles';
 import ErrorMessage from '@/components/ErrorMessage';
 import {widthPercentageToDP as wd} from 'react-native-responsive-screen';
 import AppStatusBar from '@/components/AppStatusBar';
+import {useCreatePin} from '@/hooks';
+import {ActivityIndicator, Alert} from 'react-native';
+import {setUser} from '@/store/actions';
+import {useSelector} from 'react-redux';
+import {IRootState} from '@/store/reducers';
 
 interface CreatePinScreen {
   navigation: any;
+  route: any;
 }
 
-const CreatePinScreen: React.FC<CreatePinScreen> = ({navigation}) => {
+const CreatePinScreen: React.FC<CreatePinScreen> = ({navigation, route}) => {
   const {colors} = useTheme();
+  const username = React.useMemo(() => route.params.username, []);
+  const [handleCreatePin, isLoading, data, createPinError] = useCreatePin();
+  const {user} = useSelector((state: IRootState) => state);
 
   const [pin, setPin] = React.useState<string>('');
   const [confirmPin, setConfirmPin] = React.useState<string>('');
   const [confirm, setConfirm] = React.useState<boolean>(false);
   const [pinError, setPinError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
+
+  React.useEffect(
+    () =>
+      navigation.addListener('beforeRemove', (e: any) => {
+        if (data) {
+          return;
+        }
+        // Prevent default behavior of leaving the screen
+        e.preventDefault();
+
+        Alert.alert(
+          'Discard changes?',
+          "You haven't completed your registration. Are you sure you want to leave the screen?",
+          [
+            {text: "Don't leave", style: 'cancel', onPress: () => {}},
+            {
+              text: 'Discard',
+              style: 'destructive',
+              // If the user confirmed, then we dispatch the action we blocked earlier
+              // This will continue the action that had triggered the removal of the screen
+              onPress: () => {
+                setUser({...user, username});
+                navigation.dispatch(e.data.action);
+              },
+            },
+          ],
+        );
+      }),
+    [navigation],
+  );
+
+  React.useEffect(() => {
+    if (data) {
+      navigation.replace('BVN', {username});
+    }
+    if (createPinError) {
+      setError(createPinError.message);
+      setPinError(true);
+      console.log(createPinError);
+    }
+  }, [data, createPinError]);
 
   const validatePin = (value: string): void => {
     setPinError(false);
@@ -36,10 +86,6 @@ const CreatePinScreen: React.FC<CreatePinScreen> = ({navigation}) => {
       setConfirmPin('');
       return;
     }
-  };
-
-  const submitData = (): void => {
-    navigation.replace('BVN');
   };
 
   const clearError = (): void => {
@@ -111,10 +157,14 @@ const CreatePinScreen: React.FC<CreatePinScreen> = ({navigation}) => {
         </UI.Text>
         <UI.Spacer />
         {confirmPin.length === 4 && (
-          <UI.Button onClick={submitData} primary>
-            <UI.Text bold color={colors.white}>
-              ALL SET
-            </UI.Text>
+          <UI.Button onClick={() => handleCreatePin(pin)} primary>
+            <UI.Block row middle>
+              <UI.Text color={colors.white} bold>
+                ALL SET
+              </UI.Text>
+              <UI.Spacer />
+              {isLoading && <ActivityIndicator color={colors.white} />}
+            </UI.Block>
           </UI.Button>
         )}
 

@@ -4,6 +4,8 @@ import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
 import ErrorMessage from '@/components/ErrorMessage';
 import AppStatusBar from '@/components/AppStatusBar';
+import {useCreateUsername} from '@/hooks';
+import {ActivityIndicator} from 'react-native';
 
 interface UsernameScreenProps {
   navigation: any;
@@ -11,26 +13,34 @@ interface UsernameScreenProps {
 
 const UsernameScreen: React.FC<UsernameScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
+  const [createUsername, isLoading, data, requestError] = useCreateUsername();
 
   const [username, setUsername] = React.useState<string>('');
 
   const [usernameError, setUsernameError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
 
+  React.useEffect(() => {
+    if (data) {
+      console.log(data);
+      navigation.replace('CreatePin', {username});
+    }
+    if (requestError) {
+      setError(requestError.message);
+      console.log(requestError);
+    }
+  }, [data, requestError]);
+
   // Validate user entry before sending to backend
   const validateEntry = (): void => {
     setUsernameError(false);
 
-    if (!username) {
+    if (!username || username.length < 3) {
       setUsernameError(true);
-      setError('Username have already been taken');
+      setError('Username must be at least 3 characters.');
       return;
     }
-    submitData();
-  };
-
-  const submitData = (): void => {
-    navigation.replace('CreatePin');
+    createUsername(username);
   };
 
   const clearError = (): void => {
@@ -71,11 +81,12 @@ const UsernameScreen: React.FC<UsernameScreenProps> = ({navigation}) => {
           <UI.Block>
             <UI.Text body>Choose a Username</UI.Text>
             <UI.TextInput
-              autoFocus
+              autoCorrect={false}
+              autoCapitalize="none"
               value={username}
               onChangeText={setUsername}
               error={usernameError}
-              placeholder="e.g:@kester123"
+              placeholder="e.g: kester123"
             />
           </UI.Block>
 
@@ -89,9 +100,13 @@ const UsernameScreen: React.FC<UsernameScreenProps> = ({navigation}) => {
 
       <UI.Block backgroundColor={colors.background} style={styles.footer}>
         <UI.Button primary onClick={validateEntry}>
-          <UI.Text color={colors.white} bold>
-            CONTINUE
-          </UI.Text>
+          <UI.Block row middle>
+            <UI.Text color={colors.white} bold>
+              CONTINUE
+            </UI.Text>
+            <UI.Spacer />
+            {isLoading && <ActivityIndicator color={colors.white} />}
+          </UI.Block>
         </UI.Button>
 
         <UI.Spacer medium />

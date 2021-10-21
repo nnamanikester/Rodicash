@@ -2,16 +2,32 @@ import * as React from 'react';
 import * as UI from '@/components/common';
 import {useTheme} from '@/contexts/ThemeContext';
 import styles from './styles';
-import {Keyboard} from 'react-native';
+import {Keyboard, ActivityIndicator} from 'react-native';
 import SVG from '@/components/SVG';
 import ErrorMessage from '@/components/ErrorMessage';
 import AppStatusBar from '@/components/AppStatusBar';
+import {validateEmail} from '@/utils';
+import {useAuth} from '@/hooks';
+import {connect} from 'react-redux';
+import {
+  setToken as setAuthToken,
+  setUser as setAuthUser,
+} from '@/store/actions';
+import {UserType} from '@/store/types';
+import Keychain from 'react-native-keychain';
+import {RODICASH_LOGIN} from '@/constants';
 
 interface LoginScreenProps {
   navigation: any;
+  setUser: (user: UserType) => void;
+  setToken: (token: string) => void;
 }
 
-const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
+const LoginScreen: React.FC<LoginScreenProps> = ({
+  navigation,
+  setUser,
+  setToken,
+}) => {
   const {colors} = useTheme();
   const [isKeyboardOpen, setIsKeyboardOpen] = React.useState<boolean>(false);
   const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false);
@@ -22,6 +38,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
   const [emailError, setEmailError] = React.useState<boolean>(false);
   const [passwordError, setPasswordError] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
+
+  const [handleAuth, isLoading, data, authError] = useAuth('login');
 
   React.useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -37,27 +55,69 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
     };
   }, []);
 
+  React.useEffect(() => {
+    if (authError) {
+      const {stack, message} = authError;
+      setPasswordError(stack === 'password' || stack === null);
+      setEmailError(authError.stack === 'email' || stack === null);
+      setError(message);
+      console.log(authError);
+    }
+    if (data) {
+      console.log(data);
+      const user = data.user;
+      setKeychainData();
+      setUser({
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        photo: user.photo,
+        username: user.username,
+        isActive: user.isActive,
+        isVerified: user.isVerified,
+        account: user.account,
+      });
+      setToken(data.token);
+      if (!user.username) {
+        navigation.replace('Username');
+      }
+    }
+  }, [authError, data]);
+
+  // SAVE LOGIN DETAILS IN THE KEYCHAIN
+  const setKeychainData = async (): Promise<void> => {
+    try {
+      await Keychain.setGenericPassword(email, password, {
+        service: RODICASH_LOGIN,
+        accessControl: Keychain.ACCESS_CONTROL.BIOMETRY_ANY,
+        accessible: Keychain.ACCESSIBLE.WHEN_PASSCODE_SET_THIS_DEVICE_ONLY,
+      });
+    } catch (e: any) {
+      console.log(e);
+    }
+  };
+
   // Validate user entry before sending to backend
   const validateEntry = (): void => {
     setEmailError(false);
     setPasswordError(false);
 
-    if (!email) {
+    if (!email || !validateEmail(email)) {
       setEmailError(true);
-      setError('Please enter a valid email address');
+      setError('Please enter a valid email address.');
       return;
     }
-    if (!password) {
+    if (!password || password.length < 6) {
       setPasswordError(true);
-      setError('Password incorrect');
+      setError('Password is required and must be up to 6 characters.');
       return;
     }
-    submitData();
+    handleAuth({email, password});
   };
 
-  const submitData = (): void => {
-    navigation.replace('Welcome');
-  };
+  // const submitData = (): void => {
+  //   navigation.replace('Welcome');
+  // };
 
   const clearError = (): void => {
     setError('');
@@ -81,7 +141,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
         style={styles.header}
         backgroundColor={colors.background}
         row>
-        <UI.Clickable onClick={() => navigation.pop()}>
+        <UI.Clickable testID="back_button" onClick={() => navigation.goBack()}>
           <UI.Block row center width="auto">
             <UI.Icon name="chevron-back-circle-outline" />
             <UI.Spacer size={2} />
@@ -90,7 +150,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
         </UI.Clickable>
       </UI.Block>
 
-      <UI.Layout>
+      <UI.Layout testID="layout">
         <UI.Text h1>Login.</UI.Text>
         <UI.Spacer large />
 
@@ -98,7 +158,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
           <UI.Block>
             <UI.Text body>Email Address</UI.Text>
             <UI.TextInput
-              autoFocus
+              testID="email_field"
+              autoCorrect={false}
+              autoCapitalize="none"
               value={email}
               onChangeText={setEmail}
               error={emailError}
@@ -113,7 +175,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
           <UI.Block>
             <UI.Text body>Password</UI.Text>
             <UI.TextInput
+              testID="password_field"
               value={password}
+              autoCorrect={false}
+              autoCapitalize="none"
               onChangeText={setPassword}
               error={passwordError}
               password={!passwordVisible}
@@ -138,9 +203,13 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
 
       <UI.Block backgroundColor={colors.background} style={styles.footer}>
         <UI.Button primary onClick={validateEntry}>
-          <UI.Text color={colors.white} bold>
-            LOGIN
-          </UI.Text>
+          <UI.Block testID="login_button" row middle>
+            <UI.Text color={colors.white} bold>
+              LOGIN
+            </UI.Text>
+            <UI.Spacer />
+            {isLoading && <ActivityIndicator color={colors.white} />}
+          </UI.Block>
         </UI.Button>
 
         <UI.Spacer medium />
@@ -150,7 +219,11 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
             <UI.Block row middle>
               <UI.Text>Forgot Password?</UI.Text>
               <UI.Spacer size={3} />
-              <UI.Link onClick={() => navigation.push('Reset')}>Reset</UI.Link>
+              <UI.Link
+                testID="reset_link"
+                onClick={() => navigation.push('RequestPasswordReset')}>
+                Reset
+              </UI.Link>
             </UI.Block>
 
             <UI.Spacer medium />
@@ -161,4 +234,6 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
   );
 };
 
-export default LoginScreen;
+export default connect(null, {setUser: setAuthUser, setToken: setAuthToken})(
+  LoginScreen,
+);

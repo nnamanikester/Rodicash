@@ -125,7 +125,10 @@ const TransactionReceipt: React.FC<TransactionReceiptProps> = ({
             <UI.Spacer />
 
             <UI.Block style={{paddingHorizontal: 20}}>
-              <UI.Button secondary onClick={showRating}>
+              <UI.Button
+                testID="rate_merchant_button"
+                secondary
+                onClick={showRating}>
                 <UI.Text bold color={colors.white}>
                   RATE MERCHANT
                 </UI.Text>
@@ -135,6 +138,7 @@ const TransactionReceipt: React.FC<TransactionReceiptProps> = ({
 
               <UI.Block center>
                 <UI.Link
+                  testID="back_to_home_link"
                   onClick={() => navigation.replace('Home')}
                   color={colors.primary}>
                   Back to home

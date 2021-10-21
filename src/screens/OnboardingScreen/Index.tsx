@@ -13,11 +13,15 @@ import {
 import SVG from '@/components/SVG';
 import {Reveal} from '@/animations';
 import AppStatusBar from '@/components/AppStatusBar';
+import {connect} from 'react-redux';
+import {IRootState} from '@/store/reducers';
+import {UserType} from '@/store/types';
 
 const isIOS = Platform.OS === 'ios';
 
 interface OnboardingScreenProps {
   navigation: any;
+  user: UserType;
 }
 
 interface OnboardingScreenState {
@@ -58,6 +62,20 @@ class OnboardingScreen extends React.Component<
       screenType: 'even',
     });
   };
+
+  componentDidMount() {
+    const {navigation, user} = this.props;
+    const {email, username, isVerified} = user;
+    if (email) {
+      if (!isVerified) {
+        navigation.navigate('EmailVerification');
+      } else if (!username) {
+        navigation.navigate('Login');
+      } else if (username) {
+        navigation.replace('Welcome');
+      }
+    }
+  }
 
   render() {
     const {bgColors, screenType, index} = this.state;
@@ -100,6 +118,7 @@ class OnboardingScreen extends React.Component<
               />
             )}
             <Swiper
+              testID="onboarding_swiper"
               loop={false}
               loadMinimal
               loadMinimalSize={0}
@@ -190,6 +209,7 @@ class OnboardingScreen extends React.Component<
                 <Reveal duration={1500} from={0} to={1}>
                   <UI.Block style={styles.content}>
                     <UI.Text
+                      testID="onboarding_title"
                       color={colors.white}
                       h1
                       style={{textAlign: 'center'}}>
@@ -224,7 +244,7 @@ class OnboardingScreen extends React.Component<
                       color={colors.white}
                       h1
                       style={{textAlign: 'center'}}>
-                      Gift and recieve money from your friends
+                      Gift and receive money from your friends
                     </UI.Text>
 
                     <UI.Spacer medium />
@@ -246,13 +266,17 @@ class OnboardingScreen extends React.Component<
                 position: 'absolute',
                 bottom: 0,
               }}>
-              <UI.Button white onClick={() => navigation.navigate('Register')}>
+              <UI.Button
+                testID="create_account_button"
+                white
+                onClick={() => navigation.navigate('Register')}>
                 <UI.Text bold>CREATE ACCOUNT</UI.Text>
               </UI.Button>
 
               <UI.Spacer />
 
               <UI.Button
+                testID="login_button"
                 transparent
                 onClick={() => navigation.navigate('Login')}>
                 <UI.Text color={colors.white} bold>
@@ -270,4 +294,10 @@ class OnboardingScreen extends React.Component<
   }
 }
 
-export default OnboardingScreen;
+const mapStateToProps = (state: IRootState) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(OnboardingScreen);

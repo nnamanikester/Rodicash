@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {useColorScheme} from 'react-native';
 import {LIGHT_COLORS, DARK_COLORS} from '@/constants';
+import {useDispatch, useSelector} from 'react-redux';
+import {IRootState} from '@/store/reducers';
+import {setAppSettings} from '@/store/actions';
 
 // eslint-disable-next-line no-spaced-func
 export const ThemeContext = React.createContext<{
@@ -16,6 +19,8 @@ export const ThemeContext = React.createContext<{
 export const ThemeProvider: React.FC = ({children}) => {
   // Getting the device color theme, this will also work with react-native-web
   const colorScheme = useColorScheme(); // Can be dark | light | no-preference
+  const {appSettings} = useSelector((state: IRootState) => state);
+  const dispatch = useDispatch();
 
   /*
    * To enable changing the app theme dynamicly in the app (run-time)
@@ -23,17 +28,19 @@ export const ThemeProvider: React.FC = ({children}) => {
    */
   const [isDark, setIsDark] = React.useState(colorScheme === 'dark');
 
-  // Listening to changes of device appearance while in run-time
   React.useEffect(() => {
-    setIsDark(colorScheme === 'dark');
-  }, [colorScheme]);
+    setIsDark(appSettings.isDark);
+  }, []);
 
   const defaultTheme = {
     isDark,
     // Chaning color schemes according to theme
     colors: isDark ? DARK_COLORS : LIGHT_COLORS,
     // Overrides the isDark value will cause re-render inside the context.
-    setScheme: (scheme: typeof colorScheme) => setIsDark(scheme === 'dark'),
+    setScheme: (scheme: typeof colorScheme) => {
+      dispatch(setAppSettings({...appSettings, isDark: scheme === 'dark'}));
+      setIsDark(scheme === 'dark');
+    },
   };
 
   return (

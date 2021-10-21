@@ -13,7 +13,7 @@ interface CashoutScreenProps {
 
 const CashoutScreen: React.FC<CashoutScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
-  const [amount, setAmount] = React.useState('100');
+  const [amount, setAmount] = React.useState('0');
   const [amountError, setAmountError] = React.useState('');
 
   const handleChangeAmount = (val: string): void => {
@@ -61,10 +61,15 @@ const CashoutScreen: React.FC<CashoutScreenProps> = ({navigation}) => {
             <UI.Block
               row
               style={[styles.outputTextContainer, {borderColor: colors.gray3}]}>
-              <UI.Text h1 style={styles.outputText}>
+              <UI.Text
+                h1
+                colors={[colors.green1, colors.green2]}
+                style={styles.outputText}>
                 {formatMoneyWithoutSymbol(amount)}
               </UI.Text>
-              <UI.Text h1>.00</UI.Text>
+              <UI.Text h1 colors={[colors.green1, colors.green2]}>
+                .00
+              </UI.Text>
             </UI.Block>
           </UI.Block>
           <UI.Block
@@ -84,7 +89,10 @@ const CashoutScreen: React.FC<CashoutScreenProps> = ({navigation}) => {
         />
 
         <UI.Block style={{paddingHorizontal: 20}}>
-          <UI.Button secondary onClick={handleWithdrawal}>
+          <UI.Button
+            testID="withdraw_button"
+            primary
+            onClick={handleWithdrawal}>
             <UI.Text bold color={colors.white}>
               WITHDRAW
             </UI.Text>

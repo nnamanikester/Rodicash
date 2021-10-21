@@ -68,21 +68,22 @@ let smallStyle = {};
 let typeStyle = {};
 let disabled = 0.8;
 
-export const Button: React.FC<ButtonProps> = ({
-  children,
-  onClick,
-  size,
-  type,
-  iconRight,
-  iconLeft,
-  showIconDivider,
-  primary,
-  secondary,
-  white,
-  colors: colours,
-  transparent,
-  style,
-}) => {
+export const Button: React.FC<ButtonProps> = props => {
+  const {
+    children,
+    onClick,
+    size,
+    type,
+    iconRight,
+    iconLeft,
+    showIconDivider,
+    primary,
+    secondary,
+    white,
+    colors: colours,
+    transparent,
+    style,
+  } = props;
   const {colors} = useTheme();
   const orangeGradient = [colors.orange1, colors.orange2];
   const greenGradient = [colors.green1, colors.green2];
@@ -152,6 +153,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <Clickable
+      {...props}
       onClick={type === 'disabled' ? undefined : onClick}
       activeOpacity={disabled}>
       <LinearGradient

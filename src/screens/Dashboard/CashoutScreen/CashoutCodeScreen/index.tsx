@@ -19,19 +19,19 @@ const CashoutCodeScreen: React.FC<CashoutCodeScreenProps> = ({
   route,
 }) => {
   const {colors} = useTheme();
-  const [time, setTime] = React.useState<number>(86400000);
+  const [time] = React.useState<number>(86400000);
   const [amount, setAmount] = React.useState<number>(0);
   const [charge, setCharge] = React.useState<number>(0);
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => setTime(time - 1000), 1000);
-    return () => clearTimeout(timer);
-  });
+  // React.useEffect(() => {
+  //   const timer = setTimeout(() => setTime(time - 1000), 1000);
+  //   return () => clearTimeout(timer);
+  // });
 
   React.useEffect(() => {
     const waiter = setTimeout(() => {
-      navigation.navigate('ConfirmCashout', {amount, charge});
-    }, 10000);
+      navigation.replace('ConfirmCashout', {amount, charge});
+    }, 5000);
 
     return () => clearTimeout(waiter);
   }, []);

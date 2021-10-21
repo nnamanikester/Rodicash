@@ -7,10 +7,14 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "build:ios": "xcodebuild -workspace ios/Rodicash.xcworkspace -UseNewBuildSystem=NO -scheme Rodicash -configuration Release",
+    "build:android": "cd android && ./gradlew assembleRelease && cd .."
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4",
+    "@react-native-async-storage/async-storage": "^1.15.9",
     "@react-native-community/datetimepicker": "^3.5.2",
     "@react-native-picker/picker": "^2.1.0",
     "@react-navigation/bottom-tabs": "^6.0.5",
@@ -25,8 +29,10 @@
     "react-native-actions-sheet": "^0.5.4",
     "react-native-animated-splash-screen": "^2.0.5",
     "react-native-collapsible": "^1.6.0",
+    "react-native-encrypted-storage": "^4.0.2",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-google-maps-directions": "^2.1.1",
+    "react-native-keychain": "^8.0.0",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-maps": "^0.29.3",
     "react-native-maps-directions": "^1.8.0",
@@ -37,9 +43,9 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.7.2",
     "react-native-smooth-pincode-input": "^1.0.9",
-    "react-native-splash-screen": "^3.2.0",
     "react-native-svg": "^12.1.1",
     "react-native-swiper": "^1.6.0",
+    "react-native-text-gradient": "^0.1.7",
     "react-native-timeline-flatlist": "^0.7.6",
     "react-native-vector-icons": "^8.1.0",
     "react-redux": "^7.2.5",
@@ -52,6 +58,11 @@
     "@babel/core": "^7.15.5",
     "@babel/runtime": "^7.15.4",
     "@react-native-community/eslint-config": "^3.0.1",
+    "@testing-library/jest-native": "^4.0.2",
+    "@testing-library/react-native": "^8.0.0",
+    "@types/detox": "^17.14.3",
+    "@types/jasmine": "^3.10.0",
+    "@types/jest": "^27.0.2",
     "@types/react": "^17.0.21",
     "@types/react-native": "^0.65.0",
     "@types/react-native-vector-icons": "^6.4.8",
@@ -60,13 +71,24 @@
     "@types/redux-thunk": "^2.1.0",
     "babel-jest": "^27.2.0",
     "babel-plugin-module-resolver": "^4.1.0",
+    "detox": "^18.22.2",
     "eslint": "^7.32.0",
     "jest": "^27.2.0",
     "metro-react-native-babel-preset": "^0.66.2",
+    "node-notifier": "^10.0.0",
     "react-native-codegen": "^0.0.7",
-    "react-test-renderer": "17.0.2"
+    "react-test-renderer": "17.0.2",
+    "ts-node": "^10.3.0"
   },
-  "jest": {
-    "preset": "react-native"
+  "detox": {
+    "test-runner": "jest",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Rodicash.app",
+        "build": "xcodebuild -workspace ios/Rodicash.xcworkspace -scheme Rodicash -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 12"
+      }
+    }
   }
 }

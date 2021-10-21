@@ -105,7 +105,9 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
         <UI.Spacer large />
 
         <UI.Block row justify="space-between">
-          <UI.Clickable onClick={() => this.handleValueChange('1')}>
+          <UI.Clickable
+            testID="one"
+            onClick={() => this.handleValueChange('1')}>
             <UI.Block
               center
               middle
@@ -114,7 +116,9 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
               <UI.Text h2>1</UI.Text>
             </UI.Block>
           </UI.Clickable>
-          <UI.Clickable onClick={() => this.handleValueChange('2')}>
+          <UI.Clickable
+            testID="two"
+            onClick={() => this.handleValueChange('2')}>
             <UI.Block
               center
               middle
@@ -123,7 +127,9 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
               <UI.Text h2>2</UI.Text>
             </UI.Block>
           </UI.Clickable>
-          <UI.Clickable onClick={() => this.handleValueChange('3')}>
+          <UI.Clickable
+            testID="three"
+            onClick={() => this.handleValueChange('3')}>
             <UI.Block
               center
               middle
@@ -135,7 +141,9 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
         </UI.Block>
 
         <UI.Block row justify="space-between">
-          <UI.Clickable onClick={() => this.handleValueChange('4')}>
+          <UI.Clickable
+            testID="four"
+            onClick={() => this.handleValueChange('4')}>
             <UI.Block
               center
               middle
@@ -144,7 +152,9 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
               <UI.Text h2>4</UI.Text>
             </UI.Block>
           </UI.Clickable>
-          <UI.Clickable onClick={() => this.handleValueChange('5')}>
+          <UI.Clickable
+            testID="five"
+            onClick={() => this.handleValueChange('5')}>
             <UI.Block
               center
               middle
@@ -153,7 +163,9 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
               <UI.Text h2>5</UI.Text>
             </UI.Block>
           </UI.Clickable>
-          <UI.Clickable onClick={() => this.handleValueChange('6')}>
+          <UI.Clickable
+            testID="six"
+            onClick={() => this.handleValueChange('6')}>
             <UI.Block
               center
               middle
@@ -165,7 +177,9 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
         </UI.Block>
 
         <UI.Block row justify="space-between">
-          <UI.Clickable onClick={() => this.handleValueChange('7')}>
+          <UI.Clickable
+            testID="seven"
+            onClick={() => this.handleValueChange('7')}>
             <UI.Block
               center
               middle
@@ -174,7 +188,9 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
               <UI.Text h2>7</UI.Text>
             </UI.Block>
           </UI.Clickable>
-          <UI.Clickable onClick={() => this.handleValueChange('8')}>
+          <UI.Clickable
+            testID="eight"
+            onClick={() => this.handleValueChange('8')}>
             <UI.Block
               center
               middle
@@ -183,7 +199,9 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
               <UI.Text h2>8</UI.Text>
             </UI.Block>
           </UI.Clickable>
-          <UI.Clickable onClick={() => this.handleValueChange('9')}>
+          <UI.Clickable
+            testID="nine"
+            onClick={() => this.handleValueChange('9')}>
             <UI.Block
               center
               middle
@@ -199,7 +217,9 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
             style={[styles.keypad, {borderColor: colors.transparent}]}
           />
 
-          <UI.Clickable onClick={() => this.handleValueChange('0')}>
+          <UI.Clickable
+            testID="zero"
+            onClick={() => this.handleValueChange('0')}>
             <UI.Block
               center
               middle
@@ -208,7 +228,7 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
               <UI.Text h2>0</UI.Text>
             </UI.Block>
           </UI.Clickable>
-          <UI.Clickable onClick={this.handleDelete}>
+          <UI.Clickable testID="delete" onClick={this.handleDelete}>
             <UI.Block
               center
               middle
@@ -230,6 +250,7 @@ class EnterPin extends React.Component<EnterPinProps, EnterPinState> {
           <>
             <UI.Spacer />
             <UI.Button
+              testID="confirm_button"
               primary
               onClick={onFinish ? () => onFinish(value) : undefined}>
               <UI.Text color={colors.white} bold>
